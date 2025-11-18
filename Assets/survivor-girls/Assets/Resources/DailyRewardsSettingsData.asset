@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e01db04f95353b602ccbe6e442c029, type: 3}
+  m_Name: DailyRewardsSettingsData
+  m_EditorClassIdentifier:
+  allTimerButtons:
+  - buttonID: RewardButton
+    hours: 24
+    minutes: 0
+    seconds: 0
+    interactable: 0
+    availableAtStart: 1
+    completeText: Open
+  calendarPrefab: {fileID: 1348381164401539, guid: fd04fe2d54a982e418e9771724625d3b, type: 2}
+  calendarCanvas: {fileID: 1556483759184843, guid: f46edbd39b9e3a04ab1845213e295a9d, type: 2}
+  availableAtStart: 1
+  resetAtEnd: 0
+  hours: 24
+  minutes: 0
+  seconds: 0
+  allDays:
+  - dayTexture: {fileID: 0}
+    rewardValue: 10
+  - dayTexture: {fileID: 0}
+    rewardValue: 50
+  usePlaymaker: 0
+  useBolt: 0
