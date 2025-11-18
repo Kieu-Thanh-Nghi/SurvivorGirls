@@ -10,3 +10,17 @@ public class Character : MonoBehaviour
     [SerializeField] internal AnimID animID;
 
 }
+
+public class TurnAround : CharacterAct
+{
+
+    internal override void DoAct(Character character)
+    {
+        
+    }
+
+    internal override void SetValueForActAndAnim(Character character)
+    {
+        
+    }
+}
