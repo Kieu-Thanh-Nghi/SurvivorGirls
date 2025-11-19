@@ -3,24 +3,20 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] internal List<UpdateActs> updateActs, fixupdateActs;
     [SerializeField] internal CharacterController charCtlr;
     [SerializeField] internal Animator animator;
     [SerializeField] internal CharacterInput inputs;
     [SerializeField] internal AnimID animID;
+    [SerializeField] TurnAround turnAround;
+    [SerializeField] Move move;
 
-}
-
-public class TurnAround : CharacterAct
-{
-
-    internal override void DoAct(Character character)
+    private void Update()
     {
-        
+        turnAround.CheckDoingAct(this);
     }
 
-    internal override void SetValueForActAndAnim(Character character)
+    private void FixedUpdate()
     {
-        
+        move.CheckDoingAct(this);
     }
 }

@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class AnimID : MonoBehaviour
 {
-    [SerializeField] internal int movingPara;
+    [SerializeField] internal int MoveSpeedX;
+    [SerializeField] internal int MoveSpeedZ;
 
     private void OnValidate()
     {
-        movingPara = Animator.StringToHash("movingSpeed");
+        MoveSpeedX = Animator.StringToHash("MoveSpeedX");
+        MoveSpeedZ = Animator.StringToHash("MoveSpeedZ");
     }
 }
