@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float bonusRudius = 5;
     [SerializeField] float timeBetweenSpawn = 0.5f;
     float countingTime = 0;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 1);
+        Handles.color = new Color(0, 0, 1, 0.1f);
+        Handles.DrawSolidDisc(transform.position, transform.up, SpawnRadius);
+    }
+
     Vector3 GetSpawnPosition()
     {
         Vector3 SpawnerPos = transform.position;
@@ -48,6 +58,4 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(enemyPrefab, EnemyPos, enemyQuaternion);
         enemyQuantity += 6;
     }
-
-
 }
