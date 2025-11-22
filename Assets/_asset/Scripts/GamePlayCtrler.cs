@@ -5,7 +5,7 @@ using UnityEngine;
 public class GamePlayCtrler : MonoBehaviour
 {
     internal static GamePlayCtrler Instance;
-    [SerializeField] Transform Player;
+    [SerializeField] internal Transform Player;
 
     private void Awake()
     {
