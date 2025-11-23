@@ -21,9 +21,20 @@ public class AddPhysicObstacle : MonoBehaviour
         var obs = GetComponentsInChildren<NavMeshObstacle>();
         foreach (var o in obs)
         {
+            if (o.GetComponent<BoxCollider>() == null) return;
             var col = o.gameObject.GetComponent<BoxCollider>();
             col.size = o.size;
             col.center = o.center;
+        }
+    }
+    [ContextMenu("destroy Col")]
+    void des()
+    {
+        var obs = GetComponentsInChildren<NavMeshObstacle>();
+        foreach (var o in obs)
+        {
+            DestroyImmediate(o.GetComponentInChildren<BoxCollider>());
+            DestroyImmediate(o.GetComponentInChildren<Rigidbody>());
         }
     }
 }

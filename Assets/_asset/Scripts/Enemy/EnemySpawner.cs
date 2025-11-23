@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] int enemyQuantity;
     [SerializeField] int enemyQuantityLimiter = 300;
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] SpawnSample enemySample;
     [SerializeField] float SpawnRadius = 10;
     [SerializeField] float bonusRudius = 5;
     [SerializeField] float timeBetweenSpawn = 0.5f;
@@ -29,12 +29,8 @@ public class EnemySpawner : MonoBehaviour
         float x = Mathf.Cos(AngleRandom);
         float z = Mathf.Sin(AngleRandom);
         float finalRadius = SpawnRadius + Random.Range(0, bonusRudius + 1);
-        Vector3 finalPos = new Vector3(x * finalRadius, SpawnerPos.y+1, z * finalRadius) + SpawnerPos;
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(finalPos, out hit, 10f, NavMesh.AllAreas))
-        {
-            finalPos = hit.position;
-        }
+        Vector3 finalPos = new Vector3(x * finalRadius, -1, z * finalRadius) + SpawnerPos;
+
         return finalPos;
     }
 
@@ -55,7 +51,9 @@ public class EnemySpawner : MonoBehaviour
         Vector3 enemyForward = EnemyPos - transform.position;
         enemyForward.y = 0;
         Quaternion enemyQuaternion = Quaternion.LookRotation(enemyForward);
-        Instantiate(enemyPrefab, EnemyPos, enemyQuaternion);
+        enemySample.transform.position = EnemyPos;
+        enemySample.transform.rotation = enemyQuaternion;
+        enemySample.InstantiateEnemies();
         enemyQuantity += 6;
     }
 }
