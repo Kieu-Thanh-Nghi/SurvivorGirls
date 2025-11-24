@@ -1,38 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] int enemyQuantity;
     [SerializeField] int enemyQuantityLimiter = 300;
     [SerializeField] SpawnSample enemySample;
-    [SerializeField] float SpawnRadius = 10;
-    [SerializeField] float bonusRudius = 5;
     [SerializeField] float timeBetweenSpawn = 0.5f;
     float countingTime = 0;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 1);
-        Handles.color = new Color(0, 0, 1, 0.1f);
-        Handles.DrawSolidDisc(transform.position, transform.up, SpawnRadius);
-    }
-
-    Vector3 GetSpawnPosition()
-    {
-        Vector3 SpawnerPos = transform.position;
-        float AngleRandom = Random.Range(-180, 181);
-        float x = Mathf.Cos(AngleRandom);
-        float z = Mathf.Sin(AngleRandom);
-        float finalRadius = SpawnRadius + Random.Range(0, bonusRudius + 1);
-        Vector3 finalPos = new Vector3(x * finalRadius, -1, z * finalRadius) + SpawnerPos;
-
-        return finalPos;
-    }
 
     private void Update()
     {
@@ -40,20 +14,13 @@ public class EnemySpawner : MonoBehaviour
         countingTime += Time.deltaTime;
         if(countingTime > timeBetweenSpawn)
         {
-            spawnAnEnemy();
+            ActiveEnemySample();
             countingTime = 0;
         }
     }
 
-    void spawnAnEnemy()
+    void ActiveEnemySample()
     {
-        Vector3 EnemyPos = GetSpawnPosition();
-        Vector3 enemyForward = EnemyPos - transform.position;
-        enemyForward.y = 0;
-        Quaternion enemyQuaternion = Quaternion.LookRotation(enemyForward);
-        enemySample.transform.position = EnemyPos;
-        enemySample.transform.rotation = enemyQuaternion;
-        enemySample.InstantiateEnemies();
-        enemyQuantity += 6;
+        enemyQuantity += enemySample.InstantiateEnemies();
     }
 }
