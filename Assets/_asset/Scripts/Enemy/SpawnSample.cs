@@ -28,7 +28,7 @@ public class SpawnSample : ChangePosSpawnSample
     {
         float x = transform.forward.x;
         float z = transform.forward.z;
-        float finalRadius = SpawnSampleRadius + Random.Range(0, bonusRudius + 1);
+        float finalRadius = SpawnSampleRadius + UnityEngine.Random.Range(0, bonusRudius + 1);
         Vector3 finalPos = new Vector3(x * finalRadius, -1, z * finalRadius) + transform.position;
 
         return finalPos;

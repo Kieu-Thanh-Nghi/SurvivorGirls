@@ -4,7 +4,7 @@ public class SpawnStrategy : MonoBehaviour
 {
     [SerializeField] Vector3[] EnemyPos;
     [SerializeField] SpawnChecker enemyPrefab;
-    [SerializeField] int enemiesEachSpawn = 6;
+    [SerializeField] internal int enemiesEachSpawn = 6;
 
     //
     [SerializeField] GameObject cubeObject;

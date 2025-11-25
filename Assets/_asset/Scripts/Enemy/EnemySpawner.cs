@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] SpawnSetUp[] spawnSamples;
     [SerializeField] int enemyQuantity;
     [SerializeField] int enemyQuantityLimiter = 300;
     [SerializeField] SimpleSpawnSample enemySample;

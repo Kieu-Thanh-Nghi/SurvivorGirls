@@ -2,7 +2,7 @@
 
 public class SimpleSpawnSample : MonoBehaviour
 {
-    [SerializeField] protected SpawnStrategy spawnStrategy;
+    [SerializeField] internal SpawnStrategy spawnStrategy;
 
     internal virtual int InstantiateEnemies()
     {
