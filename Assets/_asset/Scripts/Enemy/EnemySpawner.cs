@@ -4,7 +4,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] int enemyQuantity;
     [SerializeField] int enemyQuantityLimiter = 300;
-    [SerializeField] SpawnSample enemySample;
+    [SerializeField] SimpleSpawnSample enemySample;
     [SerializeField] float timeBetweenSpawn = 0.5f;
     float countingTime = 0;
 
@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
         countingTime += Time.deltaTime;
         if(countingTime > timeBetweenSpawn)
         {
+            RotateEnemySpawner();
             ActiveEnemySample();
             countingTime = 0;
         }
@@ -22,5 +23,10 @@ public class EnemySpawner : MonoBehaviour
     void ActiveEnemySample()
     {
         enemyQuantity += enemySample.InstantiateEnemies();
+    }
+    void RotateEnemySpawner()
+    {
+        float AngleRandom = Random.Range(-180, 181);
+        enemySample.transform.rotation = Quaternion.Euler(0, AngleRandom, 0);
     }
 }
