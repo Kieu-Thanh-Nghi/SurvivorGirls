@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1941637496485856, guid: 11e2f045116cbaf4792a3f764d3ff10c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4427149837799251, guid: 11e2f045116cbaf4792a3f764d3ff10c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1302,18 +1302,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1561976551}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1057382171 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8351499293163611337, guid: dcf476269ea6ffa488595b969663b9aa,
-    type: 3}
-  m_PrefabInstance: {fileID: 1561976551}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057382170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd75f4b79b35f64aa0c295769eb33b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1057382172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7882368712104951959, guid: dcf476269ea6ffa488595b969663b9aa,
@@ -1766,11 +1754,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919b9b15fb3e2ed48bb9a3384c74171f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSamples:
-  - {fileID: 1328127650}
+  spawnDatas: []
   enemyQuantity: 0
   enemyQuantityLimiter: 300
-  enemySample: {fileID: 1057382171}
   timeBetweenSpawn: 0.5
 --- !u!4 &1328127649
 Transform:
@@ -1797,15 +1783,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328127647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f63b3f8af08cee4db0d8252307d419b, type: 3}
+  m_Script: {fileID: 11500000, guid: 07e07e4aefd32974787703972fb4aab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 0
-  endTime: 60
-  spawnRate: 5
-  enemyQuantity: 6
-  spawnTypeAndPercent: []
-  spawnSamples: {fileID: 1057382171}
+  StartTime: 0
+  sample: {fileID: 0}
 --- !u!1 &1483161624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1477048248217643, guid: 960cb7371db2e864ea7489a90abf8777,
@@ -2018,6 +2000,21 @@ PrefabInstance:
       propertyPath: spawnStrategy
       value: 
       objectReference: {fileID: 1057382173}
+    - target: {fileID: 8351499293163611337, guid: dcf476269ea6ffa488595b969663b9aa,
+        type: 3}
+      propertyPath: StartTime.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351499293163611337, guid: dcf476269ea6ffa488595b969663b9aa,
+        type: 3}
+      propertyPath: StartTime.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351499293163611337, guid: dcf476269ea6ffa488595b969663b9aa,
+        type: 3}
+      propertyPath: StartTime.Array.data[1]
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -3,7 +3,9 @@
 public class SimpleSpawnSample : MonoBehaviour
 {
     [SerializeField] internal SpawnStrategy spawnStrategy;
+    [SerializeField] internal float[] StartTime;
 
+    internal virtual float GetCurrentStartTime() => StartTime[0];
     internal virtual int InstantiateEnemies()
     {
         spawnStrategy.SpawnEnemies();
@@ -27,5 +29,10 @@ public abstract class ChangePosSpawnSample : SimpleSpawnSample
     protected abstract Quaternion GetSampleRotation(Vector3 SampleFinalPos);
 
     protected abstract Vector3 GetSpawnSamplePosition();
+}
+
+public class CircleSpawnSample : SimpleSpawnSample
+{
+
 }
 
