@@ -9,7 +9,8 @@ public class Move : ActWithAnimation
 
     internal override void DoAct(Character character)
     {
-        character.charCtlr.SimpleMove(movingSpeedDirect);
+        //character.charCtlr.SimpleMove(movingSpeedDirect);
+        character.allBody.position += movingSpeedDirect * Time.fixedDeltaTime;
     }
 
     internal override void SetValueForActAndAnim(Character character)

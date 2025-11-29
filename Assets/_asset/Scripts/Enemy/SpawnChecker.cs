@@ -8,6 +8,7 @@ public class SpawnChecker : MonoBehaviour
     [SerializeField] GameObject EnemyBody;
     [SerializeField] LayerMask layerMask;
 
+    [ContextMenu("start check")]
     public void StartCheck()
     {
         if (RayCheckObs())

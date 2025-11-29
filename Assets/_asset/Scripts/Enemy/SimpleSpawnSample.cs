@@ -2,7 +2,7 @@
 
 public class SimpleSpawnSample : MonoBehaviour
 {
-    [SerializeField] internal SpawnStrategy spawnStrategy;
+    [SerializeField] internal SpawnStrategy_test spawnStrategy;
     [SerializeField] internal float[] StartTime;
 
     internal virtual float GetCurrentStartTime() => StartTime[0];

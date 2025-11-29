@@ -5,8 +5,8 @@ public class SpawnSample : ChangePosSpawnSample
 {
     [SerializeField] float SpawnSampleRadius = 10;
     [SerializeField] float bonusRudius = 5;
-    
-    //
+
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -14,7 +14,7 @@ public class SpawnSample : ChangePosSpawnSample
         Handles.color = new Color(0, 0, 1, 0.1f);
         Handles.DrawSolidDisc(transform.position, transform.up, SpawnSampleRadius);
     }
-    //
+#endif
 
     protected override Quaternion GetSampleRotation(Vector3 SampleFinalPos)
     {

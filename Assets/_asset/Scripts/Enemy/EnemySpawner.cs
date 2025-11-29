@@ -3,23 +3,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] SpawnerData[] spawnDatas;
-    [SerializeField] int enemyQuantity;
-    [SerializeField] int enemyQuantityLimiter = 300;
-    [SerializeField] float timeBetweenSpawn = 0.5f;
-    float countingTime = 0;
+    [SerializeField] AbstractSpawnerStrategy[] spawnStrategies;
+    [SerializeField] float countingTime = 0;
     int thefirstIndex = 0, theLastIndex = 0;
 
     void checkSampleActive()
     {
-        if(spawnDatas[theLastIndex].StartTime <= countingTime)
+        if (theLastIndex >= spawnStrategies.Length) return;
+        if (spawnStrategies[theLastIndex].StartTime <= countingTime)
         {
             theLastIndex += 1;
             checkSampleActive();
-        }
-        else
-        {
-            countingTime += Time.deltaTime;
         }
     }
 
@@ -28,17 +22,17 @@ public class EnemySpawner : MonoBehaviour
         if(thefirstIndex < theLastIndex)
         for(int i = thefirstIndex; i < theLastIndex; i++)
         {
-            if (spawnDatas[i].Spawn())
+            if (spawnStrategies[i].Spawn(countingTime))
             {
-                Swap(spawnDatas[thefirstIndex], spawnDatas[i]);
+                Swap(spawnStrategies[thefirstIndex], spawnStrategies[i]);
                 thefirstIndex++;
             }
         }
     }
 
-    void Swap(SpawnerData a, SpawnerData b)
+    void Swap(AbstractSpawnerStrategy a, AbstractSpawnerStrategy b)
     {
-        SpawnerData temp = a;
+        AbstractSpawnerStrategy temp = a;
         a = b;
         b = temp;
     }
@@ -46,25 +40,22 @@ public class EnemySpawner : MonoBehaviour
     [ContextMenu("setup")]
     void SetUp()
     {
-        spawnDatas = GetComponentsInChildren<SpawnerData>();
+        AbstractSpawnerStrategy[] spawns = GetComponentsInChildren<AbstractSpawnerStrategy>();
+        List<AbstractSpawnerStrategy> temp = new();
+        foreach (var spawn in spawns)
+        {
+            temp.Add(spawn);
+        }
+        temp.Sort((x, y) => x.StartTime.CompareTo(y.StartTime));
+        spawnStrategies = temp.ToArray();
     }
     //
 
     private void Update()
     {
-        if (enemyQuantity >= enemyQuantityLimiter) return;
+        countingTime += Time.deltaTime;
+        Debug.Log(GamePlayCtrler.Instance.enemyQuantity);
         checkSampleActive();
         UpdateActivatedSample();
-    }
-
-
-    void ActiveEnemySample()
-    {
-        //enemyQuantity += enemySample.InstantiateEnemies();
-    }
-    void RotateEnemySpawner()
-    {
-        float AngleRandom = Random.Range(-180, 181);
-        //enemySample.transform.rotation = Quaternion.Euler(0, AngleRandom, 0);
     }
 }

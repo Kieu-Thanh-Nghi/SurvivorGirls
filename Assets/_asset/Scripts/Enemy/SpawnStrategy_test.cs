@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SpawnStrategy : MonoBehaviour
+public class SpawnStrategy_test : MonoBehaviour
 {
     [SerializeField] Vector3[] EnemyPos;
     [SerializeField] SpawnChecker enemyPrefab;
@@ -44,6 +44,7 @@ public class SpawnStrategy : MonoBehaviour
         p.y = -1;
         transform.localPosition = p;
     }
+    //
 
     internal virtual int NumberOfSpawnedEnemy() => enemiesEachSpawn;
 
@@ -54,5 +55,4 @@ public class SpawnStrategy : MonoBehaviour
             Instantiate(enemyPrefab, transform.TransformPoint(pos), transform.rotation).StartCheck();
         }
     }
-    //
 }

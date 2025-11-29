@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] internal Transform allBody;
     [SerializeField] internal CharacterController charCtlr;
     [SerializeField] internal Animator animator;
     [SerializeField] internal CharacterInput inputs;
