@@ -1,4 +1,4 @@
-Shader "Universal Render Pipeline/Lit" {
+Shader "Universal Render Pipeline/Lit_0" {
 	Properties {
 		_WorkflowMode ("WorkflowMode", Float) = 1
 		_BaseMap ("Albedo", 2D) = "white" {}

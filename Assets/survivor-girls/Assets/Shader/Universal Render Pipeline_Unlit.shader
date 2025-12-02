@@ -1,4 +1,4 @@
-Shader "Universal Render Pipeline/Unlit" {
+Shader "Universal Render Pipeline/Unlit_0" {
 	Properties {
 		_BaseMap ("Texture", 2D) = "white" {}
 		_BaseColor ("Color", Vector) = (1,1,1,1)

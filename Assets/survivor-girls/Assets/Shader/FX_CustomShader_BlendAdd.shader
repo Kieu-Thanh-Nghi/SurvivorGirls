@@ -1,4 +1,4 @@
-Shader "FX_CustomShader/BlendAdd" {
+﻿Shader "FX_CustomShader/BlendAdd" {
 	Properties {
 		[HideInInspector] _AlphaCutoff ("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor ("Emission Color", Vector) = (1,1,1,1)

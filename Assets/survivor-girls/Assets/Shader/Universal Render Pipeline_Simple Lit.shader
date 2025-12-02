@@ -1,4 +1,4 @@
-Shader "Universal Render Pipeline/Simple Lit" {
+Shader "Universal Render Pipeline/Simple Lit_0" {
 	Properties {
 		_BaseMap ("Base Map (RGB) Smoothness / Alpha (A)", 2D) = "white" {}
 		_BaseColor ("Base Color", Vector) = (1,1,1,1)
