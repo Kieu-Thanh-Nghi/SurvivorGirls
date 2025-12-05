@@ -13,11 +13,23 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        turnAround.CheckDoingAct(this);
+        CheckDoAct(turnAround);
     }
 
     private void FixedUpdate()
     {
-        move.CheckDoingAct(this);
+        CheckDoActWithAnim(move, move);
+    }
+
+    void CheckDoAct(ICharacterAct theAct)
+    {
+        theAct.SetValueForActAndAnim(this);
+        theAct.DoAct(this);
+    }
+
+    void CheckDoActWithAnim(ICharacterAct theAct, ICharacterAnim theAnim)
+    {
+        CheckDoAct(theAct);
+        theAnim.SetAnim(this);
     }
 }

@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 
-public class TurnAround : CharacterAct
+public class TurnAround : MonoBehaviour, ICharacterAct
 {
     [SerializeField] internal Vector3 currentFaceDirect;
-    internal override void DoAct(Character character)
+    [SerializeField] TurnAction turnAction;
+
+    public void DoAct(Character character)
     {
-        character.transform.forward = currentFaceDirect;
+        turnAction.LookAtCurrentDirect(character.transform, currentFaceDirect);
     }
 
-    internal override void SetValueForActAndAnim(Character character)
+    public void SetValueForActAndAnim(Character character)
     {
-        currentFaceDirect = character.inputs.GetFaceDirect();
+        currentFaceDirect = character.inputs.turnInput.GetFaceDirect(character.transform);
+    }
+}
+
+[CreateAssetMenu(menuName = "ScriptableObject/Turn/TurnAction")]
+public class TurnAction : ScriptableObject
+{
+    internal void LookAtCurrentDirect(Transform character, Vector3 currentFaceDirect)
+    {
+        character.forward = currentFaceDirect;
     }
 }
