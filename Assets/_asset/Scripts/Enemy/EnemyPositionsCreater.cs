@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-public class EnemyPositions : MonoBehaviour
+public class EnemyPositionsCreater : MonoBehaviour
 {
     [SerializeField] internal Vector3[] EnemyPoses;
+    [SerializeField] EnemyPositions poses;
 
 #if UNITY_EDITOR
     [SerializeField] protected GameObject cubeObject;
@@ -42,6 +43,18 @@ public class EnemyPositions : MonoBehaviour
         p.y = -1;
         transform.localPosition = p;
     }
+
+    [ContextMenu("transferPos")]
+    void transferPos()
+    {
+        poses.EnemyPoses = EnemyPoses;
+    }
 #endif
+}
+
+[CreateAssetMenu(menuName = "ScriptableObject/Spawn/EnemyPosis")]
+public class EnemyPositions : ScriptableObject
+{
+    [SerializeField] internal Vector3[] EnemyPoses;
 }
 

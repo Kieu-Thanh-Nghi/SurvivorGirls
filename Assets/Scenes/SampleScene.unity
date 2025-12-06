@@ -1264,6 +1264,7 @@ MonoBehaviour:
   - {x: 8.47, y: 0, z: 5.14}
   - {x: 3.5500002, y: 0, z: 8.84}
   - {x: 9.61, y: 0, z: -0.90999985}
+  poses: {fileID: 11400000, guid: defba05843f9ab44fb731127fd8f46ca, type: 2}
   cubeObject: {fileID: 2763857555039088156, guid: b625d199338da184baa3c4d3b388de25,
     type: 3}
   isValidate: 1
@@ -9970,12 +9971,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328127649}
-  - component: {fileID: 1328127648}
+  - component: {fileID: 1328127652}
   - component: {fileID: 1328127651}
   - component: {fileID: 1328127650}
-  - component: {fileID: 1328127652}
-  - component: {fileID: 1328127654}
-  - component: {fileID: 1328127653}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -9983,23 +9981,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1328127648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328127647}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 919b9b15fb3e2ed48bb9a3384c74171f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnStrategies:
-  - {fileID: 1328127652}
-  - {fileID: 1328127654}
-  - {fileID: 1328127653}
-  countingTime: 0
 --- !u!4 &1328127649
 Transform:
   m_ObjectHideFlags: 0
@@ -10025,22 +10006,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328127647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797962f73e759c44bb6dbbd4822e8d11, type: 3}
+  m_Script: {fileID: 11500000, guid: 43c5887bfa880ec47b404c4b341d3100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartTime: 10
-  endTime: 20
-  spawnRate: 3
-  enemyPositions: {fileID: 74581851}
-  enemyAndPercentage:
-  - enemyPrefab: {fileID: 5732059153082175612, guid: 33ee2a34b2876724d9d8686efae4798b,
-      type: 3}
-    Percent: 50
-  - enemyPrefab: {fileID: 1309776475906380369, guid: 822bf328b041f54439fec85c6e369e55,
-      type: 3}
-    Percent: 50
-  sumOfPercentage: 100
-  bonusLength: 5
+  spawnStrategy: {fileID: 11400000, guid: 125dffbb1a82a524d8b1a933a8a17b1b, type: 2}
 --- !u!114 &1328127651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10050,22 +10020,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328127647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797962f73e759c44bb6dbbd4822e8d11, type: 3}
+  m_Script: {fileID: 11500000, guid: dd06207ef0751b64db8cd51174b073c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartTime: 0
+  spawnStrategy: {fileID: 11400000, guid: f8a7d9813841e604cb69107d98fc1b26, type: 2}
   endTime: 10
-  spawnRate: 3
-  enemyPositions: {fileID: 74581851}
-  enemyAndPercentage:
-  - enemyPrefab: {fileID: 5732059153082175612, guid: 33ee2a34b2876724d9d8686efae4798b,
-      type: 3}
-    Percent: 50
-  - enemyPrefab: {fileID: 1309776475906380369, guid: 822bf328b041f54439fec85c6e369e55,
-      type: 3}
-    Percent: 50
-  sumOfPercentage: 100
-  bonusLength: 5
+  spawnRate: 2
 --- !u!114 &1328127652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10073,50 +10034,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328127647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e07e4aefd32974787703972fb4aab6, type: 3}
+  m_Script: {fileID: 11500000, guid: 919b9b15fb3e2ed48bb9a3384c74171f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTime: 1
-  enemyPrefab: {fileID: 3164747031118484814, guid: 76f09e6b7f54c1a44bd63446313e6713,
-    type: 3}
-  SpawnSampleRadius: 1
-  bonusRudius: 1
---- !u!114 &1328127653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328127647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e07e4aefd32974787703972fb4aab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartTime: 3
-  enemyPrefab: {fileID: 3164747031118484814, guid: 76f09e6b7f54c1a44bd63446313e6713,
-    type: 3}
-  SpawnSampleRadius: 1
-  bonusRudius: 1
---- !u!114 &1328127654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328127647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e07e4aefd32974787703972fb4aab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartTime: 2
-  enemyPrefab: {fileID: 3164747031118484814, guid: 76f09e6b7f54c1a44bd63446313e6713,
-    type: 3}
-  SpawnSampleRadius: 1
-  bonusRudius: 1
+  spawnStarters:
+  - {fileID: 1328127651}
+  - {fileID: 1328127650}
+  countingTime: 0
 --- !u!198 &1330647814 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198435950887722679, guid: 9b39ad0893e4abb4dbaa6a720cd0e501,

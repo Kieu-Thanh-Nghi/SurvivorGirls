@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] AbstractSpawnerStrategy[] spawnStrategies;
+    [SerializeField] SpawnStarter[] spawnStarters;
     [SerializeField] float countingTime = 0;
     int thefirstIndex = 0, theLastIndex = 0;
 
     void checkSampleActive()
     {
-        if (theLastIndex >= spawnStrategies.Length) return;
-        if (spawnStrategies[theLastIndex].StartTime <= countingTime)
+        if (theLastIndex >= spawnStarters.Length) return;
+        if (spawnStarters[theLastIndex].StartTime <= countingTime)
         {
             theLastIndex += 1;
             checkSampleActive();
@@ -22,17 +22,17 @@ public class EnemySpawner : MonoBehaviour
         if(thefirstIndex < theLastIndex)
         for(int i = thefirstIndex; i < theLastIndex; i++)
         {
-            if (spawnStrategies[i].Spawn(countingTime))
+            if (spawnStarters[i].Spawn(countingTime))
             {
-                Swap(spawnStrategies[thefirstIndex], spawnStrategies[i]);
+                Swap(spawnStarters[thefirstIndex], spawnStarters[i]);
                 thefirstIndex++;
             }
         }
     }
 
-    void Swap(AbstractSpawnerStrategy a, AbstractSpawnerStrategy b)
+    void Swap(SpawnStarter a, SpawnStarter b)
     {
-        AbstractSpawnerStrategy temp = a;
+        SpawnStarter temp = a;
         a = b;
         b = temp;
     }
@@ -40,14 +40,14 @@ public class EnemySpawner : MonoBehaviour
     [ContextMenu("setup")]
     void SetUp()
     {
-        AbstractSpawnerStrategy[] spawns = GetComponentsInChildren<AbstractSpawnerStrategy>();
-        List<AbstractSpawnerStrategy> temp = new();
+        SpawnStarter[] spawns = GetComponentsInChildren<SpawnStarter>();
+        List<SpawnStarter> temp = new();
         foreach (var spawn in spawns)
         {
             temp.Add(spawn);
         }
         temp.Sort((x, y) => x.StartTime.CompareTo(y.StartTime));
-        spawnStrategies = temp.ToArray();
+        spawnStarters = temp.ToArray();
     }
     //
 
