@@ -9,7 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1119bf1bae1890c448ccad583bd277df, type: 3}
   m_Name: New Enemy Positions
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyPositions
-  EnemyPoses: []
+  m_EditorClassIdentifier: 
+  EnemyPoses:
+  - {x: 0.22000027, y: 0, z: -9.860001}
+  - {x: -9.98, y: 0, z: 0.9899998}
+  - {x: -8.779999, y: 0, z: -4.17}
+  - {x: 8.47, y: 0, z: 5.14}
+  - {x: 3.5500002, y: 0, z: 8.84}
+  - {x: 9.61, y: 0, z: -0.90999985}
+  tempPoses:
+  - {x: 0.22000027, y: 0, z: -9.860001}
+  - {x: -9.98, y: 0, z: 0.9899998}
+  - {x: -8.779999, y: 0, z: -4.17}
+  - {x: 8.47, y: 0, z: 5.14}
+  - {x: 3.5500002, y: 0, z: 8.84}
+  - {x: 9.61, y: 0, z: -0.90999985}
+  isValidate: 0

@@ -1,57 +1,23 @@
 ﻿using UnityEngine;
 using Unity.Mathematics;
 
-public class Move : MonoBehaviour, ICharacterAct, ICharacterAnim
+public class Move : MonoBehaviour
 {
-    [SerializeField] internal float moveSpeed;
     [SerializeField] internal Vector3 movingSpeedDirect;
-    [SerializeField] MoveAnim moveAnim;
-    [SerializeField] MoveAction moveAction;
+    [SerializeField] MoveInput moveInput;
 
-    public virtual void DoAct(Character character)
-    {
-        moveAction.GetMoving(character.transform, movingSpeedDirect);
-    }
-
-    public virtual void SetAnim(Character character)
-    {
-        moveAnim.SetAnimVal(character.transform, character.animator, character.animID,
-            movingSpeedDirect, moveSpeed);
-    }
-
-    public virtual void SetValueForActAndAnim(Character character)
-    {
-        movingSpeedDirect = moveAction.SetMovingSpeedDirect(character.inputs.moveInput.MoveDirection(), moveSpeed);
-    }
-}
-
-[CreateAssetMenu(menuName = "ScriptableObject/Move/MoveAction")]
-public class MoveAction : ScriptableObject
-{
-    internal virtual Vector3 SetMovingSpeedDirect(Vector3 InputMoveDirection, float moveSpeed)
-    {
-        return InputMoveDirection * moveSpeed;
-    }
-    internal void GetMoving(Transform character, Vector3 movingSpeedDirect)
+    public virtual void DoAct(Transform character)
     {
         character.position += movingSpeedDirect * Time.fixedDeltaTime;
     }
-}
 
-[CreateAssetMenu(menuName = "ScriptableObject/Move/MoveAnim")]
-public class MoveAnim : ScriptableObject
-{
-    [SerializeField] float runSpeed;
-
-    internal virtual void SetAnimVal(Transform character, Animator animator, AnimID animID,
-        Vector3 movingSpeedDirect, float moveSpeed)
+    internal virtual void DoAnim(Transform character, Animator animator, AnimID animID, float runSpeed, float moveSpeed)
     {
-        SetAnimSpeedDirect(animator, animID.MoveSpeedX, character.right, movingSpeedDirect, moveSpeed);
-        SetAnimSpeedDirect(animator, animID.MoveSpeedZ, character.forward, movingSpeedDirect, moveSpeed);
+        SetAnimSpeedDirect(animator, animID.MoveSpeedX, character.right, runSpeed, moveSpeed);
+        SetAnimSpeedDirect(animator, animID.MoveSpeedZ, character.forward, runSpeed, moveSpeed);
     }
 
-    void SetAnimSpeedDirect(Animator animator, int speedAnimID, Vector3 charBaseAxis,
-        Vector3 movingSpeedDirect, float moveSpeed)
+    void SetAnimSpeedDirect(Animator animator, int speedAnimID, Vector3 charBaseAxis, float runSpeed, float moveSpeed)
     {
         float anAxisSpeed = Vector3.Dot(movingSpeedDirect, charBaseAxis);
         anAxisSpeed = math.remap(-runSpeed, runSpeed, -1, 1, anAxisSpeed);
@@ -64,5 +30,11 @@ public class MoveAnim : ScriptableObject
 
         //set para
         animator.SetFloat(speedAnimID, currentSpeed);
+    }
+
+
+    public virtual void SetValue(float moveSpeed)
+    {
+        movingSpeedDirect = moveInput.MoveDirection() * moveSpeed;
     }
 }

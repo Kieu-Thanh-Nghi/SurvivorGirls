@@ -8,8 +8,15 @@ public class AddPhysicObstacle : MonoBehaviour
     {
         var obs = GetComponentsInChildren<NavMeshObstacle>();
         foreach(var o in obs)
-        {
-            o.gameObject.AddComponent<BoxCollider>();
+        {            
+            if(o.shape == NavMeshObstacleShape.Box)
+            {
+                o.gameObject.AddComponent<BoxCollider>();
+            }
+            else if(o.shape == NavMeshObstacleShape.Capsule)
+            {
+                o.gameObject.AddComponent<SphereCollider>();
+            }
             var rid = o.gameObject.AddComponent<Rigidbody>();
             rid.isKinematic = true;
         }
@@ -21,10 +28,20 @@ public class AddPhysicObstacle : MonoBehaviour
         var obs = GetComponentsInChildren<NavMeshObstacle>();
         foreach (var o in obs)
         {
-            if (o.GetComponent<BoxCollider>() == null) return;
-            var col = o.gameObject.GetComponent<BoxCollider>();
-            col.size = o.size;
-            col.center = o.center;
+            if (o.GetComponent<Collider>() == null) return;
+            if(o.shape == NavMeshObstacleShape.Box)
+            {
+                var col = o.gameObject.GetComponent<BoxCollider>();
+                col.size = o.size;
+                col.center = o.center;
+            }
+            if (o.shape == NavMeshObstacleShape.Capsule)
+            {
+                var col = o.gameObject.GetComponent<SphereCollider>();
+                col.radius = o.radius;
+                col.center = o.center;
+            }
+
         }
     }
     [ContextMenu("destroy Col")]
@@ -33,7 +50,8 @@ public class AddPhysicObstacle : MonoBehaviour
         var obs = GetComponentsInChildren<NavMeshObstacle>();
         foreach (var o in obs)
         {
-            DestroyImmediate(o.GetComponentInChildren<BoxCollider>());
+            DestroyImmediate(o.GetComponentInChildren<BoxCollider>()); 
+            DestroyImmediate(o.GetComponentInChildren<SphereCollider>());
             DestroyImmediate(o.GetComponentInChildren<Rigidbody>());
         }
     }

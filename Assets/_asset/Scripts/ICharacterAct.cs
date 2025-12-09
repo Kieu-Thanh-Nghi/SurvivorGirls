@@ -3,7 +3,7 @@
 public interface ICharacterAct
 {
     void DoAct(Character character);
-    void SetValueForActAndAnim(Character character);
+    void SetValueForActAndAnim();
 }
 
 public interface ICharacterAnim
