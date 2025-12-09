@@ -2,16 +2,8 @@
 
 public class TurnAround : MonoBehaviour
 {
-    [SerializeField] internal Vector3 currentFaceDirect;
-    [SerializeField] TurnInput turnInput;
-
-    internal void LookAtCurrentDirect(Transform character)
+    internal void LookAtCurrentDirect(Transform character, Vector3 currentFaceDirect)
     {
         character.forward = currentFaceDirect;
-    }
-
-    public void SetValue(Transform charTransform)
-    {
-        currentFaceDirect = turnInput.GetFaceDirect(charTransform);
     }
 }

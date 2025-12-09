@@ -1,35 +1,39 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : CharacterUpdate
 {
-    [SerializeField] internal Transform allBody;
     [SerializeField] internal Animator animator;
     [SerializeField] internal AnimID animID;
     [SerializeField] CharacterData characterData;
     [SerializeField] TurnAround turnAround;
     [SerializeField] Move move;
 
-    private void Update()
+    public override void DoUpdate()
     {
         CharacterRotate();
     }
 
-    private void FixedUpdate()
+    public override void DoFixedUpdate()
     {
         CharacterMove();
     }
 
     internal virtual void CharacterMove()
     {
-        move.SetValue(characterData.moveSpeed);
-        move.DoAct(transform);
-        move.DoAnim(transform,animator,animID, characterData.runSpeed, characterData.moveSpeed);
+        Vector3 moveSpeedDirect = characterData.moveSpeedDirect;
+        move.DoAct(transform, moveSpeedDirect);
+        move.DoAnim(transform,animator,animID, characterData.runSpeed, characterData.moveSpeed, moveSpeedDirect);
     }
 
     internal virtual void CharacterRotate()
     {
-        turnAround.SetValue(transform);
-        turnAround.LookAtCurrentDirect(transform);
+        turnAround.LookAtCurrentDirect(transform, characterData.SetFaceDirect(transform));
     }
+}
+
+public abstract class CharacterUpdate : MonoBehaviour
+{
+    public abstract void DoUpdate();
+    public abstract void DoFixedUpdate();
 }

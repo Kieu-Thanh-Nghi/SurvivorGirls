@@ -1,23 +1,20 @@
 ﻿using UnityEngine;
 using Unity.Mathematics;
 
-public class Move : MonoBehaviour
+public class Move : OnlyMove
 {
-    [SerializeField] internal Vector3 movingSpeedDirect;
-    [SerializeField] MoveInput moveInput;
+    //public override void DoAct(Transform character)
+    //{
+    //    character.position += movingSpeedDirect * Time.fixedDeltaTime;
+    //}
 
-    public virtual void DoAct(Transform character)
+    internal virtual void DoAnim(Transform character, Animator animator, AnimID animID, float runSpeed, float moveSpeed, Vector3 movingSpeedDirect)
     {
-        character.position += movingSpeedDirect * Time.fixedDeltaTime;
+        SetAnimSpeedDirect(animator, animID.MoveSpeedX, character.right, runSpeed, moveSpeed, movingSpeedDirect);
+        SetAnimSpeedDirect(animator, animID.MoveSpeedZ, character.forward, runSpeed, moveSpeed, movingSpeedDirect);
     }
 
-    internal virtual void DoAnim(Transform character, Animator animator, AnimID animID, float runSpeed, float moveSpeed)
-    {
-        SetAnimSpeedDirect(animator, animID.MoveSpeedX, character.right, runSpeed, moveSpeed);
-        SetAnimSpeedDirect(animator, animID.MoveSpeedZ, character.forward, runSpeed, moveSpeed);
-    }
-
-    void SetAnimSpeedDirect(Animator animator, int speedAnimID, Vector3 charBaseAxis, float runSpeed, float moveSpeed)
+    void SetAnimSpeedDirect(Animator animator, int speedAnimID, Vector3 charBaseAxis, float runSpeed, float moveSpeed, Vector3 movingSpeedDirect)
     {
         float anAxisSpeed = Vector3.Dot(movingSpeedDirect, charBaseAxis);
         anAxisSpeed = math.remap(-runSpeed, runSpeed, -1, 1, anAxisSpeed);
@@ -30,11 +27,5 @@ public class Move : MonoBehaviour
 
         //set para
         animator.SetFloat(speedAnimID, currentSpeed);
-    }
-
-
-    public virtual void SetValue(float moveSpeed)
-    {
-        movingSpeedDirect = moveInput.MoveDirection() * moveSpeed;
     }
 }
