@@ -9,6 +9,8 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal int enemyQuantity;
     [SerializeField] int enemyQuantityLimiter = 300;
+    internal List<CharacterUpdate> enemies = new();
+    int enemyIndex;
 
     private void Awake()
     {
@@ -18,6 +20,27 @@ public class GamePlayCtrler : MonoBehaviour
     private void Update()
     {
         CameraHolder.position = Player.position;
+        int n = enemies.Count;
+        if (enemyIndex >= n) enemyIndex = 0;
+
+
+        for (int i = 0; i < n; i++)
+        {
+            if (enemies[i].isActiveAndEnabled)
+            {
+                enemies[i].DoUpdate();
+            }
+        }
+
+        for (int i = 0; i < 30 && enemyIndex < n; i++)
+        {
+            if (enemies[enemyIndex].isActiveAndEnabled)
+            {
+                enemies[enemyIndex].DoUpdate();
+                enemies[enemyIndex].DoFixedUpdate();
+            }
+            enemyIndex++;
+        }
     }
     internal bool CheckEnemyLimit() => enemyQuantity > enemyQuantityLimiter;
 }

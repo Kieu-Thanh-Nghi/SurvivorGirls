@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : CharacterUpdate, ISetMovable
+public class Enemy : CharacterUpdate
 {
     [SerializeField] EnemyData enemyData;
     [SerializeField] Rigidbody rb;
@@ -9,8 +9,10 @@ public class Enemy : CharacterUpdate, ISetMovable
     [SerializeField] TurnAround turn;
     [SerializeField] NavMeshAgent moveByNav;
     [SerializeField] float velo;
+    [SerializeField] EnemyCollider eneCol;
     Vector3 faceDirect;
     internal Transform PlayerPos;
+    internal bool isRayCheck = true;
     NavMeshPath path;
     bool isMove = true;
     [SerializeField] bool isThereObstacle;
@@ -18,24 +20,33 @@ public class Enemy : CharacterUpdate, ISetMovable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward);
+        Gizmos.DrawRay(transform.position, rb.transform.forward);
+    }
+    private void Awake()
+    {
+        PlayerPos = GamePlayCtrler.Instance.Player;
+    }
+
+    private void OnEnable()
+    {
+        moveByNav.enabled = true;
+        SetAgentVelocity();
     }
     private void Start()
     {
-        PlayerPos = GamePlayCtrler.Instance.Player;
         moveByNav.updatePosition = false;
         moveByNav.updateRotation = false;
         //moveByNav.isStopped = true;
     }
 
-    private void Update()
-    {
-        DoUpdate();
-    }
-    private void FixedUpdate()
-    {
-        DoFixedUpdate();
-    }
+    //private void Update()
+    //{
+    //    DoUpdate();
+    //}
+    //private void FixedUpdate()
+    //{
+    //    DoFixedUpdate();
+    //}
     public override void DoFixedUpdate()
     {
         CharacterMove();
@@ -49,12 +60,15 @@ public class Enemy : CharacterUpdate, ISetMovable
     internal virtual void CharacterMove()
     {
         velo = rb.velocity.sqrMagnitude;
+        if (!isRayCheck) return;
         if (rb.velocity.sqrMagnitude < 1)
         {
             if (Physics.Raycast(transform.position + Vector3.up * 0.85f,
                 rb.transform.forward, enemyData.maxObsDetectDistance, enemyData.layerMask))
             {
-                rb.velocity = Vector3.zero;
+                eneCol.isCheck = true;
+                isRayCheck = false;
+                rb.velocity = GetVel(enemyData.speedBehind);
                 moveByNav.isStopped = true;
                 return;
             }
@@ -63,18 +77,7 @@ public class Enemy : CharacterUpdate, ISetMovable
                 moveByNav.isStopped = false;
             }
         }
-        moveByNav.nextPosition = rb.transform.position;
-        moveByNav.SetDestination(PlayerPos.position);
-        path = moveByNav.path;
-
-        if (path.corners.Length > 1)
-        {
-            Vector3 next = path.corners[1];
-
-            Vector3 MoveDirect = (next - transform.position);
-            MoveDirect.y = 0;
-            rb.velocity = MoveDirect.normalized * enemyData.moveSpeed;
-        }
+        SetAgentVelocity();
 
         //if (!Physics.Raycast(transform.position + Vector3.up * 0.85f,
         //    transform.forward, enemyData.maxObsDetectDistance, enemyData.layerMask))
@@ -87,18 +90,33 @@ public class Enemy : CharacterUpdate, ISetMovable
         //}
     }
 
+    void SetAgentVelocity()
+    {
+        moveByNav.nextPosition = rb.transform.position;
+        moveByNav.SetDestination(PlayerPos.position);
+        path = moveByNav.path;
+        
+        rb.velocity = GetVel(enemyData.moveSpeed);
+    }
+
+    Vector3 GetVel(float speed)
+    {
+        if (path.corners.Length > 1)
+        {
+            Vector3 next = path.corners[1];
+
+            Vector3 MoveDirect = (next - transform.position);
+            MoveDirect.y = 0;
+            return MoveDirect.normalized * speed;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
+    }
+
     internal virtual void CharacterRotate(Vector3 faceDirect)
     {
         turn.LookAtCurrentDirect(rb.transform, faceDirect);
-    }
-
-    public void SetIsMove(bool isMove)
-    {
-        //this.isMove = isMove;
-        //if (isMove)
-        //{
-        //    moveByNav.isStopped = true;
-        //    isThereObstacle = false;
-        //}
     }
 }

@@ -7,7 +7,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
 {
     [SerializeField] float bonusRange = 3;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] GameObject EnemyBody;
+    [SerializeField] Enemy EnemyBody;
     [SerializeField] LayerMask layerMask;
 
     [ContextMenu("start check")]
@@ -47,7 +47,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     {
         pos.y = 0;
         transform.position = pos;
-        EnemyBody.SetActive(true);
+        EnemyBody.gameObject.SetActive(true);
         agent.enabled = true;
     }
 
@@ -76,6 +76,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     public void OnSpawn()
     {
         StartCheck();
+        GamePlayCtrler.Instance.enemies.Add(EnemyBody);    
     }
 
     public void OnDespawn()
