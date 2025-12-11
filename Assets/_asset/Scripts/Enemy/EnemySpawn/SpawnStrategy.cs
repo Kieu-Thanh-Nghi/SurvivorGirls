@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
+using Lean.Pool;
 
-[CreateAssetMenu(fileName = "SpawnStrategy", menuName = "ScriptableObject/Spawn/SpawnStra")]
 public class SpawnStrategy : ASpawnStrategy
 {
     //[SerializeField] float SpawnSampleRadius = 10;
@@ -24,7 +24,7 @@ public class SpawnStrategy : ASpawnStrategy
     }
 }
 
-public abstract class ASpawnStrategy : ScriptableObject
+public abstract class ASpawnStrategy : MonoBehaviour
 {
     internal abstract void SpawnEnemy(Transform spawner);
 }
@@ -32,7 +32,6 @@ public abstract class ASpawnStrategy : ScriptableObject
 [System.Serializable]
 public class EnemyAndPercentage
 {
-    [SerializeField] internal SpawnChecker enemyPrefab;
+    [SerializeField] internal LeanGameObjectPool poolForAPrefab;
     [SerializeField] internal int Percent;
 }
-

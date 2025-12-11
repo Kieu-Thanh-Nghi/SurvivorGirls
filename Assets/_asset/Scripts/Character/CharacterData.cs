@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObject/CharacterInputs")]
+[CreateAssetMenu(menuName = "ScriptableObject/CharacterData")]
 public class CharacterData : ScriptableObject
 {
     [SerializeField] internal float moveSpeed;

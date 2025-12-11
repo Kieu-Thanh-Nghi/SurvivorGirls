@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-
-[CreateAssetMenu(fileName = "GroupSpawnerStrategy", menuName = "ScriptableObject/Spawn/GroupSpawnStra")]
+using Lean.Pool;
 public class GroupSpawnerStrategy : ASpawnStrategy
 {
     [SerializeField] EnemyPositions enemyPositions;
@@ -10,7 +9,7 @@ public class GroupSpawnerStrategy : ASpawnStrategy
     [SerializeField] int numberOfPosis;
     Vector3[] EnemyPoses { get => enemyPositions.EnemyPoses; }
 
-    internal virtual Vector3[] GetPosition()
+    internal virtual Vector3[] GetPosition(Transform spawner)
     {
         Vector3[] newPoses = new Vector3[numberOfPosis];
         int i = 0;
@@ -22,21 +21,22 @@ public class GroupSpawnerStrategy : ASpawnStrategy
             newPoses[i] = newPos;
             i++;
         }
+        spawner.TransformPoints(newPoses);
         return newPoses;
     }
 
     internal override void SpawnEnemy(Transform spawner)
     {
-        SpawnChecker enemyPrefab;
-        foreach (var pos in GetPosition())
+        LeanGameObjectPool enemyPrefab;
+        foreach (var pos in GetPosition(spawner))
         {
             enemyPrefab = RandomEnemy();
-            Instantiate(enemyPrefab, spawner.TransformPoint(pos), spawner.rotation).StartCheck();
+            enemyPrefab.Spawn(pos);
         }
         GamePlayCtrler.Instance.enemyQuantity += numberOfPosis;
     }
 
-    protected SpawnChecker RandomEnemy()
+    protected LeanGameObjectPool RandomEnemy()
     {
         int randomVal = Random.Range(1, sumOfPercentage);
         int sum = enemyAndPercentage[0].Percent;
@@ -45,7 +45,7 @@ public class GroupSpawnerStrategy : ASpawnStrategy
         {
             if (randomVal < sum)
             {
-                return enemyAndPercentage[i].enemyPrefab;
+                return enemyAndPercentage[i].poolForAPrefab;
             }
             else
             {
@@ -53,7 +53,7 @@ public class GroupSpawnerStrategy : ASpawnStrategy
             }
         }
 
-        return enemyAndPercentage[n - 1].enemyPrefab;
+        return enemyAndPercentage[n - 1].poolForAPrefab;
     }
 
 #if UNITY_EDITOR

@@ -9,6 +9,15 @@ public class Character : CharacterUpdate
     [SerializeField] TurnAround turnAround;
     [SerializeField] Move move;
 
+    private void Update()
+    {
+        DoUpdate();
+    }
+    private void FixedUpdate()
+    {
+        DoFixedUpdate();
+    }
+
     public override void DoUpdate()
     {
         CharacterRotate();

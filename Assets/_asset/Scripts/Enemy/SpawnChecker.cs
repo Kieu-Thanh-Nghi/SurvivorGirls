@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
-using UnityEditor;
+using UnityEngine.AI;
+using Lean.Pool;
 using System.Collections;
 
-public class SpawnChecker : MonoBehaviour
+public class SpawnChecker : MonoBehaviour, IPoolable
 {
     [SerializeField] float bonusRange = 3;
+    [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject EnemyBody;
     [SerializeField] LayerMask layerMask;
 
@@ -46,6 +48,7 @@ public class SpawnChecker : MonoBehaviour
         pos.y = 0;
         transform.position = pos;
         EnemyBody.SetActive(true);
+        agent.enabled = true;
     }
 
     [ContextMenu("RayCheck")]
@@ -68,6 +71,16 @@ public class SpawnChecker : MonoBehaviour
         float speed = 10;
         //transform.forward = transform.position - GamePlayCtrler.Instance.Player.position;
         transform.position += transform.right * speed * Time.deltaTime;
+    }
+
+    public void OnSpawn()
+    {
+        StartCheck();
+    }
+
+    public void OnDespawn()
+    {
+        agent.enabled = false;
     }
 
     //private void OnDrawGizmos()

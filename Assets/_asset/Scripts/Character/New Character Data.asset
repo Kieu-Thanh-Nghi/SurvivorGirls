@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: New Character Data
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  moveInput: {fileID: 11400000, guid: aee5c087f89450449b9694d088d7db16, type: 2}
   runSpeed: 10
+  turnInput: {fileID: 11400000, guid: 9f668b2ee91af63498b0c354b5e6598e, type: 2}
+  faceDirect: {x: -0.99875265, y: 0, z: -0.049932096}

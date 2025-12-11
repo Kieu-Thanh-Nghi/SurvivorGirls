@@ -54,7 +54,6 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         countingTime += Time.deltaTime;
-        Debug.Log(GamePlayCtrler.Instance.enemyQuantity);
         checkSampleActive();
         UpdateActivatedSample();
     }

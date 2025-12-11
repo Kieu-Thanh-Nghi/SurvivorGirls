@@ -21,3 +21,8 @@ public class GamePlayCtrler : MonoBehaviour
     }
     internal bool CheckEnemyLimit() => enemyQuantity > enemyQuantityLimiter;
 }
+
+public static class GameID
+{
+    public static string enemyTag = "enemy"; 
+}

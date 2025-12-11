@@ -22,6 +22,16 @@ public class AddPhysicObstacle : MonoBehaviour
         }
     }
 
+    [ContextMenu("SetLayer")]
+    void SetLayer()
+    {
+        var obs = GetComponentsInChildren<NavMeshObstacle>();
+        foreach (var o in obs)
+        {
+            o.gameObject.layer = 7;
+        }
+    }
+
     [ContextMenu("Resize")]
     void Resize()
     {
@@ -32,7 +42,7 @@ public class AddPhysicObstacle : MonoBehaviour
             if(o.shape == NavMeshObstacleShape.Box)
             {
                 var col = o.gameObject.GetComponent<BoxCollider>();
-                col.size = o.size;
+                col.size = o.size + Vector3.up;
                 col.center = o.center;
             }
             if (o.shape == NavMeshObstacleShape.Capsule)
