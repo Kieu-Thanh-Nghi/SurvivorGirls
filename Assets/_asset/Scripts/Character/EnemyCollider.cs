@@ -8,7 +8,6 @@ public class EnemyCollider : MonoBehaviour
     {
         if (isCheck && (collision.transform.CompareTag("enemy") || collision.transform.CompareTag("Player")))
         {
-            theSelf.isRayCheck = true;
             isCheck = false;
         }
     }

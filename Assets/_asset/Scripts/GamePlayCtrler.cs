@@ -6,10 +6,11 @@ public class GamePlayCtrler : MonoBehaviour
 {
     internal static GamePlayCtrler Instance;
     [SerializeField] internal Transform Player;
+    [SerializeField] Character playChar;
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal int enemyQuantity;
     [SerializeField] int enemyQuantityLimiter = 300;
-    internal List<CharacterUpdate> enemies = new();
+    internal List<Enemy> enemies = new();
     int enemyIndex;
 
     private void Awake()
@@ -21,23 +22,13 @@ public class GamePlayCtrler : MonoBehaviour
     {
         CameraHolder.position = Player.position;
         int n = enemies.Count;
+        if (playChar.characterData.moveDirect == Vector3.zero) return;
         if (enemyIndex >= n) enemyIndex = 0;
-
-
-        for (int i = 0; i < n; i++)
-        {
-            if (enemies[i].isActiveAndEnabled)
-            {
-                enemies[i].DoUpdate();
-            }
-        }
-
         for (int i = 0; i < 30 && enemyIndex < n; i++)
         {
             if (enemies[enemyIndex].isActiveAndEnabled)
             {
-                enemies[enemyIndex].DoUpdate();
-                enemies[enemyIndex].DoFixedUpdate();
+                enemies[enemyIndex].moveByNav.SetDestination(Player.position);
             }
             enemyIndex++;
         }
