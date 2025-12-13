@@ -9,8 +9,6 @@ public class Character : CharacterUpdate
     [SerializeField] internal CharacterData characterData;
     [SerializeField] TurnAround turnAround;
     [SerializeField] Move move;
-    [SerializeField] EnemyDetecter eneDetecter;
-    [SerializeField] Pistol pistol;
 
     [SerializeField] Vector3 neareastEnemypos;
 
@@ -23,7 +21,6 @@ public class Character : CharacterUpdate
 
     private void Update()
     {
-        Attack();
         DoUpdate();
     }
     private void FixedUpdate()
@@ -51,13 +48,6 @@ public class Character : CharacterUpdate
     internal virtual void CharacterRotate()
     {
         turnAround.LookAtCurrentDirect(transform, characterData.SetFaceDirect(transform));
-    }
-
-    void Attack()
-    {
-        neareastEnemypos = eneDetecter.NeareastEnemyPos();
-        Vector3 shootDirect = (neareastEnemypos - transform.position);
-        pistol.Shoot(shootDirect);
     }
 }
 

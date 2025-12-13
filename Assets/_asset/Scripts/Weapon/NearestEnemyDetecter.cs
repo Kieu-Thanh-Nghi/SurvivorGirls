@@ -2,28 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDetecter : MonoBehaviour
+public class NearestEnemyDetecter : EnemyDetecter
 {
     Collider[] enemiesTemp = new Collider[150];
     [SerializeField] float radius = 1.8f;
     [SerializeField] LayerMask layerMask;
     [SerializeField] int maxN = 10;
     [SerializeField] int no;
+    [SerializeField] Transform target;
+    bool isDetected;
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
-    public Vector3 NeareastEnemyPos()
+    public void CheckNeareastEnemy()
     {
+        if (target != null) return;
         Vector3 thisPos = transform.position;
         int n = Physics.OverlapSphereNonAlloc(thisPos, radius, enemiesTemp, layerMask);
+        if (n <= 0) isDetected = false;
+        else
+        {
+            isDetected = true;
+            target = CalculateNeareast(n,thisPos);
+        }
         no = n;
-        return CalculateNeareast(n,thisPos);
     }
 
-    Vector3 CalculateNeareast(int n, Vector3 thisPos)
+    Transform CalculateNeareast(int n, Vector3 thisPos)
     {
         int i = 1;
         if (n - maxN > 0)
@@ -34,6 +42,7 @@ public class EnemyDetecter : MonoBehaviour
         }
 
         Vector3 DesirePos = Vector3.zero;
+        Transform targetEnemy = null;
         float distance = 0;
         float tempDistance;
         Vector3 tempEnemyPos;
@@ -41,7 +50,7 @@ public class EnemyDetecter : MonoBehaviour
         {
             tempEnemyPos = enemiesTemp[i - 1].transform.position;
             distance = Vector3.Distance(thisPos, tempEnemyPos);
-            DesirePos = tempEnemyPos;
+            targetEnemy = enemiesTemp[i - 1].transform;
         }
         if (n > 1)
         {
@@ -53,9 +62,29 @@ public class EnemyDetecter : MonoBehaviour
                 {
                     distance = tempDistance;
                     DesirePos = tempEnemyPos;
+                    targetEnemy = enemiesTemp[i].transform;
                 }
             }
         }
-        return DesirePos;
+        return targetEnemy;
     }
+
+    public override bool GetEnemyPos(out Vector3 Direction)
+    {
+        CheckNeareastEnemy();
+        if (isDetected)
+        {
+            Direction = target.position;
+        }
+        else
+        {
+            Direction = Vector3.zero;
+        }
+        return isDetected;
+    }
+}
+
+public abstract class EnemyDetecter : MonoBehaviour
+{
+    public abstract bool GetEnemyPos(out Vector3 Direction);
 }

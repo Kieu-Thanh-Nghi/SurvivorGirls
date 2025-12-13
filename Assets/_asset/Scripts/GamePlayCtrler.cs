@@ -23,11 +23,15 @@ public class GamePlayCtrler : MonoBehaviour
         CameraHolder.position = Player.position;
         int n = enemies.Count;
         if (playChar.characterData.moveDirect == Vector3.zero) return;
+        Debug.Log(enemyIndex);
+        Debug.Log(n);
         if (enemyIndex >= n) enemyIndex = 0;
         for (int i = 0; i < 30 && enemyIndex < n; i++)
         {
+            Debug.Log("bb");
             if (enemies[enemyIndex].isActiveAndEnabled)
             {
+                Debug.Log("aa");
                 enemies[enemyIndex].moveByNav.SetDestination(Player.position);
             }
             enemyIndex++;

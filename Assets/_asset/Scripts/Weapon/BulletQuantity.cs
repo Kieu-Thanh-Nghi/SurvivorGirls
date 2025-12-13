@@ -28,7 +28,7 @@ public class BulletQuantity : MonoBehaviour
         quantityText.text = currentQuantity.ToString();
         if (currentQuantity < 1)
         {
-            //gun.SetLockGun(true);
+            gun.SetLockGun(true);
             StartCoroutine(Reload(gun));
         }
     }
@@ -40,7 +40,7 @@ public class BulletQuantity : MonoBehaviour
         yield return new WaitUntil(() => ReloadEff(startTime));
         reloadImage.enabled = false;
         resetQuantity();
-        //gun.SetLockGun(false);
+        gun.SetLockGun(false);
     }
     bool ReloadEff(float startTime)
     {
