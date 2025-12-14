@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, rb.transform.forward);
     }
+    private void Start()
+    {
+        moveByNav.updateRotation = false;
+    }
 
     private void OnEnable()
     {

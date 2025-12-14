@@ -18,20 +18,29 @@ public class GamePlayCtrler : MonoBehaviour
         Instance = this;
     }
 
+    private void FixedUpdate()
+    {
+        int n = enemies.Count;
+        for (int i = 0; i < n; i++)
+        {
+            if (enemies[i].isActiveAndEnabled)
+            {
+                enemies[i].CharacterRotate(Player.position);
+            }
+        }
+    }
+
     private void Update()
     {
         CameraHolder.position = Player.position;
         int n = enemies.Count;
         if (playChar.characterData.moveDirect == Vector3.zero) return;
-        Debug.Log(enemyIndex);
-        Debug.Log(n);
         if (enemyIndex >= n) enemyIndex = 0;
         for (int i = 0; i < 30 && enemyIndex < n; i++)
         {
-            Debug.Log("bb");
             if (enemies[enemyIndex].isActiveAndEnabled)
             {
-                Debug.Log("aa");
+                enemies[enemyIndex].CharacterRotate(Player.position);
                 enemies[enemyIndex].moveByNav.SetDestination(Player.position);
             }
             enemyIndex++;

@@ -10,7 +10,7 @@ public class NearestEnemyDetecter : EnemyDetecter
     [SerializeField] int maxN = 10;
     [SerializeField] int no;
     [SerializeField] Transform target;
-    bool isDetected;
+    [SerializeField] bool isDetected;
 
     private void OnDrawGizmos()
     {
@@ -19,7 +19,13 @@ public class NearestEnemyDetecter : EnemyDetecter
     }
     public void CheckNeareastEnemy()
     {
-        if (target != null) return;
+        if (target != null)
+        {
+            if (target.gameObject.activeSelf && (target.position - transform.position).sqrMagnitude <= radius * radius)
+            {
+                return;
+            }
+        }
         Vector3 thisPos = transform.position;
         int n = Physics.OverlapSphereNonAlloc(thisPos, radius, enemiesTemp, layerMask);
         if (n <= 0) isDetected = false;

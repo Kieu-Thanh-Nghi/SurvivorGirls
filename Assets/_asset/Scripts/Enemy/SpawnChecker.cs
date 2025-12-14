@@ -21,6 +21,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
         {
             SpawnTheEnemy(transform.position);
         }
+        GamePlayCtrler.Instance.enemies.Add(EnemyBody);
     }
 
     IEnumerator CheckIfItObstacle()
@@ -76,7 +77,6 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     public void OnSpawn()
     {
         StartCheck();
-        GamePlayCtrler.Instance.enemies.Add(EnemyBody);    
     }
 
     public void OnDespawn()
