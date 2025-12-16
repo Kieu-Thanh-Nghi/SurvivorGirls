@@ -14,7 +14,7 @@ public interface IHasDamage
     public int GetDamage();
 }
 
-public interface IDoLevelUp
+public interface IHasLvlPoint
 {
-    public void LevelUp();
+    public int GetLvlPoint();
 }

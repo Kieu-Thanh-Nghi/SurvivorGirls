@@ -26,7 +26,6 @@ public class Character : CharacterUpdate
     public override void DoFixedUpdate()
     {
         CharacterMove();
-        transform.localPosition = Vector3.zero;
     }
 
     internal virtual void CharacterMove()

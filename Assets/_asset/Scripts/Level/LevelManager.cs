@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         wait = new WaitUntil(() => isDoneSkillChoosing);
+        lvlProgressBar.fillAmount = 0;
+        currentLvlText.text = "1";
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,15 +58,4 @@ public class LevelManager : MonoBehaviour
         GamePlayCtrler.Instance.isPause = false;
         isDoneSkillChoosing = false;
     }
-}
-
-public interface IHasLvlPoint
-{
-    public int GetLvlPoint();
-}
-
-public class LvlPoint : MonoBehaviour, IHasLvlPoint
-{
-    [SerializeField] int point;
-    public int GetLvlPoint() => point;
 }

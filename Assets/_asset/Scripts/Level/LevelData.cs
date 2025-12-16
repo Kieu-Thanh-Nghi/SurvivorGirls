@@ -18,7 +18,7 @@ public class LevelData : MonoBehaviour
     {
         currentProgress += addPoint;
         int n = 0;
-        while(currentProgress > currentMaxProgress)
+        while(currentProgress >= currentMaxProgress)
         {
             currentProgress -= currentMaxProgress;
             CurrentLevel++;
@@ -32,7 +32,7 @@ public class LevelData : MonoBehaviour
             }
             n++;
         }
-        percentage = currentProgress / currentMaxProgress;
+        percentage = (float)currentProgress / currentMaxProgress;
         return n;
     }
 }
