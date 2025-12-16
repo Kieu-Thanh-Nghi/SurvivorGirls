@@ -1,0 +1,70 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class LevelManager : MonoBehaviour
+{
+    [SerializeField] bool isDoneSkillChoosing;
+    [SerializeField] GameObject SkillChoiceCanvas;
+    [SerializeField] Image lvlProgressBar;
+    [SerializeField] TMP_Text currentLvlText;
+    [SerializeField] LevelData levelData;
+
+    WaitUntil wait;
+
+    private void Start()
+    {
+        wait = new WaitUntil(() => isDoneSkillChoosing);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.TryGetComponent<IHasLvlPoint>(out var HasLvlPoint)) return;
+        int point = HasLvlPoint.GetLvlPoint();
+        int n = levelData.GetPercentage(point, out float percent);
+        lvlProgressBar.fillAmount = percent;
+        if (n > 0)
+        {
+            currentLvlText.text = levelData.CurrentLevel.ToString();
+            StartCoroutine(ChooseSkill(n));
+        }
+    }
+
+
+    public void SetIsDoneChoosing(bool isDone) => isDoneSkillChoosing = isDone;
+    IEnumerator ChooseSkill(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            TurnSkillChoiceOn();
+            yield return wait;
+            Debug.Log("ss2");
+            TurnSkillChoiceOff();
+        }
+        Time.timeScale = 1;
+    }
+
+    void TurnSkillChoiceOn()
+    {
+        Time.timeScale = 0;
+        GamePlayCtrler.Instance.isPause = true;
+        SkillChoiceCanvas.SetActive(true);
+    }
+    void TurnSkillChoiceOff()
+    {
+        GamePlayCtrler.Instance.isPause = false;
+        isDoneSkillChoosing = false;
+    }
+}
+
+public interface IHasLvlPoint
+{
+    public int GetLvlPoint();
+}
+
+public class LvlPoint : MonoBehaviour, IHasLvlPoint
+{
+    [SerializeField] int point;
+    public int GetLvlPoint() => point;
+}

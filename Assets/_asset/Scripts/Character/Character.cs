@@ -18,16 +18,6 @@ public class Character : CharacterUpdate
         Gizmos.DrawRay(transform.position, (neareastEnemypos - transform.position).normalized*4);
     }
 
-
-    private void Update()
-    {
-        DoUpdate();
-    }
-    private void FixedUpdate()
-    {
-        DoFixedUpdate();
-    }
-
     public override void DoUpdate()
     {
         CharacterRotate();
@@ -36,6 +26,7 @@ public class Character : CharacterUpdate
     public override void DoFixedUpdate()
     {
         CharacterMove();
+        transform.localPosition = Vector3.zero;
     }
 
     internal virtual void CharacterMove()

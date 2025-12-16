@@ -13,6 +13,8 @@ public class GamePlayCtrler : MonoBehaviour
     internal List<Enemy> enemies = new();
     int enemyIndex;
 
+    public bool isPause;
+
     private void Awake()
     {
         Instance = this;
@@ -20,6 +22,7 @@ public class GamePlayCtrler : MonoBehaviour
 
     private void FixedUpdate()
     {
+        playChar.DoFixedUpdate();
         int n = enemies.Count;
         for (int i = 0; i < n; i++)
         {
@@ -32,6 +35,9 @@ public class GamePlayCtrler : MonoBehaviour
 
     private void Update()
     {
+        if (isPause) return;
+        playChar.DoUpdate();
+
         CameraHolder.position = Player.position;
         int n = enemies.Count;
         if (playChar.characterData.moveDirect == Vector3.zero) return;
@@ -40,7 +46,6 @@ public class GamePlayCtrler : MonoBehaviour
         {
             if (enemies[enemyIndex].isActiveAndEnabled)
             {
-                enemies[enemyIndex].CharacterRotate(Player.position);
                 enemies[enemyIndex].moveByNav.SetDestination(Player.position);
             }
             enemyIndex++;

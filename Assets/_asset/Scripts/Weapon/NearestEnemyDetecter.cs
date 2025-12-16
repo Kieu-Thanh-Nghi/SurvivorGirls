@@ -19,7 +19,7 @@ public class NearestEnemyDetecter : EnemyDetecter
     }
     public void CheckNeareastEnemy()
     {
-        if (target != null)
+        if (target != null && isDetected)
         {
             if (target.gameObject.activeSelf && (target.position - transform.position).sqrMagnitude <= radius * radius)
             {
