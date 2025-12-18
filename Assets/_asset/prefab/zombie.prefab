@@ -55,12 +55,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHP: 50
-  OnHurt:
+  OnDead:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 458414194709329480}
-        m_TargetAssemblyTypeName: EnemyHurt, Assembly-CSharp
-        m_MethodName: EnemyBleed
+      - m_Target: {fileID: 4888929035051621933}
+        m_TargetAssemblyTypeName: EnemyDead, Assembly-CSharp
+        m_MethodName: KillEnemy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -70,12 +70,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDead:
+  OnHurt:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4888929035051621933}
-        m_TargetAssemblyTypeName: EnemyDead, Assembly-CSharp
-        m_MethodName: KillEnemy
+      - m_Target: {fileID: 458414194709329480}
+        m_TargetAssemblyTypeName: EnemyHurt, Assembly-CSharp
+        m_MethodName: EnemyBleed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HurtEff: {fileID: 152658560523239924}
+  health: {fileID: 1761821357947664061}
 --- !u!1001 &62813776448361874
 PrefabInstance:
   m_ObjectHideFlags: 0

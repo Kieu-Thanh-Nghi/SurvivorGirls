@@ -9,6 +9,7 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Character playChar;
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal int enemyQuantity;
+    [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] int enemyQuantityLimiter = 300;
 
     [SerializeField] internal LeanGameObjectPool EnemyDeadEff;

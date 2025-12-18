@@ -4,9 +4,11 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] internal int currentHP = 50;
-    [SerializeField] UnityEvent OnHurt, OnDead;
+    [SerializeField] UnityEvent OnDead, OnHurt;
+    internal UnityAction<int> OnTakeDamage;
     public void TakeDamage(int dameAmount)
     {
+        OnTakeDamage?.Invoke(dameAmount);
         currentHP -= dameAmount;
         if(currentHP <= 0)
         {
