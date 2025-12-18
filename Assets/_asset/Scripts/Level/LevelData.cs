@@ -22,7 +22,7 @@ public class LevelData : MonoBehaviour
         {
             currentProgress -= currentMaxProgress;
             CurrentLevel++;
-            if (currentIndex < length)
+            if (currentIndex < length - 1)
             {
                 if(CurrentLevel >= LvlsAndMaxProcess[currentIndex + 1].x)
                 {

@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] TurnAround turn;
     [SerializeField] internal NavMeshAgent moveByNav;
     internal Vector3 faceDirect;
+    internal int enemyIndex;
 
     private void OnDrawGizmos()
     {

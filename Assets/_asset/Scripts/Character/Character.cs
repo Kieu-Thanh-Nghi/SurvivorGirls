@@ -9,9 +9,14 @@ public class Character : CharacterUpdate
     [SerializeField] internal CharacterData characterData;
     [SerializeField] TurnAround turnAround;
     [SerializeField] Move move;
+    [SerializeField] CharacterController cctrl;
 
     [SerializeField] Vector3 neareastEnemypos;
 
+    //private void Start()
+    //{
+    //    cctrl
+    //}
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -31,13 +36,14 @@ public class Character : CharacterUpdate
     internal virtual void CharacterMove()
     {
         Vector3 moveSpeedDirect = characterData.moveSpeedDirect;
-        move.DoAct(CharBody.transform, moveSpeedDirect);
-        move.DoAnim(CharBody.transform, animator,animID, characterData.runSpeed, characterData.moveSpeed, moveSpeedDirect);
+        cctrl.Move(moveSpeedDirect * Time.fixedDeltaTime);
+        //move.DoAct(transform, moveSpeedDirect);
+        move.DoAnim(transform, animator,animID, characterData.runSpeed, characterData.moveSpeed, moveSpeedDirect);
     }
 
     internal virtual void CharacterRotate()
     {
-        turnAround.LookAtCurrentDirect(transform, characterData.SetFaceDirect(transform));
+        turnAround.LookAtCurrentDirect(CharBody.transform, characterData.SetFaceDirect(CharBody.transform));
     }
 }
 

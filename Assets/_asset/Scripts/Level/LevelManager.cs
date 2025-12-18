@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Image lvlProgressBar;
     [SerializeField] TMP_Text currentLvlText;
     [SerializeField] LevelData levelData;
+    internal int expInOneFrame; 
 
     WaitUntil wait;
 
@@ -20,19 +21,39 @@ public class LevelManager : MonoBehaviour
         currentLvlText.text = "1";
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (!other.TryGetComponent<IHasLvlPoint>(out var HasLvlPoint)) return;
+    //    int point = HasLvlPoint.GetLvlPoint();
+    //    int n = levelData.GetPercentage(point, out float percent);
+    //    lvlProgressBar.fillAmount = percent;
+    //    if (n > 0)
+    //    {
+    //        currentLvlText.text = levelData.CurrentLevel.ToString();
+    //        StartCoroutine(ChooseSkill(n));
+    //    }
+    //}
+
+    private void Update()
     {
-        if (!other.TryGetComponent<IHasLvlPoint>(out var HasLvlPoint)) return;
-        int point = HasLvlPoint.GetLvlPoint();
-        int n = levelData.GetPercentage(point, out float percent);
-        lvlProgressBar.fillAmount = percent;
-        if (n > 0)
-        {
-            currentLvlText.text = levelData.CurrentLevel.ToString();
-            StartCoroutine(ChooseSkill(n));
-        }
+        UpdatePercentage();
     }
 
+    void UpdatePercentage()
+    {
+        if(expInOneFrame > 0)
+        {
+            Debug.Log(expInOneFrame);
+            int n = levelData.GetPercentage(expInOneFrame, out float percent);
+            lvlProgressBar.fillAmount = percent;
+            if (n > 0)
+            {
+                currentLvlText.text = levelData.CurrentLevel.ToString();
+                StartCoroutine(ChooseSkill(n));
+            }
+            expInOneFrame = 0;
+        }
+    }
 
     public void SetIsDoneChoosing(bool isDone) => isDoneSkillChoosing = isDone;
     IEnumerator ChooseSkill(int n)

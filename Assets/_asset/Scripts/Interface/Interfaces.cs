@@ -14,7 +14,7 @@ public interface IHasDamage
     public int GetDamage();
 }
 
-public interface IHasLvlPoint
+public interface IExpType
 {
-    public int GetLvlPoint();
+    public int GetType();
 }

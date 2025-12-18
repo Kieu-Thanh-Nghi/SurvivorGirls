@@ -1,4 +1,4 @@
-using System.Collections;
+using Lean.Pool;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +10,11 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal int enemyQuantity;
     [SerializeField] int enemyQuantityLimiter = 300;
-    internal List<Enemy> enemies = new();
+
+    [SerializeField] internal LeanGameObjectPool EnemyDeadEff;
+    internal List<Enemy> enemies = new List<Enemy>(500);
     int enemyIndex;
+    Enemy temp;
 
     public bool isPause;
 
@@ -20,6 +23,27 @@ public class GamePlayCtrler : MonoBehaviour
         Instance = this;
     }
 
+    public void AddAnEnemy(Enemy theEnemy)
+    {
+        enemies.Add(theEnemy);
+        theEnemy.enemyIndex = enemyQuantity;
+        enemyQuantity++;
+    }
+    public void RemoveAnEnemy(Enemy theEnemy)
+    {
+        if(enemyQuantity < 2)
+        {
+            enemies.RemoveAt(0);
+        }
+        else
+        {
+            temp = enemies[enemyQuantity - 1];
+            enemies[enemyQuantity - 1] = theEnemy;
+            enemies[theEnemy.enemyIndex] = temp;
+            enemies.RemoveAt(enemyQuantity - 1);
+        }
+        enemyQuantity--;
+    }
     private void FixedUpdate()
     {
         playChar.DoFixedUpdate();

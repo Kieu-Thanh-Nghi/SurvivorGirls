@@ -1,19 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LvlPoint : MonoBehaviour, IHasLvlPoint
+public class LvlPoint : MonoBehaviour, IExpType
 {
-    [SerializeField] int point;
-    public int GetLvlPoint()
-    {
-        return point;
-    }
-}
+    [SerializeField] int type;
 
-public class ExpAttracter : MonoBehaviour
-{
-    private void OnTriggerEnter(Collider other)
-    {
-        other.enabled = false;
-    }
+    public new int GetType() => type;
 }

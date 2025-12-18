@@ -33,7 +33,7 @@ public class GroupSpawnerStrategy : ASpawnStrategy
             enemyPrefab = RandomEnemy();
             enemyPrefab.Spawn(pos);
         }
-        GamePlayCtrler.Instance.enemyQuantity += numberOfPosis;
+        //GamePlayCtrler.Instance.enemyQuantity += numberOfPosis;
     }
 
     protected LeanGameObjectPool RandomEnemy()
