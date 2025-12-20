@@ -9,7 +9,6 @@ public class NearestEnemyDetecter : EnemyDetecter
     [SerializeField] LayerMask layerMask;
     [SerializeField] int maxN = 10;
     [SerializeField] int no;
-    [SerializeField] Transform target;
     [SerializeField] bool isDetected;
 
     private void OnDrawGizmos()
@@ -92,5 +91,6 @@ public class NearestEnemyDetecter : EnemyDetecter
 
 public abstract class EnemyDetecter : MonoBehaviour
 {
+    [SerializeField] internal Transform target;
     public abstract bool GetEnemyPos(out Vector3 Direction);
 }

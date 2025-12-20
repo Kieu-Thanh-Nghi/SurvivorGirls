@@ -8,9 +8,9 @@ public class ExpDetecter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<IExpType>(out var expType)){
-            other.gameObject.SetActive(false);
-            emitParams.position = other.transform.position;
+            //other.gameObject.SetActive(false);
             int type = expType.GetType();
+            emitParams.position = expAttracter[type].transform.InverseTransformPoint(other.transform.position);
             expAttracter[type].Emit(emitParams, 1);
         }
     }

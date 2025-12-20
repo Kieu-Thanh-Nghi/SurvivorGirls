@@ -10,9 +10,10 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal int enemyQuantity;
     [SerializeField] internal LeanGameObjectPool dameTextPool;
+    [SerializeField] internal LeanGameObjectPool EnemyDeadEff;
+    [SerializeField] internal EXPpools expPools;
     [SerializeField] int enemyQuantityLimiter = 300;
 
-    [SerializeField] internal LeanGameObjectPool EnemyDeadEff;
     internal List<Enemy> enemies = new List<Enemy>(500);
     int enemyIndex;
     Enemy temp;

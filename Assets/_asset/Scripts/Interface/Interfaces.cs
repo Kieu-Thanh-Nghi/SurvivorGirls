@@ -4,11 +4,6 @@ public class Interfaces : MonoBehaviour
 {
 }
 
-public interface IDamageable
-{
-    public void TakeDamage(int dameAmount);
-}
-
 public interface IHasDamage
 {
     public int GetDamage();
@@ -17,4 +12,14 @@ public interface IHasDamage
 public interface IExpType
 {
     public int GetType();
+}
+public interface IDamageable
+{
+    public void TakeDamage(int dameAmount, DamageType type);
+}
+
+public enum DamageType
+{
+    Normal = 0,
+    Crit = 1
 }
