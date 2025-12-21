@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Gun : Weapon, IGunLockable
 {
-    [SerializeField] ProjectileEmiter emiter;
+    [SerializeField] internal ProjectileEmiter emiter;
     [SerializeField] WeaponData weaponData;
     [SerializeField] BulletQuantity bulletQuantity;
     [SerializeField] internal bool isLocked;
@@ -44,18 +44,28 @@ public class GunAbility : MonoBehaviour
     public virtual void DoSkill() { }
 }
 
-public class SkillSixthSense : GunAbility
-{
-    UnityAction DoWhenFireSixthSense;
-
-    public override void DoSkill()
-    {
-        //do things
-        DoWhenFireSixthSense?.Invoke();
-    }
-}
-
 public class SkillMagnum : GunAbility
 {
+    [SerializeField] Gun gun;
+    [SerializeField] SkillSixthSense sixthSense;
+    [SerializeField] LeanGameObjectPool ExplodePool;
+    bool isActivated;
 
+    private void Start()
+    {
+        SetUpSkill();
+    }
+    public override void SetUpSkill()
+    {
+        sixthSense.DoWhenFireSixthSense += DoWhenSixthSense;
+        gun.emiter.DoWhenBulletHit += DoSkill;
+    }
+
+    void DoWhenSixthSense() => isActivated = true;
+
+    void DoSkill(Transform eneTransform)
+    {
+        if(!isActivated) return;
+        ExplodePool.Spawn(eneTransform.position);
+    }
 }

@@ -6,6 +6,7 @@ public class GamePlayCtrler : MonoBehaviour
 {
     internal static GamePlayCtrler Instance;
     [SerializeField] internal Transform Player;
+    [SerializeField] DeathCount killedZomCount;
     [SerializeField] Character playChar;
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal int enemyQuantity;
@@ -42,9 +43,11 @@ public class GamePlayCtrler : MonoBehaviour
             temp = enemies[enemyQuantity - 1];
             enemies[enemyQuantity - 1] = theEnemy;
             enemies[theEnemy.enemyIndex] = temp;
+            temp.enemyIndex = theEnemy.enemyIndex;
             enemies.RemoveAt(enemyQuantity - 1);
         }
         enemyQuantity--;
+        killedZomCount.DoCount();
     }
     private void FixedUpdate()
     {
