@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class ParticleProjectile : ProjectileEmiter
 {
@@ -9,7 +8,7 @@ public class ParticleProjectile : ProjectileEmiter
     {
         bulletEmitter.Emit(1);
     }
-    private void OnParticleCollision(GameObject other)
+    protected virtual void OnParticleCollision(GameObject other)
     {
         if(other.TryGetComponent<IDamageable>(out var damageable))
         {

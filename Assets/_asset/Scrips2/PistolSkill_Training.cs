@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PistolSkill_Training : MonoBehaviour
+public class PistolSkill_Training : MonoBehaviour, IEachAtkObserver
 {
     WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
-    [SerializeField] int TimesToShoot;
+    [SerializeField] internal int TimesToShoot;
     IWeapon weapon; 
     IEnemyDetecter detecter;
     IHasTarget hasTarget;
     IAttackObserver attackListener;
+    internal UnityAction DoWhenDoneAnAtk;
 
     private void Start()
     {
@@ -41,6 +43,12 @@ public class PistolSkill_Training : MonoBehaviour
                 EnemyPos = currentTarget.position;  
             }
             weapon.DoOneAttack(EnemyPos);
+            DoWhenDoneAnAtk?.Invoke();
         }
+    }
+
+    public void SubscribeOnlyOneShotEvent(UnityAction WhenOneAttack)
+    {
+        DoWhenDoneAnAtk += WhenOneAttack;
     }
 }

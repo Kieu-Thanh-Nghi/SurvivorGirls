@@ -39,7 +39,10 @@ public interface IEnemyDetecter
 public interface IWeapon
 {
     public void DoOneAttack(Vector3 targetPos);
+}
 
+public interface IHasBulletWeapon
+{
     public void EmitAttack(Vector3 targetPos);
 }
 
@@ -47,7 +50,7 @@ public interface IAttackObserver
 {
     public void SubscribeAtkEvent(UnityAction WhenAttack);
 }
-public interface IBulletShooter
+public interface IEachAtkObserver
 {
     public void SubscribeOnlyOneShotEvent(UnityAction WhenOneAttack);
 }

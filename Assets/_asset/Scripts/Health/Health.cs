@@ -16,6 +16,5 @@ public class Health : MonoBehaviour, IDamageable
             return;
         }
         OnHurt?.Invoke();
-        Debug.Log("takedame " + dameAmount);
     }
 }

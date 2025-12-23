@@ -7,19 +7,19 @@ public class PistolSkill_SixthSense : MonoBehaviour
     internal UnityAction DoWhenFireSixthSense;
     [SerializeField] int neededEnemies;
     [SerializeField] int neededShots;
-    IBulletShooter bulletShooter;
     IEnemyDetecter detecter;
-    IWeapon weapon;
+    internal IWeapon weapon;
     [SerializeField] int shotCounted = 0;
-    bool isShooting = false;
 
     private void Start()
     {
-        bulletShooter = GetComponent<IBulletShooter>();
+        var eachAtkObserver = GetComponents<IEachAtkObserver>();
+        foreach(var observer in eachAtkObserver)
+        {
+            observer.SubscribeOnlyOneShotEvent(ShotCount);
+        }
         detecter = GetComponent<IEnemyDetecter>();
         weapon = GetComponent<IWeapon>();
-
-        bulletShooter.SubscribeOnlyOneShotEvent(ShotCount);
     }
 
     void ShootNearEnemies(IEnemyDetecter detecter, IWeapon weapon)
@@ -32,19 +32,31 @@ public class PistolSkill_SixthSense : MonoBehaviour
         {
             weapon.DoOneAttack(targetsPos[i]);
         }
-        shotCounted = 0;
     }
 
     void ShotCount()
     {
-        if (shotCounted < neededShots)
-        {
-            shotCounted++;
-        }
-        else
+        shotCounted++;
+        if(shotCounted >= neededShots)
         {
             ShootNearEnemies(detecter, weapon);
+            shotCounted = 0;
         }
     }
 }
 
+public class PistolSkillInjection : MonoBehaviour
+{
+    public void InjectFirstSkill()
+    {
+        gameObject.AddComponent<PistolSkill_Training>();
+    }
+    public void InjectSecondSkill()
+    {
+        gameObject.AddComponent<PistolSkill_SixthSense>();
+    }
+    public void InjectThirdSkill()
+    {
+        gameObject.AddComponent<PistolSkill_Magnum>();
+    }
+}

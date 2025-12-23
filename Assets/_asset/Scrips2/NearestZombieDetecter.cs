@@ -119,6 +119,7 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
         {       
             enePosies.Sort((x, y) => (x - thisPos).sqrMagnitude.CompareTo((y - thisPos).sqrMagnitude));
         }
+        ResetTemp();
         return enePosies;
     }
 }

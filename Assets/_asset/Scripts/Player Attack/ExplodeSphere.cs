@@ -11,8 +11,8 @@ public class ExplodeSphere : MonoBehaviour
         if (other.gameObject.layer == layer && other.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.TakeDamage(damage, DamageType.Normal);
+            LeanPool.Despawn(gameObject, 4);
         }            
-        LeanPool.Despawn(gameObject);
     }
 
     public void SetDamage(int dame) => damage = dame;
