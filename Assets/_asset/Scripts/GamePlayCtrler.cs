@@ -51,7 +51,7 @@ public class GamePlayCtrler : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        playChar.DoFixedUpdate();
+        //playChar.DoFixedUpdate();
         int n = enemies.Count;
         for (int i = 0; i < n; i++)
         {
@@ -65,7 +65,7 @@ public class GamePlayCtrler : MonoBehaviour
     private void Update()
     {
         if (isPause) return;
-        playChar.DoUpdate();
+        //playChar.DoUpdate();
 
         CameraHolder.position = Player.position;
         int n = enemies.Count;

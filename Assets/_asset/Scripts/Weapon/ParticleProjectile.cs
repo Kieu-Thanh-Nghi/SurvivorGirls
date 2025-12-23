@@ -14,7 +14,6 @@ public class ParticleProjectile : ProjectileEmiter
         if(other.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.TakeDamage(hasDamage.GetDamage(), DamageType.Normal);
-            DoWhenBulletHit?.Invoke(other.transform);
         }
     }
 }
@@ -22,7 +21,6 @@ public class ParticleProjectile : ProjectileEmiter
 public abstract class ProjectileEmiter : MonoBehaviour
 {
     protected IHasDamage hasDamage;
-    internal UnityAction<Transform> DoWhenBulletHit;
     public void SetHasDamageData(IHasDamage damageData) => hasDamage = damageData;
 
     public abstract void Emit();

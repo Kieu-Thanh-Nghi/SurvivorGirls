@@ -2,12 +2,13 @@ using Lean.Pool;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Gun : Weapon, IGunLockable
+public class Gun : MonoBehaviour, IGunLockable
 {
     [SerializeField] internal ProjectileEmiter emiter;
     [SerializeField] WeaponData weaponData;
     [SerializeField] BulletQuantity bulletQuantity;
     [SerializeField] internal bool isLocked;
+    [SerializeField] public float AttackCountdown;
     internal UnityAction DoWhenShotABullet;
 
     private void Start()
@@ -25,17 +26,11 @@ public class Gun : Weapon, IGunLockable
         emiter.transform.forward = direct;
         emiter.Emit();
     }
-    public override void DoAttack(Vector3 enemyPos)
+    public virtual void DoAttack(Vector3 enemyPos)
     {
         Shoot(enemyPos);
         DoWhenShotABullet?.Invoke();
     }
-}
-
-public abstract class Weapon : MonoBehaviour
-{
-    [SerializeField] public float AttackCountdown;
-    public abstract void DoAttack(Vector3 Direct);
 }
 
 public class GunAbility : MonoBehaviour
@@ -58,7 +53,6 @@ public class SkillMagnum : GunAbility
     public override void SetUpSkill()
     {
         sixthSense.DoWhenFireSixthSense += DoWhenSixthSense;
-        gun.emiter.DoWhenBulletHit += DoSkill;
     }
 
     void DoWhenSixthSense() => isActivated = true;
