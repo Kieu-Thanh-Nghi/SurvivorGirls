@@ -3,7 +3,7 @@ using Lean.Pool;
 
 public class ExplodeParticleProjectile : ParticleProjectile
 {
-    [SerializeField] LeanGameObjectPool explodePool;
+    [SerializeField] internal ExplotionEff explodeEff;
 
     protected override void OnParticleCollision(GameObject other)
     {
@@ -11,7 +11,7 @@ public class ExplodeParticleProjectile : ParticleProjectile
         {
             Debug.Log(damageable == null);
             damageable.TakeDamage(hasDamage.GetDamage(), DamageType.Normal);
-            explodePool.Spawn(other.transform.position);
+            explodeEff.SpawnExplotion(other.transform.position);
         }
     }
 }

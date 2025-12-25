@@ -1,10 +1,16 @@
-﻿public class PistolSkill_Magnum : BasicWeapon, IHasDamage
+﻿using UnityEngine;
+public class PistolSkill_Magnum : BasicWeapon
 {
-    public int GetDamage() => 5;
+    [SerializeField] internal ExplotionEff explotionEff;
 
-    private void Start()
+    [ContextMenu("ChangeSize")]
+    void bigger()
     {
-        emiter.SetHasDamageData(this);
-        GetComponent<PistolSkill_SixthSense>().weapon = this;
+        explotionEff.Scale = Vector3.one;
+    }
+    [ContextMenu("SmallChangeSize")]
+    void smaller()
+    {
+        explotionEff.Scale = Vector3.one * 0.5f;
     }
 }

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IEachAtkObserver
+public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IEachAtkObserver
 {
     [SerializeField] internal float AttackCountdown;
-    [SerializeField] NearestZombieDetecter eneDetecter;
+    [SerializeField] NearestObjectSphereDetecter eneDetecter;
     [SerializeField] GunWeapon gun;
     [SerializeField] Transform target;
     internal UnityAction DoWhenAttack, DoWhenDoneAnAtk;
@@ -26,7 +26,7 @@ public class PlayerAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IEach
         }
     }
 
-    void AttackLoop(IEnemyDetecter detecter, IHasBulletWeapon weapon, Vector3 thisPos)
+    void AttackLoop(INearestDetecter detecter, IHasBulletWeapon weapon, Vector3 thisPos)
     {
         float attackRadius = radius;
         if (target != null 
@@ -36,7 +36,8 @@ public class PlayerAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IEach
             DoAttack(weapon, thisPos);
             return;
         }
-        if (detecter.GetNearestEnemy(thisPos, out Transform result))
+        eneDetecter.LimitMaxRadius();
+        if (detecter.GetNearest(thisPos, out Transform result))
         {
             target = result;
         }

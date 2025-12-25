@@ -29,11 +29,15 @@ public interface ITurnInput
     public Vector3 GetCurrentFaceDirect();
 }
 
-public interface IEnemyDetecter
+public interface INearestDetecter
 {
-    public bool GetNearestEnemy(Vector3 thisPos, out Transform result);
+    public bool GetNearest(Vector3 thisPos, out Transform result);
 
-    public List<Vector3> GetManyNearestEnemies(int neededQuantity, Vector3 thisPos);
+    public List<Vector3> GetManyNearest(int neededQuantity, Vector3 thisPos);
+}
+public interface ISphereDetecter
+{
+    public void LimitMaxRadius();
 }
 
 public interface IWeapon
@@ -54,6 +58,5 @@ public interface IEachAtkObserver
 {
     public void SubscribeOnlyOneShotEvent(UnityAction WhenOneAttack);
 }
-
 
 

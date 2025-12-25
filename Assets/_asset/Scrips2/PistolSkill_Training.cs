@@ -7,29 +7,28 @@ public class PistolSkill_Training : MonoBehaviour, IEachAtkObserver
     WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
     [SerializeField] internal int TimesToShoot;
     IWeapon weapon; 
-    IEnemyDetecter detecter;
+    INearestDetecter detecter;
     IHasTarget hasTarget;
     IAttackObserver attackListener;
     internal UnityAction DoWhenDoneAnAtk;
 
-    private void Start()
+    public void SetUp(IWeapon theWeapon,
+        INearestDetecter nearestDetecter,
+        IHasTarget theOneHasTarget,
+        IAttackObserver attackObserver)
     {
-        weapon = GetComponent<IWeapon>();
-        detecter = GetComponent<IEnemyDetecter>();
-        hasTarget = GetComponent<IHasTarget>();
-        attackListener = GetComponent<IAttackObserver>();
-        SetUpSkill();
+        weapon = theWeapon;
+        detecter = nearestDetecter;
+        hasTarget = theOneHasTarget;
+        attackObserver.SubscribeAtkEvent(DoSkill);
     }
-    public void SetUpSkill()
-    {
-        attackListener.SubscribeAtkEvent(DoSkill);
-    }
+
     public void DoSkill()
     {
         StartCoroutine(ShootMultiple(weapon, detecter, hasTarget));
     }
 
-    IEnumerator ShootMultiple(IWeapon weapon, IEnemyDetecter detecter, IHasTarget hasTarget)
+    IEnumerator ShootMultiple(IWeapon weapon, INearestDetecter detecter, IHasTarget hasTarget)
     {
         Vector3 thisPos = transform.position;
         Transform currentTarget = hasTarget.GetCurrentTarget();
@@ -38,7 +37,7 @@ public class PistolSkill_Training : MonoBehaviour, IEachAtkObserver
         {
             yield return waitForSeconds;
             if ((currentTarget == null || !currentTarget.gameObject.activeSelf)
-                && detecter.GetNearestEnemy(thisPos, out currentTarget))
+                && detecter.GetNearest(thisPos, out currentTarget))
             {
                 EnemyPos = currentTarget.position;  
             }
