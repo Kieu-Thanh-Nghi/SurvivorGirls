@@ -7,10 +7,6 @@ public class GunWeapon : BasicWeapon, IHasBulletWeapon ,IGunLockable
     [SerializeField] BulletQuantity bulletQuantity;
     [SerializeField] internal bool isLocked;
 
-    private void Start()
-    {
-        emiter.SetHasDamageData(weaponData);
-    }
     public void SetLockGun(bool isLock) => isLocked = isLock;
 
     void DecreaseBullet() => bulletQuantity.DecreaseBullet(this);

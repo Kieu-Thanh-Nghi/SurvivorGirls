@@ -4,18 +4,18 @@ using UnityEngine;
 public class ExplodeSphere : MonoBehaviour
 {
     [SerializeField] LayerMask layer;
-    int damage = 5;
+    [SerializeField] ExplotionEff explotionEff;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
-        if (other.gameObject.layer == layer && other.TryGetComponent<IDamageable>(out var damageable))
+        explotionEff.thePool.Despawn(gameObject, 2); 
+        var colls = Physics.OverlapSphere(transform.position + Vector3.up, explotionEff.Radius, layer);
+        foreach(var col in colls)
         {
-            damageable.TakeDamage(damage, DamageType.Normal);
-            LeanPool.Despawn(gameObject, 4);
-        }            
+            if (col.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.TakeDamage(explotionEff.Damage, DamageType.Normal);
+            }
+        }
     }
-
-    public void SetDamage(int dame) => damage = dame;
-
-    public void SetSize(Vector3 size) => transform.localScale = size;
 }

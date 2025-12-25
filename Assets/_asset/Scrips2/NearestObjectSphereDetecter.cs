@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
+public class NearestObjectSphereDetecter : MonoBehaviour, INearestDetecter, ISphereDetecter
 {
     [SerializeField] LayerMask layerMask;
     [SerializeField] internal float radius, maxRadius;
@@ -21,7 +21,7 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
         tempMaxRadius = maxRadius;
     }
 
-    internal void LimitMaxRadius() => tempMaxRadius = tempRadius;
+    public void LimitMaxRadius() => tempMaxRadius = tempRadius;
     int Detect(Vector3 thisPos)
     {
         return Physics.OverlapSphereNonAlloc(thisPos, tempRadius, enemiesTemp, layerMask);
@@ -43,11 +43,13 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
             }
             else if (tempN < neededQuantity)
             {
+                if (tempRadius == tempMaxRadius) break;
                 tempRadius += (tempMaxRadius - tempRadius) / 2;
             }
             else
             {
                 result = enemiesTemp;
+                ResetTemp();
                 return tempN;
             }
         }
@@ -56,6 +58,7 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
             result = enemiesTemp;
             resultN = tempN;
         }
+        ResetTemp();
         return resultN;
     }
     Transform CalculateNeareast(int n, Vector3 thisPos)
@@ -81,7 +84,7 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
         }
         return targetEnemy;
     }
-    public bool GetNearestEnemy(Vector3 thisPos, out Transform result)
+    public bool GetNearest(Vector3 thisPos, out Transform result)
     {
         int n = Detect(thisPos);
         if (n < 1)
@@ -93,9 +96,7 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
         {
             if(n > 10)
             {
-                LimitMaxRadius();
                 n = NeareastFilter(thisPos, 1, n, 2);
-                ResetTemp();
             }
             result = CalculateNeareast(n, thisPos);
             return true;
@@ -106,7 +107,7 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
             return true;
         }
     }
-    public List<Vector3> GetManyNearestEnemies(int neededQuantity, Vector3 thisPos)
+    public List<Vector3> GetManyNearest(int neededQuantity, Vector3 thisPos)
     {
         enePosies.Clear();
         int n = Detect(thisPos);
@@ -119,7 +120,6 @@ public class NearestZombieDetecter : MonoBehaviour, IEnemyDetecter
         {       
             enePosies.Sort((x, y) => (x - thisPos).sqrMagnitude.CompareTo((y - thisPos).sqrMagnitude));
         }
-        ResetTemp();
         return enePosies;
     }
 }

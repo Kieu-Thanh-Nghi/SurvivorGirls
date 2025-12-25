@@ -5,32 +5,33 @@ using UnityEngine.Events;
 public class PistolSkill_SixthSense : MonoBehaviour
 {
     internal UnityAction DoWhenFireSixthSense;
-    [SerializeField] int neededEnemies;
-    [SerializeField] int neededShots;
-    IEnemyDetecter detecter;
+    [SerializeField] internal int neededEnemies;
+    [SerializeField] internal int neededShots;
+    INearestDetecter detecter;
     internal IWeapon weapon;
     [SerializeField] int shotCounted = 0;
 
-    private void Start()
+    public void SetUp(IEachAtkObserver[] eachAtkObserver, 
+        INearestDetecter nearestDetecter,
+        IWeapon theWeapon)
     {
-        var eachAtkObserver = GetComponents<IEachAtkObserver>();
-        foreach(var observer in eachAtkObserver)
+        foreach (var observer in eachAtkObserver)
         {
             observer.SubscribeOnlyOneShotEvent(ShotCount);
         }
-        detecter = GetComponent<IEnemyDetecter>();
-        weapon = GetComponent<IWeapon>();
+        detecter = nearestDetecter;
+        weapon = theWeapon;
     }
 
-    void ShootNearEnemies(IEnemyDetecter detecter, IWeapon weapon)
+    void ShootNearEnemies(INearestDetecter detecter, IWeapon weapon)
     {
-        List<Vector3> targetsPos = detecter.GetManyNearestEnemies(neededEnemies, transform.position);
+        List<Vector3> targetsPos = detecter.GetManyNearest(neededEnemies, transform.position);
         int n = targetsPos.Count;
         if (n < 1) return;
         if (n > neededEnemies) n = neededEnemies;
         for (int i = 0; i < n; i++)
         {
-            weapon.DoOneAttack(targetsPos[i]);
+            weapon?.DoOneAttack(targetsPos[i]);
         }
     }
 
@@ -42,21 +43,5 @@ public class PistolSkill_SixthSense : MonoBehaviour
             ShootNearEnemies(detecter, weapon);
             shotCounted = 0;
         }
-    }
-}
-
-public class PistolSkillInjection : MonoBehaviour
-{
-    public void InjectFirstSkill()
-    {
-        gameObject.AddComponent<PistolSkill_Training>();
-    }
-    public void InjectSecondSkill()
-    {
-        gameObject.AddComponent<PistolSkill_SixthSense>();
-    }
-    public void InjectThirdSkill()
-    {
-        gameObject.AddComponent<PistolSkill_Magnum>();
     }
 }
