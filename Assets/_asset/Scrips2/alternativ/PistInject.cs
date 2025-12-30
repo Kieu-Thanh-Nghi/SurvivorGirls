@@ -7,108 +7,76 @@ public class PistInject : MonoBehaviour
     PistolFirstSkill firstSkill;
     PistolSecondSkill secondSkill;
     PistolThirdSkill thirdSkill;
+}
 
-    public bool UpgradeSkill_1()
+public abstract class PistolSkill : Skill
+{
+    protected PistolSkillInjection psi;
+    public override void SetSkillInjection(ISkillInjection skillInjection)
     {
-        int firstSkillLV = firstSkill.currentLV;
-        if (firstSkillLV >= 5) return true;
-        switch (firstSkillLV)
+        if (skillInjection is PistolSkillInjection thePsi)
         {
-            case 0:
-                firstSkill.ToLV1();
-                break;
-            case 1:
-                firstSkill.ToLV2();
-                break;
-            case 2:
-                firstSkill.ToLV3();
-                break;
-            case 3:
-                firstSkill.ToLV4();
-                break;
-            case 4:
-                firstSkill.ToLV5();
-                break;
+            psi = thePsi;
         }
-        firstSkill.currentLV++;
-        return false;
-    }
-    public bool UpgradeSkill_2()
-    {
-        int firstSkillLV = secondSkill.currentLV;
-        if (firstSkillLV >= 5) return true;
-        switch (firstSkillLV)
-        {
-            case 0:
-                secondSkill.ToLV1();
-                break;
-            case 1:
-                secondSkill.ToLV2();
-                break;
-            case 2:
-                secondSkill.ToLV3();
-                break;
-            case 3:
-                secondSkill.ToLV4();
-                break;
-            case 4:
-                secondSkill.ToLV5();
-                break;
-        }
-        secondSkill.currentLV++;
-        return false;
-    }
-    public bool UpgradeSkill_3()
-    {
-        int firstSkillLV = thirdSkill.currentLV;
-        if (firstSkillLV >= 5) return true;
-        switch (firstSkillLV)
-        {
-            case 0:
-                thirdSkill.ToLV1();
-                break;
-            case 1:
-                thirdSkill.ToLV2();
-                break;
-            case 2:
-                thirdSkill.ToLV3();
-                break;
-            case 3:
-                thirdSkill.ToLV4();
-                break;
-            case 4:
-                thirdSkill.ToLV5();
-                break;
-        }
-        thirdSkill.currentLV++;
-        return false;
     }
 }
 
-class PistolFirstSkill 
+public abstract class ActiveSkill : Skill
 {
-    public int currentLV;
-    public void ToLV1() { }
-    public void ToLV2() { }
-    public void ToLV3() { }
-    public void ToLV4() { }
-    public void ToLV5() { }
+    protected ActiveSkillInjection asi;
+
+    public override void SetSkillInjection(ISkillInjection skillInjection)
+    {
+        if (skillInjection is ActiveSkillInjection theAsi)
+        {
+            asi = theAsi;
+        }
+    }
 }
-class PistolSecondSkill
+public abstract class Skill : ScriptableObject
 {
-    public int currentLV;
-    public void ToLV1() { }
-    public void ToLV2() { }
-    public void ToLV3() { }
-    public void ToLV4() { }
-    public void ToLV5() { }
-}
-class PistolThirdSkill
-{
-    public int currentLV;
-    public void ToLV1() { }
-    public void ToLV2() { }
-    public void ToLV3() { }
-    public void ToLV4() { }
-    public void ToLV5() { }
+    [SerializeField] internal int currentLV = 0;
+    protected int maxLvl = 5;
+
+    public abstract SkillEnum thisEnum { get; }
+    public abstract void SetSkillInjection(ISkillInjection skillInjection);
+
+    public abstract void InjectSkill();
+
+    public virtual bool UpgradeSkill()
+    {
+        if (currentLV >= maxLvl) return true;
+        switch (currentLV)
+        {
+            case 0:
+                InjectSkill();
+                ToLV1();
+                currentLV++;
+                break;
+            case 1:
+                ToLV2();
+                currentLV++;
+                break;
+            case 2:
+                ToLV3();
+                currentLV++;
+                break;
+            case 3:
+                ToLV4();
+                currentLV++;
+                break;
+            case 4:
+                ToLV5();
+                currentLV++;
+                break;
+        }
+        currentLV++;
+        return false;
+    }
+
+    public abstract void ToLV1();
+    public abstract void ToLV2();
+    public abstract void ToLV3();
+    public abstract void ToLV4();
+    public abstract void ToLV5();
 }

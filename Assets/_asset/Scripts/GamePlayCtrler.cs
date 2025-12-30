@@ -9,11 +9,11 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] DeathCount killedZomCount;
     [SerializeField] Character playChar;
     [SerializeField] Transform CameraHolder;
-    [SerializeField] internal int enemyQuantity;
     [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] internal LeanGameObjectPool EnemyDeadEff;
     [SerializeField] internal EXPpools expPools;
     [SerializeField] int enemyQuantityLimiter = 300;
+    [SerializeField] internal int enemyQuantity;
 
     internal List<Enemy> enemies = new List<Enemy>(500);
     int enemyIndex;
@@ -57,7 +57,7 @@ public class GamePlayCtrler : MonoBehaviour
         {
             if (enemies[i].isActiveAndEnabled)
             {
-                enemies[i].CharacterRotate(Player.position);
+                enemies[i].EnemyRotate();
             }
         }
     }
