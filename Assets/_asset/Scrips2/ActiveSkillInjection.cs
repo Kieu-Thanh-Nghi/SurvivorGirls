@@ -11,4 +11,9 @@ public class ActiveSkillInjection : SkillInjection
     {
         UpgradeASkill(SkillEnum.BladeDrone);
     }
+    [ContextMenu("testSD")]
+    void testSD()
+    {
+        UpgradeASkill(SkillEnum.ScifiDrone);
+    }
 }

@@ -123,6 +123,25 @@ public enum SkillEnum
 
 public interface ISkillInjection { }
 
+public abstract class SkillContainer : ScriptableObject
+{
+    bool isInitialize;
+    internal Skill theSkill;
+    internal abstract SkillEnum skillEnum { get; }
+
+    public abstract void initializeSkill();
+}
+
+public class PistolFirstSkillContainer : SkillContainer
+{
+    internal override SkillEnum skillEnum => SkillEnum.Training;
+
+    public override void initializeSkill()
+    {
+        theSkill = new PistolFirstSkill();
+    }
+}
+
 public class SkillInjection : MonoBehaviour, ISkillInjection
 {
     [SerializeField] int skillQuantity;

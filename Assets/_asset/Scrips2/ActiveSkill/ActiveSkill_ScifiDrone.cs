@@ -2,23 +2,26 @@
 using DG.Tweening;
 using System.Collections;
 
-public class ActiveSkill_ScifiDrone : UpdateSkill
+public class ActiveSkill_ScifiDrone : UpdateSkill, IHasDamage
 {
     [SerializeField] Vector3 stablePosition;
     [SerializeField] float timeToFlyToStablePosition = 1;
     [SerializeField] internal float fireRate = 4;
     [SerializeField] internal int damage = 1;
     float timeBetweenShots => 1 / fireRate;
-    [SerializeField] INearestDetecter nearestDetecter;    
-    Transform target;
+    float startShotTime;
+    [SerializeField] INearestDetecter nearestDetecter;
+    [SerializeField] IWeapon weapon;
+    [SerializeField] Transform target;
     Vector3 direction;
 
     protected override void Start()
     {
         transform.DOLocalMove(stablePosition, timeToFlyToStablePosition);
         nearestDetecter = GetComponent<INearestDetecter>();
+        weapon = GetComponent<IWeapon>();
         base.Start();
-        //StartCoroutine(StartSkill());
+        StartCoroutine(StartSkill());
     }
     public override void DoUpdate()
     {
@@ -30,22 +33,33 @@ public class ActiveSkill_ScifiDrone : UpdateSkill
 
     void FireNearestEnemy()
     {
-        if (target == null || !target.gameObject.activeSelf)
+        if (target != null
+            && target.gameObject.activeSelf)
         {
-            if (nearestDetecter.GetNearest(transform.position, out Transform result))
+            if(Time.time - startShotTime >= timeBetweenShots)
             {
-                target = result;
+                Attack();
+                startShotTime = Time.time;
             }
+            return;
         }
-        else
+        if (nearestDetecter.GetNearest(transform.position, out Transform result))
         {
-            Attack();
+            target = result;
         }
     }
 
+    protected override void BeforeActiveSkill()
+    {
+        startShotTime = Time.time;
+        base.BeforeActiveSkill();
+    }
     void Attack()
     {
         direction = (transform.position - target.position).normalized;
         transform.forward = direction;
+        weapon.DoOneAttack(target.position);
     }
+
+    public int GetDamage() => damage;
 }
