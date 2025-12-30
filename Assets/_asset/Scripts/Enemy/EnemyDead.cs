@@ -6,9 +6,9 @@ public class EnemyDead : MonoBehaviour
     [SerializeField] Enemy thisEnemy;
     public void KillEnemy()
     {
-        var ctrler = GamePlayCtrler.Instance;
-        ctrler.RemoveAnEnemy(thisEnemy);
-        ctrler.EnemyDeadEff.Spawn(transform.position);
+        var eneUpd = EnemiesUpdate.Instance;
+        eneUpd.RemoveAnEnemy(thisEnemy);
+        eneUpd.EnemyDeadEff.Spawn(transform.position);
 
         LeanPool.Despawn(gameObject);
     }

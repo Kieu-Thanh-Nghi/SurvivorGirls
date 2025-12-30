@@ -71,12 +71,12 @@ public class LevelManager : MonoBehaviour
     void TurnSkillChoiceOn()
     {
         Time.timeScale = 0;
-        GamePlayCtrler.Instance.isPause = true;
+        GamePlayCtrler.Instance.IsPause = true;
         SkillChoiceCanvas.SetActive(true);
     }
     void TurnSkillChoiceOff()
     {
-        GamePlayCtrler.Instance.isPause = false;
+        GamePlayCtrler.Instance.IsPause = false;
         isDoneSkillChoosing = false;
     }
 }

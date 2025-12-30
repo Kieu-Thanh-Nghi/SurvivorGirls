@@ -14,7 +14,7 @@ public class SpawnStarterAndEnd : SpawnStarter
         }
         if (counting >= spawnRate)
         {
-            if (!GamePlayCtrler.Instance.CheckEnemyLimit())
+            if (!EnemiesUpdate.Instance.CheckEnemyLimit())
             {
                 counting = 0;
                 RotateEnemySpawner();
