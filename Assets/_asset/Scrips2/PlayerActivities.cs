@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerActivities : MonoBehaviour
 {
     [SerializeField] CharacterController characterController;
+    [SerializeField] Transform rotateBody;
     
     public void Move(IMove playerMove, Vector3 moveDirection, float speed)
     {
@@ -13,7 +14,7 @@ public class PlayerActivities : MonoBehaviour
 
     public void Rotate(IRotate playerRotate, Vector3 faceDirect)
     {
-        playerRotate.DoRotate(transform, faceDirect);
+        playerRotate.DoRotate(rotateBody, faceDirect);
     }
 }
 

@@ -11,16 +11,16 @@ public class PistolSkill_SixthSense : MonoBehaviour
     internal IWeapon weapon;
     [SerializeField] int shotCounted = 0;
 
-    public void SetUp(IEachAtkObserver[] eachAtkObserver, 
-        INearestDetecter nearestDetecter,
+    public void SetUp(INearestDetecter nearestDetecter,
         IWeapon theWeapon)
     {
-        foreach (var observer in eachAtkObserver)
-        {
-            observer.SubscribeOnlyOneShotEvent(ShotCount);
-        }
         detecter = nearestDetecter;
         weapon = theWeapon;
+    }
+
+    public void SetShotCount(UnityAction action)
+    {
+        action += ShotCount;
     }
 
     void ShootNearEnemies(INearestDetecter detecter, IWeapon weapon)
@@ -35,7 +35,7 @@ public class PistolSkill_SixthSense : MonoBehaviour
         }
     }
 
-    void ShotCount()
+    public void ShotCount()
     {
         shotCounted++;
         if(shotCounted >= neededShots)
