@@ -7,7 +7,7 @@ public class LevelData : MonoBehaviour
     int currentProgress;
     int currentIndex = 0;
     [SerializeField] int length;
-    [SerializeField] int currentMaxProgress;
+    [SerializeField] internal int currentMaxProgress;
 
     private void OnValidate()
     {

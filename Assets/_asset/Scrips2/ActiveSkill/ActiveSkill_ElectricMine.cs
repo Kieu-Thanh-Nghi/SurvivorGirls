@@ -21,6 +21,8 @@ public class ActiveSkill_ElectricMine : UpdateSkill
     protected override void Start()
     {
         base.Start();
+        currentMineQuantity = mines.Count;
+        minesContainer.SetParent(null);
         StartCoroutine(StartSkill());
     }
     public override void DoUpdate()
@@ -40,6 +42,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
 
     IEnumerator BeginActs()
     {
+        minesContainer.position = transform.position;
         minesContainer.gameObject.SetActive(true);
         RandomThrowAround(minesContainer, spawnRadius);
         yield return new WaitUntil(() => isActive);
@@ -62,7 +65,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
             Vector3 dir = Quaternion.AngleAxis(angle, target.up) * target.forward;
             Transform mineTransform = mines[i].transform;
             mineTransform.localScale = Vector3.zero; 
-            Throw(mineTransform, mines[i], Vector3.zero, dir* radius, throwHeight, throwDuration);
+            Throw(mineTransform, mines[i], target.position, target.position + dir * radius, throwHeight, throwDuration);
             mineTransform.DOScale(mineScale, throwDuration);           
         }
     }
@@ -118,6 +121,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
     {
         var aMine = Instantiate(minePrafab, minesContainer);
         aMine.SetShockWaveScale(ShockScale);
+        currentMineQuantity++;
         mines.Add(aMine);
     }
 

@@ -13,6 +13,10 @@ public class LevelManager : MonoBehaviour
     internal int expInOneFrame; 
 
     WaitUntil wait;
+    public void Up1Level()
+    {
+        expInOneFrame = levelData.currentMaxProgress;
+    }
 
     private void Start()
     {

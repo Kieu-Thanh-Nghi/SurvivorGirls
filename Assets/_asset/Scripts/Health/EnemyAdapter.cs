@@ -15,3 +15,23 @@ public class EnemyAdapter : MonoBehaviour, ITargetChangable
         enemy.SetEnemyDestination();
     }
 }
+
+public class EffectHandler : MonoBehaviour
+{
+
+}
+
+public class Effect : MonoBehaviour
+{
+
+}
+
+public class ElectricEff : Effect
+{
+    internal float ActiveTime, CoolDown;
+
+    private void OnEnable()
+    {
+        
+    }
+}

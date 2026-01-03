@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1108605804472882324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4388648767959892341}
+  - component: {fileID: 8157639051865658809}
+  - component: {fileID: 2616419902281381596}
+  m_Layer: 15
+  m_Name: collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4388648767959892341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108605804472882324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8839948654274614917}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8157639051865658809
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108605804472882324}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 1.88
+  m_Center: {x: 0, y: 0.21, z: 0}
+--- !u!114 &2616419902281381596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108605804472882324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d938b2c7cc19170458845b2332ef95eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7273870342330435636
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,8 +76,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5422614387083316683}
   - component: {fileID: 7154139463670392005}
-  - component: {fileID: 5897834186953815892}
-  - component: {fileID: 5636789909290498240}
   m_Layer: 15
   m_Name: TentaclesBotContainer
   m_TagString: Untagged
@@ -27,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7273870342330435636}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.316666, y: 0.0017582811, z: 0.92499995}
   m_LocalScale: {x: 1.4999998, y: 1.4999998, z: 1.4999998}
   m_ConstrainProportionsScale: 1
@@ -53,43 +117,10 @@ MonoBehaviour:
   user: {fileID: 0}
   spawnRadius: 6
   seftDistruct: {fileID: 386286044037038907}
-  tentacBotAttract: {fileID: 5636789909290498240}
+  tentacBotAttract: {fileID: 2616419902281381596}
   RobotAllBody: {fileID: 6836104195337899362}
-  effCollider: {fileID: 5897834186953815892}
+  effCollider: {fileID: 8157639051865658809}
   exploDamage: 5
---- !u!135 &5897834186953815892
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7273870342330435636}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 1.88
-  m_Center: {x: 0, y: 0.21, z: 0}
---- !u!114 &5636789909290498240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7273870342330435636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d938b2c7cc19170458845b2332ef95eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &568479654056741087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -519,6 +550,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 571253168384050292}
+    - targetCorrespondingSourceObject: {fileID: 808069584485433251, guid: d7c9007ad9d7d9542a70dd1ee07ec4a8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4388648767959892341}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8918590947214708814, guid: d7c9007ad9d7d9542a70dd1ee07ec4a8,
         type: 3}

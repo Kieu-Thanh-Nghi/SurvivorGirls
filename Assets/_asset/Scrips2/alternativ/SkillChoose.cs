@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class SkillChoose : MonoBehaviour
 {
-    [SerializeField] WeaponInjection weaponInjection;
-    [SerializeField] ActiveSkillInjection activeSkillInjection;
-    [SerializeField] PassiveSkillInjection passiveSkillInjection;
     [SerializeField] List<SkillInjection> skillInjections;
+    [SerializeField] List<TMP_Text> buttons;
 
     SkillButtonInfo[] buttonInfos = new SkillButtonInfo[3];
 
@@ -20,6 +19,7 @@ public class SkillChoose : MonoBehaviour
         for(int i = 0; i < buttonInfos.Length; i++)
         {
             buttonInfos[i].index = CheckSkillType(i, out buttonInfos[i].skillEnumInt, out buttonInfos[i].lv);
+            buttons[i].text = skillInjections[i].skillList[buttonInfos[i].skillEnumInt].name;
         }
     }
 
@@ -50,6 +50,11 @@ public class SkillChoose : MonoBehaviour
             theLV = WSkillLV;
             return index;
         }
+    }
+
+    public void UpgradeSkillButton(int i)
+    {
+        skillInjections[buttonInfos[i].index].UpgradeASkill(buttonInfos[i].skillEnumInt);
     }
 }
 

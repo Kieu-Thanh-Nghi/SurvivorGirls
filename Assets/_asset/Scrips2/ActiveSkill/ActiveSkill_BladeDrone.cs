@@ -46,7 +46,7 @@ public class ActiveSkill_BladeDrone : UpdateSkill
         BladesContainer.gameObject.SetActive(true);
         foreach(var blade in BladeDrones)
         {
-            blade.DOMove(blade.position + blade.forward * realRadius, 0.4f);
+            blade.DOLocalMove(blade.forward * realRadius, 0.4f);
             blade.DOScale(bladeScale, 0.4f);
         }
     }

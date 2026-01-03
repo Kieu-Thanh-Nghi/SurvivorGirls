@@ -29,10 +29,12 @@ public class PistolSkillInjection : WeaponInjection
 
     protected override int CalculateChosenSkill(int n, List<int> theList, out int skillLvl)
     {
-        if (!thirdSkill.CheckIfOK())
+        thirdSkill = skillList[(int)PistolSkillEnum.Magnum] as PistolThirdSkill;
+        if (!thirdSkill.CheckIfOK(this))
         {
             int i = theList.IndexOf((int)PistolSkillEnum.Magnum);
-            Swap(i, n, theList);
+            Debug.Log(i);
+            Swap(i, n - 1, theList);
             n--;
         }
         return base.CalculateChosenSkill(n, theList, out skillLvl);
@@ -234,7 +236,7 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
         int lastIndex = n - selectedTimes;
         int i = Random.Range(0, lastIndex);
         resultEnum = theList[i];
-        Swap(i, lastIndex, theList);
+        Swap(i, lastIndex - 1, theList);
         selectedTimes++;
         skillLvl = skillList[resultEnum].currentLV;
         return resultEnum;
@@ -251,10 +253,12 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
     {
         if (usedSkillCount >= skillQuantity)
         {
+            Debug.Log("a");
             return usingSkill;
         }
         else
         {
+            Debug.Log("b");
             return skillIndex;
         }
     }
@@ -281,4 +285,3 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
         }
     }
 }
-public class PassiveSkillInjection : SkillInjection { }

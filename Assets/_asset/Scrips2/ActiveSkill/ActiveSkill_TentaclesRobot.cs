@@ -16,6 +16,7 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill
 
     protected override void Start()
     {
+        RobotAllBody.transform.SetParent(null);
         base.Start();
         StartCoroutine(StartSkill());
     }
@@ -42,10 +43,10 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill
 
     IEnumerator BeginActs()
     {
-        transform.position = RandomAround(user, spawnRadius);
+        RobotAllBody.transform.position = RandomAround(user, spawnRadius);
         RobotAllBody.SetActive(true);
         yield return new WaitUntil(() => isActive);
-        effCollider.enabled = true;
+        effCollider.transform.localPosition = Vector3.zero;
     }
     IEnumerator EndActs()
     {
@@ -53,7 +54,7 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill
         yield return new WaitForSeconds(2f);
         tentacBotAttract.DamageEnemies(realExploDamge);
         yield return new WaitUntil(() => !isActive);
-        effCollider.enabled = false;
+        effCollider.transform.localPosition = Vector3.down * 10;
         RobotAllBody.SetActive(false);
     }
 

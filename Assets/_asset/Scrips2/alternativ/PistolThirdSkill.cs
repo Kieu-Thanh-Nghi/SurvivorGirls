@@ -22,9 +22,9 @@ public class PistolThirdSkill : PistolSkill
         skill2.pistolSkill_SixthSense.weapon = pistolSkill_Magnum;
     }
 
-    public bool CheckIfOK()
+    public bool CheckIfOK(PistolSkillInjection thePsi)
     {
-        var skill2 = psi.skillList[(int)PistolSkillEnum.SixthSense] as PistolSecondSkill;
+        var skill2 = thePsi.skillList[(int)PistolSkillEnum.SixthSense] as PistolSecondSkill;
         if(skill2 != null && skill2.currentLV > currentLV)
         {
             return true;
