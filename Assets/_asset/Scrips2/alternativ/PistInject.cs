@@ -33,12 +33,12 @@ public abstract class ActiveSkill : Skill
         }
     }
 }
-public abstract class Skill : ScriptableObject
+public abstract class Skill : MonoBehaviour
 {
     [SerializeField] internal int currentLV = 0;
     protected int maxLvl = 5;
 
-    public abstract SkillEnum thisEnum { get; }
+    public abstract int thisEnumInt { get; }
     public abstract void SetSkillInjection(ISkillInjection skillInjection);
 
     public abstract void InjectSkill();

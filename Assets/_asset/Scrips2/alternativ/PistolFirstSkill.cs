@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/PistolSkill/FirstSkill")]
 public class PistolFirstSkill : PistolSkill
 {
     internal PistolSkill_Training pistolSkill_Training;
     int TimesToShoot = 1;
 
-    public override SkillEnum thisEnum => SkillEnum.Training;
+    public override int thisEnumInt => (int)PistolSkillEnum.Training;
 
     public override void InjectSkill()
     {
@@ -19,7 +18,7 @@ public class PistolFirstSkill : PistolSkill
             psi.playerGunAtkSystem,
             psi.playerGunAtkSystem);
 
-        var Skill2 = psi.skillList[(int)SkillEnum.SixthSense] as PistolSecondSkill;
+        var Skill2 = psi.skillList[(int)PistolSkillEnum.SixthSense] as PistolSecondSkill;
         if (Skill2 != null && Skill2.pistolSkill_SixthSense != null)
         {
             pistolSkill_Training.SubscribeOnlyOneShotEvent(Skill2.pistolSkill_SixthSense.ShotCount);

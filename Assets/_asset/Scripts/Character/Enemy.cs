@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
+    [SerializeField] Transform rotateBody;
     [SerializeField] internal NavMeshAgent moveByNav;
     IRotate rotateFuntion = new Rotate();
     internal Transform target;
@@ -33,7 +34,8 @@ public class Enemy : MonoBehaviour
     public void EnemyRotate()
     {
         faceDirect = (target.position - transform.position).normalized;
-        rotateFuntion.DoRotate(rb.transform, faceDirect);
+        faceDirect = Vector3.Lerp(rotateBody.forward, faceDirect, 0.5f);
+        rotateFuntion.DoRotate(rotateBody, faceDirect);
     }
 
     private void OnDisable()

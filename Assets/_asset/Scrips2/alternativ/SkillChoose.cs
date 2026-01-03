@@ -19,34 +19,34 @@ public class SkillChoose : MonoBehaviour
         }
         for(int i = 0; i < buttonInfos.Length; i++)
         {
-            buttonInfos[i].index = CheckSkillType(i, out buttonInfos[i].skillEnum, out buttonInfos[i].lv);
+            buttonInfos[i].index = CheckSkillType(i, out buttonInfos[i].skillEnumInt, out buttonInfos[i].lv);
         }
     }
 
-    int CheckSkillType(int index, out SkillEnum theEnum, out int theLV)
+    int CheckSkillType(int index, out int theEnumInt, out int theLV)
     {
         var skillInjection = skillInjections[index];
-        var skillEnum = skillInjection.ChoseSkill(out int WSkillLV);
-        if (skillEnum == SkillEnum.NoneSkill)
+        var skillEnumInt = skillInjection.ChoseSkill(out int WSkillLV);
+        if (skillEnumInt == -1)
         {
             for(int i = 0; i < skillInjections.Count; i++)
             {
                 if (i == index) continue;
-                skillEnum = skillInjections[i].ChoseSkill(out WSkillLV);
-                if (skillEnum != SkillEnum.NoneSkill)
+                skillEnumInt = skillInjections[i].ChoseSkill(out WSkillLV);
+                if (skillEnumInt != -1)
                 {
-                    theEnum = skillEnum;
+                    theEnumInt = skillEnumInt;
                     theLV = WSkillLV;
                     return i;
                 }
             }
-            theEnum = SkillEnum.NoneSkill;
+            theEnumInt = -1;
             theLV = WSkillLV;
             return index;
         }
         else
         {
-            theEnum = skillEnum;
+            theEnumInt = skillEnumInt;
             theLV = WSkillLV;
             return index;
         }
@@ -56,6 +56,6 @@ public class SkillChoose : MonoBehaviour
 public struct SkillButtonInfo
 {
     internal int index;
-    internal SkillEnum skillEnum;
+    internal int skillEnumInt;
     internal int lv;
 }

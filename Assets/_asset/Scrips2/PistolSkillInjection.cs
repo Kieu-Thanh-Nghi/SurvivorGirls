@@ -24,14 +24,14 @@ public class PistolSkillInjection : WeaponInjection
     {
         WeaponSetUp(transform.parent.GetComponentInChildren<AllWeaponMuzzle>());
         base.Start();
-        thirdSkill = skillList[(int)SkillEnum.Magnum] as PistolThirdSkill;
+        thirdSkill = skillList[(int)PistolSkillEnum.Magnum] as PistolThirdSkill;
     }
 
-    protected override SkillEnum CalculateChosenSkill(int n, List<SkillEnum> theList, out int skillLvl)
+    protected override int CalculateChosenSkill(int n, List<int> theList, out int skillLvl)
     {
         if (!thirdSkill.CheckIfOK())
         {
-            int i = theList.IndexOf(SkillEnum.Magnum);
+            int i = theList.IndexOf((int)PistolSkillEnum.Magnum);
             Swap(i, n, theList);
             n--;
         }
@@ -41,17 +41,17 @@ public class PistolSkillInjection : WeaponInjection
     [ContextMenu("inject skill1")]
     void test1()
     {
-        UpgradeASkill(SkillEnum.Training);
+        UpgradeASkill((int)PistolSkillEnum.Training);
     }
     [ContextMenu("inject skill2")]
     void test2()
     {
-        UpgradeASkill(SkillEnum.SixthSense);
+        UpgradeASkill((int)PistolSkillEnum.SixthSense);
     }
     [ContextMenu("inject skill3")]
     void test3()
     {
-        UpgradeASkill(SkillEnum.Magnum);
+        UpgradeASkill((int)PistolSkillEnum.Magnum);
     }
     public void WeaponSetUp(AllWeaponMuzzle weaponMuzzles)
     {
@@ -121,34 +121,33 @@ public enum SkillEnum
     ScifiDrone = 1,
 }
 
+public enum ActiveSkillEnum
+{
+    NoneSkill = -1,
+    BladeDrone = 0,
+    ScifiDrone = 1,
+    TentaclesRobot = 2,
+    ElectricMines = 3,
+}
+
+public enum PistolSkillEnum
+{
+    NoneSkill = -1,
+    //
+    Training = 0,
+    SixthSense = 1,
+    Magnum = 2,
+}
+
 public interface ISkillInjection { }
-
-public abstract class SkillContainer : ScriptableObject
-{
-    bool isInitialize;
-    internal Skill theSkill;
-    internal abstract SkillEnum skillEnum { get; }
-
-    public abstract void initializeSkill();
-}
-
-public class PistolFirstSkillContainer : SkillContainer
-{
-    internal override SkillEnum skillEnum => SkillEnum.Training;
-
-    public override void initializeSkill()
-    {
-        theSkill = new PistolFirstSkill();
-    }
-}
 
 public class SkillInjection : MonoBehaviour, ISkillInjection
 {
     [SerializeField] int skillQuantity;
     [SerializeField] internal List<Skill> skillList;
-    [SerializeField] protected List<SkillEnum> skillIndex;
-    protected List<SkillEnum> usingSkill = new List<SkillEnum>(4);
-    protected SkillEnum resultEnum;
+    [SerializeField] protected List<int> skillIndex;
+    protected List<int> usingSkill = new List<int>(4);
+    protected int resultEnum;
     int fullLvlSkillCount;
     int usedSkillCount;
     internal int selectedTimes;
@@ -159,19 +158,19 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
     {
         if (!isValidate) return;
         skillIndex.Clear();
-        skillList.Sort((x, y) => ((int)x.thisEnum).CompareTo((int)y.thisEnum));
-        int last = (int)skillList[skillList.Count - 1].thisEnum;
+        skillList.Sort((x, y) => (x.thisEnumInt).CompareTo(y.thisEnumInt));
+        int last = skillList[skillList.Count - 1].thisEnumInt;
 
         var tempList = new List<Skill>(last + 1);
         foreach (var aSkill in skillList)
         {
-            tempList.Insert((int)aSkill.thisEnum, aSkill);
+            tempList.Insert(aSkill.thisEnumInt, aSkill);
         }
         skillList = tempList;
 
         foreach (var aSkill in skillList)
         {
-            if(aSkill != null) skillIndex.Add(aSkill.thisEnum);
+            if(aSkill != null) skillIndex.Add(aSkill.thisEnumInt);
         }
     }
 
@@ -180,7 +179,7 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
     {
         foreach (var skillEnum in usingSkill)
         {
-            skillList[(int)skillEnum].currentLV = 0;
+            skillList[skillEnum].currentLV = 0;
         }
     }
 #endif
@@ -201,11 +200,11 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
         skillIndex.Clear();
         foreach (var aSkill in skillList)
         {
-            if (aSkill != null) skillIndex.Add(aSkill.thisEnum);
+            if (aSkill != null) skillIndex.Add(aSkill.thisEnumInt);
         }
         foreach(var e in usingSkill)
         {
-            skillList[(int)e].currentLV = 0;
+            skillList[e].currentLV = 0;
         }
         usingSkill.Clear();
         fullLvlSkillCount = 0;
@@ -213,42 +212,42 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
         selectedTimes = 0;
     }
 
-    public virtual SkillEnum ChoseSkill(out int skillLvl)
+    public virtual int ChoseSkill(out int skillLvl)
     {
         if(fullLvlSkillCount >= skillQuantity)
         {
             skillLvl = -1;
-            return SkillEnum.NoneSkill;
+            return -1;
         }
         var theList = PickList();
         int n = theList.Count;
         return CalculateChosenSkill(n, theList, out skillLvl);
     }
 
-    protected virtual SkillEnum CalculateChosenSkill(int n, List<SkillEnum> theList, out int skillLvl)
+    protected virtual int CalculateChosenSkill(int n, List<int> theList, out int skillLvl)
     {
         if (n <= selectedTimes)
         {
             skillLvl = -1;
-            return SkillEnum.NoneSkill;
+            return -1;
         }
         int lastIndex = n - selectedTimes;
         int i = Random.Range(0, lastIndex);
         resultEnum = theList[i];
         Swap(i, lastIndex, theList);
         selectedTimes++;
-        skillLvl = skillList[(int)resultEnum].currentLV;
+        skillLvl = skillList[resultEnum].currentLV;
         return resultEnum;
     }
 
-    protected void Swap(int a, int b, List<SkillEnum> theList)
+    protected void Swap(int a, int b, List<int> theList)
     {
         if (a >= b) return;
         var temp = theList[a];
         theList[a] = theList[b];
         theList[b] = temp;
     }
-    List<SkillEnum> PickList()
+    List<int> PickList()
     {
         if (usedSkillCount >= skillQuantity)
         {
@@ -264,9 +263,9 @@ public class SkillInjection : MonoBehaviour, ISkillInjection
     {
         ResetLvl();
     }
-    public virtual void UpgradeASkill(SkillEnum skillEnum)
+    public virtual void UpgradeASkill(int skillEnum)
     {
-        var result = skillList[(int)skillEnum];
+        var result = skillList[skillEnum];
         if (result.currentLV == 0)
         {
             result.SetSkillInjection(this);

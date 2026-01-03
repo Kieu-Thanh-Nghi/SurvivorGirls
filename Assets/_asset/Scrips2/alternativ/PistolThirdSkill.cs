@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/PistolSkill/ThirdSkill")]
 public class PistolThirdSkill : PistolSkill
 {
     internal PistolSkill_Magnum pistolSkill_Magnum;
     [SerializeField] Vector3 explodeScale = Vector3.one * 0.44f;
     Vector3 currentScale;
 
-    public override SkillEnum thisEnum => SkillEnum.Magnum;
+    public override int thisEnumInt => (int)PistolSkillEnum.Magnum;
 
     public override void InjectSkill()
     {
@@ -19,13 +18,13 @@ public class PistolThirdSkill : PistolSkill
         explodeEmiter.explodeEff = exploEff;
         pistolSkill_Magnum.explotionEff = exploEff;
 
-        var skill2 = psi.skillList[(int)SkillEnum.SixthSense] as PistolSecondSkill;
+        var skill2 = psi.skillList[(int)PistolSkillEnum.SixthSense] as PistolSecondSkill;
         skill2.pistolSkill_SixthSense.weapon = pistolSkill_Magnum;
     }
 
     public bool CheckIfOK()
     {
-        var skill2 = psi.skillList[(int)SkillEnum.SixthSense] as PistolSecondSkill;
+        var skill2 = psi.skillList[(int)PistolSkillEnum.SixthSense] as PistolSecondSkill;
         if(skill2 != null && skill2.currentLV > currentLV)
         {
             return true;

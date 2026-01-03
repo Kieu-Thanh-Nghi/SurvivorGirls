@@ -71,5 +71,6 @@ public class ActiveSkill_BladeDrone : UpdateSkill
             Vector3 Direct = Quaternion.Euler(0, angle * i, 0) * Vector3.forward;
             BladeDrones[i].forward = Direct;
         }
+        if (n >= 1) bladeDrone.localScale = Vector3.zero;
     }
 }

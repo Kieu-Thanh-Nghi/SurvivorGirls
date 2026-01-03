@@ -30,7 +30,7 @@ public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IE
     {
         float attackRadius = radius;
         if (target != null 
-            && target.gameObject.activeSelf 
+            && target.gameObject.activeInHierarchy 
             && (target.position - thisPos).sqrMagnitude < attackRadius * attackRadius)
         {
             DoAttack(weapon, thisPos);

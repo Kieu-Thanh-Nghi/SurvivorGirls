@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/ActiveSkill/ScifiDrone")]
 public class ScifiDroneSkill : ActiveSkill
 {
-    public override SkillEnum thisEnum => SkillEnum.ScifiDrone;
+    public override int thisEnumInt => (int)ActiveSkillEnum.ScifiDrone;
     [SerializeField] ActiveSkill_ScifiDrone ScifiDronePrefab;
     [SerializeField] float startFireRate = 4;
     ActiveSkill_ScifiDrone realScifiDrone;
@@ -11,7 +10,7 @@ public class ScifiDroneSkill : ActiveSkill
 
     public override void InjectSkill()
     {
-        realScifiDrone = Instantiate(ScifiDronePrefab, asi.Player);
+        realScifiDrone = Instantiate(ScifiDronePrefab, asi.transform);
         asi.playerActiveSkillsSystem.updateSkills.Add(realScifiDrone);
     }
 
