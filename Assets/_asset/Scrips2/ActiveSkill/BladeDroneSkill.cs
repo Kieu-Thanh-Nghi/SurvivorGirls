@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/ActiveSkill/BladeDrone")]
-
 public class BladeDroneSkill : ActiveSkill
 {
-    public override SkillEnum thisEnum => SkillEnum.BladeDrone;
+    public override int thisEnumInt => (int)ActiveSkillEnum.BladeDrone;
     [SerializeField] ActiveSkill_BladeDrone allBladeDronesPrefab;
     ActiveSkill_BladeDrone realAllBladeDrones;
 
     public override void InjectSkill()
     {
-        var allBladeDrones = Instantiate(allBladeDronesPrefab, asi.Player);
+        var allBladeDrones = Instantiate(allBladeDronesPrefab, asi.transform);
         asi.playerActiveSkillsSystem.updateSkills.Add(allBladeDrones);
         realAllBladeDrones = allBladeDrones;
     }

@@ -9,11 +9,22 @@ public class ActiveSkillInjection : SkillInjection
     [ContextMenu("testBD")]
     void testBD()
     {
-        UpgradeASkill(SkillEnum.BladeDrone);
+        UpgradeASkill((int)ActiveSkillEnum.BladeDrone);
     }
     [ContextMenu("testSD")]
     void testSD()
     {
-        UpgradeASkill(SkillEnum.ScifiDrone);
+        UpgradeASkill((int)ActiveSkillEnum.ScifiDrone);
+    }
+    [ContextMenu("aggro")]
+    void testAggro()
+    {
+        UpgradeASkill((int)ActiveSkillEnum.TentaclesRobot);
+    }    
+    
+    [ContextMenu("mines")]
+    void testMines()
+    {
+        UpgradeASkill((int)ActiveSkillEnum.ElectricMines);
     }
 }

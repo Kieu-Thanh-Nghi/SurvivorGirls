@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using DG.Tweening;
-using System.Collections;
 
 public class ActiveSkill_ScifiDrone : UpdateSkill, IHasDamage
 {
@@ -34,7 +33,7 @@ public class ActiveSkill_ScifiDrone : UpdateSkill, IHasDamage
     void FireNearestEnemy()
     {
         if (target != null
-            && target.gameObject.activeSelf)
+            && target.gameObject.activeInHierarchy)
         {
             if(Time.time - startShotTime >= timeBetweenShots)
             {
@@ -56,7 +55,8 @@ public class ActiveSkill_ScifiDrone : UpdateSkill, IHasDamage
     }
     void Attack()
     {
-        direction = (transform.position - target.position).normalized;
+        direction = transform.position - target.position;
+        direction.y = 0;
         transform.forward = direction;
         weapon.DoOneAttack(target.position);
     }

@@ -6,7 +6,6 @@ public class EnemyHurt : MonoBehaviour
     [SerializeField] ParticleSystem HurtEff;
     [SerializeField] Health health;
     [SerializeField] Transform Head;
-    internal DameText dameText;
 
     private void Start()
     {

@@ -50,5 +50,18 @@ public abstract class UpdateSkill : MonoBehaviour
     {
         isActive = false;
     }
+}
 
+public abstract class UpdateSkillWithPaddingActs : UpdateSkill
+{
+    protected override IEnumerator StartSkill()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => isActive);
+            yield return waitActiveDuration;
+            yield return new WaitUntil(() => isActive);
+            yield return waitCountDown;
+        }
+    }
 }

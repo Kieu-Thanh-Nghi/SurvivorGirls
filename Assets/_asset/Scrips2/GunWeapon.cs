@@ -22,10 +22,9 @@ public class BasicWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] internal ProjectileEmiter emiter;
 
-    public void DoOneAttack(Vector3 targetPos)
+    public virtual void DoOneAttack(Vector3 targetPos)
     {
         Vector3 direct = targetPos - emiter.transform.position;
-        direct.y = 0;
         emiter.transform.forward = direct;
         emiter.Emit();
     }

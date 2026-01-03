@@ -86,7 +86,6 @@ public class NearestObjectSphereDetecter : MonoBehaviour, INearestDetecter, ISph
     }
     public bool GetNearest(Vector3 thisPos, out Transform result)
     {
-        Debug.Log("ss");
         int n = Detect(thisPos);
         if (n < 1)
         {
