@@ -40,3 +40,38 @@ public class ElectricMinesSkill : ActiveSkill
         electricMines.AddAnotherMine(electricPool);
     }
 }
+
+public class FireWorksSkill : ActiveSkill
+{
+    public override int thisEnumInt => (int)ActiveSkillEnum.FireWorksSkill;
+
+    public override void InjectSkill()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ToLV1()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ToLV2()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ToLV3()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ToLV4()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ToLV5()
+    {
+        throw new System.NotImplementedException();
+    }
+}

@@ -5,9 +5,10 @@ using UnityEngine;
 using Lean.Pool;
 using UnityEngine.Events;
 
-public class FireWorksSkill : MonoBehaviour
+public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage
 {
     [SerializeField] Transform user;
+    [SerializeField] int burnDamage;
     [SerializeField] Vector3 FireCrackerScale = Vector3.one * 0.4f;
     [SerializeField] LeanGameObjectPool FireWorksPool;
     [SerializeField] LeanGameObjectPool FireCrackerPool;
@@ -71,4 +72,6 @@ public class FireWorksSkill : MonoBehaviour
         aMine.DOPath(path, duration, PathType.CatmullRom)
             .SetEase(Ease.Linear).OnComplete(() => DoWhenDone?.Invoke());
     }
+
+    public int GetDamage() => burnDamage;
 }

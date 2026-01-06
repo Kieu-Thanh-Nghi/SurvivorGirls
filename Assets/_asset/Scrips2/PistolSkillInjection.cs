@@ -130,6 +130,7 @@ public enum ActiveSkillEnum
     ScifiDrone = 1,
     TentaclesRobot = 2,
     ElectricMines = 3,
+    FireWorksSkill = 4,
 }
 
 public enum PistolSkillEnum
