@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5023812458606067727
 Transform:
   m_ObjectHideFlags: 0
@@ -299,8 +299,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.254, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5023812458606067727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -598,3 +598,5 @@ MonoBehaviour:
   rb: {fileID: 4547654963525852684}
   rotateBody: {fileID: 4434605450948834293}
   moveByNav: {fileID: 1294157450138994729}
+  enemyData: {fileID: 11400000, guid: 879a83c6f826dbb4ebda8d37833c9091, type: 2}
+  health: {fileID: 5111104559026529158}

@@ -8,7 +8,8 @@ public class ActiveSkill_BladeDrone : UpdateSkill
     [SerializeField] internal List<Transform> BladeDrones = new List<Transform>(5);
     [SerializeField] internal Transform BladesContainer;
     [SerializeField] internal Vector3 bladeScale;
-    [SerializeField] Transform BladeDronePrefab;
+    [SerializeField] internal int damageEachBlade = 2;
+    [SerializeField] BladeColl BladeDronePrefab;
     [SerializeField] float rotateSpeed;
     [SerializeField] float radius;
     float realRotateSpeed => rotateSpeed * PlayerParaScale.Instance._objectProjectileSpeed;
@@ -63,7 +64,10 @@ public class ActiveSkill_BladeDrone : UpdateSkill
     internal void SummonAnotherBlade()
     {
         var bladeDrone = Instantiate(BladeDronePrefab, BladesContainer);
-        BladeDrones.Add(bladeDrone);
+        bladeDrone.bladeDronesManager = this;
+        
+        var bladeTransform = bladeDrone.transform;
+        BladeDrones.Add(bladeTransform);
         int n = BladeDrones.Count;
         float angle = (float)360 / n;
         for(int i = 0; i < n; i++)
@@ -71,6 +75,7 @@ public class ActiveSkill_BladeDrone : UpdateSkill
             Vector3 Direct = Quaternion.Euler(0, angle * i, 0) * Vector3.forward;
             BladeDrones[i].forward = Direct;
         }
-        if (n >= 1) bladeDrone.localScale = Vector3.zero;
+        if (n >= 1) bladeTransform.localScale = Vector3.zero;
+        bladeDrone.gameObject.SetActive(true);
     }
 }

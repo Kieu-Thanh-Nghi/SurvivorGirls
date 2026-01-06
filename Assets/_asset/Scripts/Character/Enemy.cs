@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] Transform rotateBody;
     [SerializeField] internal NavMeshAgent moveByNav;
+    [SerializeField] internal EnemyData enemyData;
+    [SerializeField] Health health;
     IRotate rotateFuntion = new Rotate();
     internal Transform target;
     internal Vector3 faceDirect;
@@ -16,11 +18,25 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, rb.transform.forward);
     }
+
+    private void OnEnable()
+    {
+        health.currentHP = enemyData.health;
+        ResetSpeed();
+    }
     private void Start()
     {
         moveByNav.updateRotation = false;
     }
 
+    public void SetSpeed(float theSpeed)
+    {
+        moveByNav.speed = theSpeed;
+    }
+    public void ResetSpeed()
+    {
+        moveByNav.speed = enemyData.moveSpeed;
+    }
     //private void OnEnable()
     //{
     //    moveByNav.enabled = true;

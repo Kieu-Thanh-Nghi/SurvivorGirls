@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using System.Collections;
+using Lean.Pool;
 
 public class ActiveSkill_ElectricMine : UpdateSkill
 {
@@ -35,7 +36,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         {
             yield return BeginActs();
             yield return waitActiveDuration;
-            EndActs();
+            yield return EndActs();
             yield return waitCountDown;
         }
     }
@@ -48,8 +49,10 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         yield return new WaitUntil(() => isActive);
     }
 
-    void EndActs()
+    IEnumerator EndActs()
     {
+        minesContainer.localPosition = Vector3.down * 10;
+        yield return new WaitForSeconds(Time.fixedDeltaTime);
         isActive = false;
         minesContainer.gameObject.SetActive(false);
     }
@@ -117,10 +120,11 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         }
     }
 
-    public void AddAnotherMine()
+    public void AddAnotherMine(LeanGameObjectPool electricPool)
     {
         var aMine = Instantiate(minePrafab, minesContainer);
         aMine.SetShockWaveScale(ShockScale);
+        aMine.SetElecPool(electricPool);
         currentMineQuantity++;
         mines.Add(aMine);
     }
@@ -130,7 +134,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         ShockScale *= amount;
         foreach (var mine in mines)
         {
-            mine.GetComponent<AEMine>().SetShockWaveScale(ShockScale);
+            mine.SetShockWaveScale(ShockScale);
         }
     }
 }
