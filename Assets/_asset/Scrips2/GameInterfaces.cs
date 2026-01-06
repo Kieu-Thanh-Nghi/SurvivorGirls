@@ -59,4 +59,10 @@ public interface IEachAtkObserver
     public void SubscribeOnlyOneShotEvent(UnityAction WhenOneAttack);
 }
 
+public interface ISpeedChangable
+{
+    public void SpeedMultiplyWith(float amount);
+
+    public void ResetSpeed();
+}
 

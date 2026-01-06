@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ActiveSkill_TentaclesRobot : UpdateSkill
+public class ActiveSkill_TentaclesRobot : UpdateSkill, IHasDamage
 {
     [SerializeField] internal Transform user;
     [SerializeField] float spawnRadius = 6;
     [SerializeField] ParticleSystem seftDistruct;
     [SerializeField] TentacBotAttractEnemies tentacBotAttract;
     [SerializeField] GameObject RobotAllBody;
-    [SerializeField] Collider effCollider;
+    [SerializeField] GameObject VisualBody;
+    [SerializeField] Transform effCollider;
     [SerializeField] int exploDamage;
 
     internal int realExploDamge => exploDamage;
@@ -16,6 +17,7 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill
 
     protected override void Start()
     {
+        tentacBotAttract.hasDamage = this;
         RobotAllBody.transform.SetParent(null);
         base.Start();
         StartCoroutine(StartSkill());
@@ -36,30 +38,33 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill
 
     Vector3 RandomAround(Transform target, float radius)
     {
-        float angle = Random.Range(0f, 360f);
+        int angle = Random.Range(0, 360);
         Vector3 dir = Quaternion.AngleAxis(angle, target.up) * target.forward;
         return target.position + dir * radius;
     }
 
     IEnumerator BeginActs()
     {
+        tentacBotAttract.isSeftDistruct = false;
         RobotAllBody.transform.position = RandomAround(user, spawnRadius);
-        RobotAllBody.SetActive(true);
+        VisualBody.SetActive(true);
         yield return new WaitUntil(() => isActive);
-        effCollider.transform.localPosition = Vector3.zero;
+        tentacBotAttract.transform.localPosition = Vector3.zero;
     }
     IEnumerator EndActs()
     {
         ActiveExplotion();
         yield return new WaitForSeconds(2f);
-        tentacBotAttract.DamageEnemies(realExploDamge);
-        yield return new WaitUntil(() => !isActive);
-        effCollider.transform.localPosition = Vector3.down * 10;
-        RobotAllBody.SetActive(false);
+        tentacBotAttract.isSeftDistruct = true;
+        tentacBotAttract.transform.localPosition = Vector3.down * 10;
+        VisualBody.SetActive(false);
+        isActive = false;
     }
 
     void ActiveExplotion()
     {
         seftDistruct.Play();
     }
+
+    public int GetDamage() => exploDamage;
 }

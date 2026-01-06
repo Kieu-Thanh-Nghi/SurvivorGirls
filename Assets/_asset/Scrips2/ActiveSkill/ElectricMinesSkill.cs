@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using Lean.Pool;
 
 public class ElectricMinesSkill : ActiveSkill
 {
     [SerializeField] ActiveSkill_ElectricMine electricMinePrefab;
     [SerializeField] float shockScaleUpAmount;
+    [SerializeField] LeanGameObjectPool electricPool;
     ActiveSkill_ElectricMine electricMines;
     public override int thisEnumInt => (int)ActiveSkillEnum.ElectricMines;
 
@@ -14,8 +16,8 @@ public class ElectricMinesSkill : ActiveSkill
 
     public override void ToLV1()
     {
-        electricMines.AddAnotherMine();
-        electricMines.AddAnotherMine();
+        electricMines.AddAnotherMine(electricPool);
+        electricMines.AddAnotherMine(electricPool);
     }
 
     public override void ToLV2()
@@ -25,16 +27,16 @@ public class ElectricMinesSkill : ActiveSkill
 
     public override void ToLV3()
     {
-        electricMines.AddAnotherMine();
+        electricMines.AddAnotherMine(electricPool);
     }
 
     public override void ToLV4()
     {
-        electricMines.AddAnotherMine();
+        electricMines.AddAnotherMine(electricPool);
     }
 
     public override void ToLV5()
     {
-        electricMines.AddAnotherMine();
+        electricMines.AddAnotherMine(electricPool);
     }
 }

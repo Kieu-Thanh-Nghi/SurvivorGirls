@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 7993137917453238135}
   - component: {fileID: 6121389893812236789}
   - component: {fileID: 906804127387234734}
-  m_Layer: 0
+  - component: {fileID: 1072369219540351935}
+  - component: {fileID: 5393584619113332873}
+  m_Layer: 15
   m_Name: Particle System_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071067, y: 0.000000059604645, z: -0, w: 0.70710695}
   m_LocalPosition: {x: 0, y: 0.052500002, z: 0}
-  m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1.4999998}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7479140147840707473}
@@ -2292,6 +2294,42 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1072369219540351935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684131618475171601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee3c028aff62964180d8e9ea76a0a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electricPool: {fileID: 0}
+--- !u!136 &5393584619113332873
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684131618475171601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.35
+  m_Height: 1.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.4}
 --- !u!1 &7788036996059937214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,7 +2343,7 @@ GameObject:
   - component: {fileID: 9006746361815678197}
   - component: {fileID: 4807945505958022685}
   - component: {fileID: 4702089390830503594}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: skill_electrictrap 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2320,7 +2358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7788036996059937214}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.2690073, y: 0, z: 2.9905107}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
@@ -4706,6 +4744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShockWave: {fileID: 6121389893812236789}
+  eMineColl: {fileID: 1072369219540351935}
 --- !u!1 &7863399677163355024
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,7 +4754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317428347941990661}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ElectricTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4749,7 +4788,7 @@ GameObject:
   - component: {fileID: 1334786787098469966}
   - component: {fileID: 1893126105478202153}
   - component: {fileID: 775870001391302503}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ElecTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
