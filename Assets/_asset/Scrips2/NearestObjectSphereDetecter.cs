@@ -123,3 +123,33 @@ public class NearestObjectSphereDetecter : MonoBehaviour, INearestDetecter, ISph
         return enePosies;
     }
 }
+
+public class ObjectsSphereRandomDetecter
+{
+    Collider[] buffer = new Collider[64];
+
+    public int DetectEnemiesNonAlloc(
+        Vector3 center,
+        float radius,
+        int count,
+        LayerMask layer,
+        Transform[] result
+    )
+    {
+        int total = Physics.OverlapSphereNonAlloc(center, radius, buffer, layer);
+
+        if (total == 0)
+            return 0;
+
+        count = Mathf.Min(count, total);
+
+        for (int i = 0; i < count; i++)
+        {
+            int j = Random.Range(i, total);
+            (buffer[i], buffer[j]) = (buffer[j], buffer[i]);
+            result[i] = buffer[i].transform;
+        }
+
+        return count;
+    }
+}

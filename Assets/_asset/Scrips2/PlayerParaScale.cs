@@ -8,7 +8,7 @@ public class PlayerParaScale : MonoBehaviour, IProjectileSpeedScale, IAreaRadius
 
     [SerializeField] internal float _objectProjectileSpeed = 1;
     [SerializeField] internal float _areaRadius = 1;
-    [SerializeField] internal float _countDown = 1;
+    [SerializeField] internal float _coolDown = 1;
     [SerializeField] internal float _activeDuration = 1;
 
     private void Awake()

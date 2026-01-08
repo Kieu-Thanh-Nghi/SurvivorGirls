@@ -20,6 +20,7 @@ public class BurnEff : Effect
 
     protected void endEff()
     {
+        StopAllCoroutines();
         LeanPool.Despawn(gameObject);
     }
 }

@@ -1,15 +1,14 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
 using UnityEngine.Events;
 
-public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage
+public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage, IHasCoolDown
 {
+    [SerializeField] float baseCooldown;
     [SerializeField] Transform user;
     [SerializeField] int burnDamage;
-    [SerializeField] Vector3 FireCrackerScale = Vector3.one * 0.4f;
+    [SerializeField] internal Vector3 FireCrackerScale = Vector3.one * 0.4f;
     [SerializeField] LeanGameObjectPool FireWorksPool;
     [SerializeField] LeanGameObjectPool FireCrackerPool;
     [SerializeField] float FWRadius, FCRadius, DetectRadius, AlternativeRadius;
@@ -17,7 +16,16 @@ public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage
     [SerializeField] float throwDuration = 1;
     [SerializeField] LayerMask layerMask;
     Collider[] detectedEnemy = new Collider[1];
-
+    CoolDownSystem coolDownSystem = new();
+    private void Start()
+    {
+        StartCoroutine(coolDownSystem.RunEffInCoolDown(DoSkill, this));
+    }
+    public float GetCoolDown() => baseCooldown * PlayerParaScale.Instance._coolDown;
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
     [ContextMenu("test")]
     public void DoSkill()
     {
@@ -74,4 +82,5 @@ public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage
     }
 
     public int GetDamage() => burnDamage;
+
 }

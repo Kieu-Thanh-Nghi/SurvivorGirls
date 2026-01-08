@@ -7,6 +7,7 @@ using Lean.Pool;
 public class ActiveSkill_ElectricMine : UpdateSkill
 {
     [SerializeField] Transform minesContainer;
+    [SerializeField] LeanGameObjectPool electricPool;
     [SerializeField] float spawnRadius = 6;
     [SerializeField] int maxMineQuantity = 5;
     [SerializeField] Vector3 mineScale = Vector3.one * 2;
@@ -120,7 +121,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         }
     }
 
-    public void AddAnotherMine(LeanGameObjectPool electricPool)
+    public void AddAnotherMine()
     {
         var aMine = Instantiate(minePrafab, minesContainer);
         aMine.SetShockWaveScale(ShockScale);

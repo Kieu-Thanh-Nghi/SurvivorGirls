@@ -131,6 +131,7 @@ public enum ActiveSkillEnum
     TentaclesRobot = 2,
     ElectricMines = 3,
     FireWorksSkill = 4,
+    ThunderBolts = 5,
 }
 
 public enum PistolSkillEnum

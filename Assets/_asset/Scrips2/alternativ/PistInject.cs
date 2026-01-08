@@ -51,23 +51,18 @@ public abstract class Skill : MonoBehaviour
             case 0:
                 InjectSkill();
                 ToLV1();
-                currentLV++;
                 break;
             case 1:
                 ToLV2();
-                currentLV++;
                 break;
             case 2:
                 ToLV3();
-                currentLV++;
                 break;
             case 3:
                 ToLV4();
-                currentLV++;
                 break;
             case 4:
                 ToLV5();
-                currentLV++;
                 break;
         }
         currentLV++;

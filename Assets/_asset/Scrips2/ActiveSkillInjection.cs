@@ -26,5 +26,16 @@ public class ActiveSkillInjection : SkillInjection
     void testMines()
     {
         UpgradeASkill((int)ActiveSkillEnum.ElectricMines);
+    }    
+    
+    [ContextMenu("fireWorks")]
+    void testFireWorks()
+    {
+        UpgradeASkill((int)ActiveSkillEnum.FireWorksSkill);
+    }
+    [ContextMenu("ThunderBolts")]
+    void testThunderBolts()
+    {
+        UpgradeASkill((int)ActiveSkillEnum.ThunderBolts);
     }
 }

@@ -36,3 +36,36 @@ public class TimedEffectRunner
         onComplete?.Invoke();
     }
 }
+
+[System.Serializable]
+public class CoolDownSystem
+{
+    float counting;
+
+    public IEnumerator RunEffInCoolDown(UnityAction effect, IHasCoolDown hasCoolDown, bool isRunimmediately = true)
+    {
+        if (isRunimmediately)
+        {
+            counting = hasCoolDown.GetCoolDown();
+        }
+        else
+        {
+            counting = 0;
+        }
+        while (true)
+        {
+            counting += Time.deltaTime;
+            if (counting >= hasCoolDown.GetCoolDown())
+            {
+                effect?.Invoke();
+                counting = 0;
+            }
+            yield return null;
+        }
+    }
+}
+
+public interface IHasCoolDown
+{
+    public float GetCoolDown();
+}

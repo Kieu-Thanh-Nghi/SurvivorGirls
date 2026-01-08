@@ -26,6 +26,7 @@ public class ElectricEff : Effect
     void endEff()
     {
         speedChangable.ResetSpeed();
+        StopAllCoroutines();
         LeanPool.Despawn(gameObject);
     }
 }
