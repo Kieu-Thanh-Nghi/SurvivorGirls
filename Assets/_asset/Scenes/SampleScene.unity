@@ -3772,6 +3772,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1094399210}
+  - {fileID: 2074789131}
   m_Father: {fileID: 69214816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &170649329
@@ -12636,7 +12637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &476864419
 Transform:
   m_ObjectHideFlags: 0
@@ -12916,7 +12917,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.6436324, b: 1, a: 1}
+      maxColor: {r: 0.33374867, g: 0.72583556, b: 0.9433962, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -41116,12 +41117,12 @@ GameObject:
   - component: {fileID: 1750712655}
   - component: {fileID: 1750712654}
   m_Layer: 0
-  m_Name: body_outside
+  m_Name: froze drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1750712654
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41180,14 +41181,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750712653}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.82, y: 3.49, z: 0.53}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 476864419}
   - {fileID: 1992081268}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2074789131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1753220611 stripped
 ParticleSystem:
@@ -42128,8 +42129,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ActiveSkill_ThunderBolts, Assembly-CSharp
+      - m_Target: {fileID: 2074789130}
+        m_TargetAssemblyTypeName: ActiveSkill_FrozeDrone, Assembly-CSharp
         m_MethodName: DoSkill
         m_Mode: 1
         m_Arguments:
@@ -50246,6 +50247,58 @@ Transform:
   - {fileID: 56436806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2074789129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2074789131}
+  - component: {fileID: 2074789130}
+  m_Layer: 0
+  m_Name: Froze drone skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2074789130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074789129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5a222d4a84b654e8dd9b75d1e25707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frozeDrone: {fileID: 1750712656}
+  frozeGas: {fileID: 476864418}
+  droneScale: {x: 1, y: 1, z: 1}
+  zoomTime: 0.5
+  moveDistance: 5
+  rotateTime: 0.75
+  moveTime: 3
+--- !u!4 &2074789131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074789129}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8249999, y: 2.908333, z: 0.24999999}
+  m_LocalScale: {x: 0.83333325, y: 0.83333325, z: 0.83333325}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1750712656}
+  m_Father: {fileID: 170649328}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2075288479 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198615713099298413, guid: 960cb7371db2e864ea7489a90abf8777,
@@ -50954,4 +51007,3 @@ SceneRoots:
   - {fileID: 1079856599}
   - {fileID: 833621399}
   - {fileID: 1993672445}
-  - {fileID: 1750712656}
