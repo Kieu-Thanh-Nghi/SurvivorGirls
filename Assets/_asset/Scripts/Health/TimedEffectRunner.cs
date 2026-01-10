@@ -4,19 +4,20 @@ using UnityEngine.Events;
 
 public class TimedEffectRunner
 {
-    public float totalTime = 5f;
-    public float interval = 0.5f;
-    public float elapsed;
-    public bool isInfinite, isStop;
+    internal float totalTime = 5f;
+    internal float interval = 0.5f;
+    internal float elapsed;
+    internal bool isInfinite, isStop;
 
-    public IEnumerator RunEff(UnityAction effect, UnityAction onComplete = null)
+    public IEnumerator RunEff(UnityAction effect, UnityAction onComplete = null, UnityAction onBegin = null)
     {
         elapsed = 0;
         float timer = 0f;
         isStop = false;
-
+        onBegin?.Invoke();
         while (elapsed < totalTime || isInfinite)
         {
+            Debug.Log("e" + elapsed);
             if (isStop)
             {
                 onComplete?.Invoke();
@@ -34,6 +35,23 @@ public class TimedEffectRunner
             yield return null;
         }
         onComplete?.Invoke();
+    }
+    public IEnumerator ActiveEff(UnityAction Starteffect, UnityAction EndEff)
+    {
+        elapsed = 0;
+        isStop = false;
+        Starteffect?.Invoke();
+        while (elapsed < totalTime || isInfinite)
+        {
+            if (isStop)
+            {
+                EndEff?.Invoke();
+                yield break;
+            }
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        EndEff?.Invoke();
     }
 }
 
@@ -59,6 +77,19 @@ public class CoolDownSystem
             {
                 effect?.Invoke();
                 counting = 0;
+            }
+            yield return null;
+        }
+    }
+    public IEnumerator RunCoolDown(IHasCoolDown hasCoolDown)
+    {
+        counting = 0;
+        while (true)
+        {
+            counting += Time.deltaTime;
+            if (counting >= hasCoolDown.GetCoolDown())
+            {
+                yield break;
             }
             yield return null;
         }

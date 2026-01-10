@@ -10,7 +10,7 @@ public class PistolSkillInjection : WeaponInjection
     [SerializeField] internal NearestObjectSphereDetecter nearestObjectSphereDetecter;
     [SerializeField] internal GunWeapon gunWeapon;
     [SerializeField] int neededEnemies, neededShots, TimesToShoot;
-    [SerializeField] internal WeaponData weaponData;
+    
     internal PistolSkill_Training pistolSkill_Training;
     internal PistolSkill_SixthSense pistolSkill_SixthSense;
     internal PistolSkill_Magnum pistolSkill_Magnum;
@@ -108,7 +108,7 @@ public class PistolSkillInjection : WeaponInjection
 
 public class WeaponInjection : SkillInjection
 {
-
+    [SerializeField] internal WeaponData weaponData;
 }
 
 public enum SkillEnum
@@ -132,6 +132,8 @@ public enum ActiveSkillEnum
     ElectricMines = 3,
     FireWorksSkill = 4,
     ThunderBolts = 5,
+    FrozeDrone = 6,
+    PlasmaShield = 7
 }
 
 public enum PistolSkillEnum

@@ -4,7 +4,8 @@ public class ActiveSkillInjection : SkillInjection
 {
     [SerializeField] internal Transform Player;
     [SerializeField] internal PlayerActiveSkillsSystem playerActiveSkillsSystem;
-    [SerializeField] internal PlayerParaScale playerParaScale;
+    [SerializeField] internal WeaponInjection weaponInjection;
+    internal int weaponDamage => weaponInjection.weaponData.GetDamage();
 
     [ContextMenu("testBD")]
     void testBD()
@@ -37,5 +38,14 @@ public class ActiveSkillInjection : SkillInjection
     void testThunderBolts()
     {
         UpgradeASkill((int)ActiveSkillEnum.ThunderBolts);
+    }
+    [ContextMenu("frozenDrone")]
+    public void testfrozenDrone()
+    {
+        UpgradeASkill((int)ActiveSkillEnum.FrozeDrone);
+    }
+    public void testPlasmaShield()
+    {
+        UpgradeASkill((int)ActiveSkillEnum.PlasmaShield);
     }
 }

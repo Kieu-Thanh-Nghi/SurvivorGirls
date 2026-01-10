@@ -6,6 +6,7 @@ public class PlayerParaScale : MonoBehaviour, IProjectileSpeedScale, IAreaRadius
 {
     internal static PlayerParaScale Instance;
 
+    [SerializeField] internal float _moveSpeed = 1;
     [SerializeField] internal float _objectProjectileSpeed = 1;
     [SerializeField] internal float _areaRadius = 1;
     [SerializeField] internal float _coolDown = 1;

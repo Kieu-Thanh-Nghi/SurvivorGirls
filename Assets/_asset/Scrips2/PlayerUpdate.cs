@@ -9,7 +9,8 @@ public class PlayerUpdate : MonoBehaviour
     IMove playerMove = new PlayerMove();
     [SerializeField] PlayerMoveAnim moveAnim;
     [SerializeField] AnimID animID;
-    [SerializeField] float speed;
+    [SerializeField] float baseSpeed;
+    float speed => baseSpeed * PlayerParaScale.Instance._moveSpeed;
 
 
     private void Update()

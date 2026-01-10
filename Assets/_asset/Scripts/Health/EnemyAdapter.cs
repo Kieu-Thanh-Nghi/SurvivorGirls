@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class EnemyAdapter : MonoBehaviour, ITargetChangable, ISpeedChangable
+public class EnemyAdapter : MonoBehaviour, ITargetChangable, ISpeedChangable, IMoveFreezing
 {
     [SerializeField] Enemy enemy;
 
@@ -9,6 +9,11 @@ public class EnemyAdapter : MonoBehaviour, ITargetChangable, ISpeedChangable
     {
         enemy.target = GamePlayCtrler.Instance.Player;
         enemy.SetEnemyDestination();
+    }
+
+    public void SetIsMoveFreeze(bool isFreeze)
+    {
+        enemy.SetMoving(isFreeze);
     }
 
     public void SetTarget(Transform newTarget)

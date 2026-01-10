@@ -29,6 +29,10 @@ public class Enemy : MonoBehaviour
         moveByNav.updateRotation = false;
     }
 
+    public void SetMoving(bool isStop)
+    {
+        moveByNav.isStopped = isStop;
+    }
     public void SetSpeed(float theSpeed)
     {
         moveByNav.speed = theSpeed;

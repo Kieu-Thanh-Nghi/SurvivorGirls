@@ -25,6 +25,11 @@ public interface ITargetChangable
     public void ResetTarget();
 }
 
+public interface IMoveFreezing
+{
+    public void SetIsMoveFreeze(bool isFreeze);
+}
+
 public enum DamageType
 {
     Normal = 0,
