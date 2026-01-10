@@ -9,6 +9,7 @@ public class BulletQuantity : MonoBehaviour
     [SerializeField] Image reloadImage;
     [SerializeField] TMP_Text quantityText;
     [SerializeField] float reloadTime;
+    internal float ReloadTime => Mathf.CeilToInt(reloadTime * PlayerParaScale.Instance._reloadTime);
     int currentQuantity;
 
     private void Start()
@@ -44,7 +45,7 @@ public class BulletQuantity : MonoBehaviour
     }
     bool ReloadEff(float startTime)
     {
-        float percent = (Time.time - startTime) / reloadTime;
+        float percent = (Time.time - startTime) / ReloadTime;
         reloadImage.fillAmount = 1 - percent;
 
         return percent >= 1;

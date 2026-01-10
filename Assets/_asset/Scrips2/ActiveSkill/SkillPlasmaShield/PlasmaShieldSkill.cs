@@ -4,7 +4,6 @@ public class PlasmaShieldSkill : ActiveSkill
 {
     [SerializeField] ActiveSkill_PlasmaField plasmaFieldPrefab;
     [SerializeField] Vector3 shieldSize = Vector3.one * 4.25f;
-    [SerializeField] ActiveSkillInjection ActiveSkillInjection;
     ActiveSkill_PlasmaField plasmaField;
     public override int thisEnumInt => (int)ActiveSkillEnum.PlasmaShield;
 
@@ -15,7 +14,7 @@ public class PlasmaShieldSkill : ActiveSkill
 
     public override void ToLV1()
     {
-        plasmaField.damage = Mathf.CeilToInt(ActiveSkillInjection.weaponDamage * 0.15f);
+        plasmaField.damage = Mathf.CeilToInt(asi.weaponDamage * 0.15f);
         plasmaField.SetShieldSize(shieldSize);
     }
 

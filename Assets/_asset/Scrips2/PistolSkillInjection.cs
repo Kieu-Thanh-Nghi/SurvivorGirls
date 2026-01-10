@@ -111,16 +111,16 @@ public class WeaponInjection : SkillInjection
     [SerializeField] internal WeaponData weaponData;
 }
 
-public enum SkillEnum
+public enum PassiveSkillEnum
 {
     NoneSkill = -1,
     //
-    Training = 0,
-    SixthSense = 1,
-    Magnum = 2,
-    //
-    BladeDrone = 0,
-    ScifiDrone = 1,
+    ChangeMoveSpeed = 0,
+    ChangeExpRange = 1,
+    ChangeSkillCoolDown = 2,
+    ChangeDamage = 3,
+    ChangeGotExp = 4,
+    ChangeReload = 5,
 }
 
 public enum ActiveSkillEnum

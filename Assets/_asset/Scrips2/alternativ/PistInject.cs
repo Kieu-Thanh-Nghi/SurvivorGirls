@@ -33,6 +33,18 @@ public abstract class ActiveSkill : Skill
         }
     }
 }
+public abstract class PassiveSkill : Skill
+{
+    protected PassiveSkillInjection pasi;
+
+    public override void SetSkillInjection(ISkillInjection skillInjection)
+    {
+        if (skillInjection is PassiveSkillInjection thePasi)
+        {
+            pasi = thePasi;
+        }
+    }
+}
 public abstract class Skill : MonoBehaviour
 {
     [SerializeField] internal int currentLV = 0;

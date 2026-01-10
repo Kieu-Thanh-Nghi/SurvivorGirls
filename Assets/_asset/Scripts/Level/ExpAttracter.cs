@@ -6,7 +6,7 @@ public class ExpAttracter : MonoBehaviour
     [SerializeField] int theExp;
     private void OnParticleTrigger()
     {
-        levelManager.expInOneFrame += theExp;
+        levelManager.expInOneFrame += Mathf.CeilToInt(theExp * PlayerParaScale.Instance._gotExp);
         Debug.Log("triggered");
     }
 }
