@@ -23,24 +23,24 @@ public class EnemiesUpdate : MonoBehaviour
     public void AddAnEnemy(Enemy theEnemy)
     {
         enemies.Add(theEnemy);
-        theEnemy.enemyIndex = enemyQuantity;
-        enemyQuantity++;
+        theEnemy.enemyIndex = enemies.Count - 1;
+        enemyQuantity = enemies.Count;
     }
     public void RemoveAnEnemy(Enemy theEnemy)
     {
-        if (enemyQuantity < 2)
+        var quantity = enemies.Count;
+        if (quantity == 1)
         {
             enemies.RemoveAt(0);
         }
         else
         {
-            temp = enemies[enemyQuantity - 1];
-            enemies[enemyQuantity - 1] = theEnemy;
-            enemies[theEnemy.enemyIndex] = temp;
-            temp.enemyIndex = theEnemy.enemyIndex;
-            enemies.RemoveAt(enemyQuantity - 1);
+            enemies[quantity - 1].enemyIndex = theEnemy.enemyIndex;
+            (enemies[theEnemy.enemyIndex], enemies[quantity - 1])
+                = (enemies[quantity - 1], enemies[theEnemy.enemyIndex]);
+            enemies.RemoveAt(quantity - 1);
         }
-        enemyQuantity--;
+        enemyQuantity = enemies.Count;
         killedZomCount.DoCount();
     }
     private void FixedUpdate()

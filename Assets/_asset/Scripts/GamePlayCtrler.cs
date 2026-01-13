@@ -8,7 +8,6 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] EnemiesUpdate enemiesUpdate;
     [SerializeField] internal Transform Player;
     [SerializeField] DeathCount killedZomCount;
-    [SerializeField] Character playChar;
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] internal EXPpools expPools;

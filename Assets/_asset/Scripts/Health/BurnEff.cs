@@ -3,9 +3,9 @@ using Lean.Pool;
 
 public class BurnEff : Effect
 {
-    [SerializeField] internal int damage = 1;
-    internal IHasDamage hasDamage;
+    protected int damage;
     internal IDamageable damageable;
+    internal IHasDamage hasDamage { set => damage = value.GetDamage(); }
     protected virtual void OnEnable()
     {
         Transform thisParent = transform.parent;
@@ -15,10 +15,10 @@ public class BurnEff : Effect
     }
     protected void damageTarget()
     {
-        damageable.TakeDamage(hasDamage.GetDamage(), DamageType.Normal);
+        damageable.TakeDamage(damage, DamageType.Normal);
     }
 
-    protected void endEff()
+    protected virtual void endEff()
     {
         StopAllCoroutines();
         LeanPool.Despawn(gameObject);

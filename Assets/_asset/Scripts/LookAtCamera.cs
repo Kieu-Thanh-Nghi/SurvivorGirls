@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
-    [SerializeField] Transform camera;
+    [SerializeField] Transform cam;
     [ContextMenu("look")]
     void LookAtCam()
     {
-        transform.LookAt(camera);
+        transform.rotation = cam.rotation;
+        //transform.forward = cam.forward;
+        //transform.right = cam.right;
     }
 }

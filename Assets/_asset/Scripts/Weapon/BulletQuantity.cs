@@ -9,7 +9,15 @@ public class BulletQuantity : MonoBehaviour
     [SerializeField] Image reloadImage;
     [SerializeField] TMP_Text quantityText;
     [SerializeField] float reloadTime;
-    internal float ReloadTime => Mathf.CeilToInt(reloadTime * PlayerParaScale.Instance._reloadTime);
+    internal float ReloadTime
+    {
+        get
+        {
+            float theReloadTime = Mathf.CeilToInt((reloadTime + PlayerParaScale.Instance._reloadPadding) * PlayerParaScale.Instance._reloadTime);
+            if (theReloadTime <= 0) theReloadTime = 0.1f;
+            return theReloadTime;
+        }
+    }
     int currentQuantity;
 
     private void Start()

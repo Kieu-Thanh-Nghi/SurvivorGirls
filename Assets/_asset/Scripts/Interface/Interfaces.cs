@@ -35,3 +35,9 @@ public enum DamageType
     Normal = 0,
     Crit = 1
 }
+
+public interface IHasHurtDamage
+{
+    public int GetHurtDamage();
+}
+

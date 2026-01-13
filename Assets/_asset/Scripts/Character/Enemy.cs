@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        health.currentHP = enemyData.health;
+        health.CurrentHP = enemyData.health;
         ResetSpeed();
     }
     private void Start()

@@ -14,12 +14,12 @@ public class IceEff : Effect
             StartCoroutine(effectRunner.ActiveEff(DoIceEff, EndIceEff));
         }
     }
-    void DoIceEff()
+    protected virtual void DoIceEff()
     {
         moveFreezing.SetIsMoveFreeze(true);
     }
 
-    void EndIceEff()
+    protected virtual void EndIceEff()
     {
         moveFreezing.SetIsMoveFreeze(false);
         LeanPool.Despawn(gameObject);

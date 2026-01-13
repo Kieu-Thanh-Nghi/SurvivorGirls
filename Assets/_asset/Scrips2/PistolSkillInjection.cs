@@ -55,7 +55,7 @@ public class PistolSkillInjection : WeaponInjection
     {
         UpgradeASkill((int)PistolSkillEnum.Magnum);
     }
-    public void WeaponSetUp(AllWeaponMuzzle weaponMuzzles)
+    public override void WeaponSetUp(AllWeaponMuzzle weaponMuzzles)
     {
         pistolMuzzle = weaponMuzzles.PistolMuzzle;
         var emiter = Instantiate(bulletParticleSystem, pistolMuzzle);
@@ -109,18 +109,23 @@ public class PistolSkillInjection : WeaponInjection
 public class WeaponInjection : SkillInjection
 {
     [SerializeField] internal WeaponData weaponData;
+
+    public virtual void WeaponSetUp(AllWeaponMuzzle weaponMuzzles)
+    {
+    }
 }
 
 public enum PassiveSkillEnum
 {
     NoneSkill = -1,
     //
-    ChangeMoveSpeed = 0,
-    ChangeExpRange = 1,
-    ChangeSkillCoolDown = 2,
-    ChangeDamage = 3,
-    ChangeGotExp = 4,
-    ChangeReload = 5,
+    Alacrity = 0,
+    BigHands = 1,
+    Controller = 2,
+    Determination = 3,
+    Veteran = 4,
+    GunMaster = 5,
+    HealingFactor = 6
 }
 
 public enum ActiveSkillEnum
