@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         moveByNav.updateRotation = false;
     }
 
-    public void SetMoving(bool isStop)
+    public void SetStopMoving(bool isStop)
     {
         moveByNav.isStopped = isStop;
     }

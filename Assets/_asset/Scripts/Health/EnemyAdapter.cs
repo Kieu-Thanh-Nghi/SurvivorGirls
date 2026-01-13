@@ -13,7 +13,7 @@ public class EnemyAdapter : MonoBehaviour, ITargetChangable, ISpeedChangable, IM
 
     public void SetIsMoveFreeze(bool isFreeze)
     {
-        enemy.SetMoving(isFreeze);
+        enemy.SetStopMoving(isFreeze);
     }
 
     public void SetTarget(Transform newTarget)

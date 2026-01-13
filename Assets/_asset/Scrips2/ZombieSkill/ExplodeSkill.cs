@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Lean.Pool;
 using UnityEngine.Events;
 
 public class ExplodeSkill : MonoBehaviour
 {
     [SerializeField] GameObject BoomCount, Boom;
     [SerializeField] Transform BoomContain;
-    [SerializeField] UnityEvent OnDoneExplode;
+    [SerializeField] internal UnityEvent OnDoneExplode, OnTouchedTarget;
     [SerializeField] internal float CountTime;
     [SerializeField] int damage = 5;
     [SerializeField] LayerMask layerMask;
     [SerializeField] float causeDamageRadius = 0.5f;
     [SerializeField] float causeDamageDelay = 0.1f;
+    [SerializeField] Collider coll;
 
     void OnDrawGizmos()
     {
@@ -24,6 +26,17 @@ public class ExplodeSkill : MonoBehaviour
     public void ActiveBoom()
     {
         StartCoroutine(TurnOnBoomCount());
+    }
+
+    private void OnEnable()
+    {
+        coll.enabled = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        coll.enabled = false;
+        OnTouchedTarget?.Invoke();
     }
     IEnumerator TurnOnBoomCount()
     {
@@ -56,4 +69,60 @@ public class ExplodeSkill : MonoBehaviour
     {
         StopAllCoroutines();
     }
+}
+
+public class ThrowingRockSkill : MonoBehaviour
+{
+    [SerializeField] Animator animator;
+    [SerializeField] Enemy enemy;
+    [SerializeField] Transform throwPos;
+    [SerializeField] float coolDown = 1;
+    WaitForSeconds wait;
+    bool isDoneThrow;
+
+    private void Start()
+    {
+        wait = new WaitForSeconds(coolDown);
+    }
+    private void OnEnable()
+    {
+        enemy.SetStopMoving(false);
+        StartCoroutine(RunThrowSkill());
+    }
+    IEnumerator RunThrowSkill()
+    {
+        while (true)
+        {
+            yield return wait;
+            ActiveThrow();
+            yield return new WaitUntil(() => isDoneThrow);
+        }
+    }
+    void ActiveThrow()
+    {
+        isDoneThrow = false;
+        animator.SetTrigger("throwTrigger");
+    }
+
+    public void ThrowRock()
+    {
+        enemy.SetStopMoving(true);
+    }
+
+    public void DoneThrowing()
+    {
+        enemy.SetStopMoving(false);
+        isDoneThrow = true;
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+}
+
+public class RockPools : MonoBehaviour
+{
+    [SerializeField] LeanGameObjectPool 
+        pool_NormalRock;
 }

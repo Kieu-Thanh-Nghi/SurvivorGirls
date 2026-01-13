@@ -9,6 +9,7 @@ public class EnemiesUpdate : MonoBehaviour
     [SerializeField] internal int enemyQuantity;
     [SerializeField] DeathCount killedZomCount;
     [SerializeField] internal LeanGameObjectPool EnemyDeadEff;
+    [SerializeField] internal RockPools rockPools;
 
     internal List<Enemy> enemies = new List<Enemy>(500);
     int enemyIndex;
