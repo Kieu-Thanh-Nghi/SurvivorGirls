@@ -31,9 +31,3 @@ public abstract class ASpawnStrategy : MonoBehaviour
     internal abstract void SpawnEnemy(Transform spawner);
 }
 
-[System.Serializable]
-public class EnemyAndPercentage
-{
-    [SerializeField] internal LeanGameObjectPool poolForAPrefab;
-    [SerializeField] internal int Percent;
-}

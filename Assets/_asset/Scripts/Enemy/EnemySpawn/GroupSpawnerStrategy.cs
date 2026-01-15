@@ -75,3 +75,10 @@ public class GroupSpawnerStrategy : ASpawnStrategy
 #endif
 }
 
+[System.Serializable]
+public class EnemyAndPercentage
+{
+    [SerializeField] internal LeanGameObjectPool poolForAPrefab;
+    [SerializeField] internal int Percent;
+}
+

@@ -10,9 +10,19 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     [SerializeField] Enemy EnemyBody;
     [SerializeField] LayerMask layerMask;
 
+    //private void OnDrawGizmos()
+    //{
+    //    // Set the color of the gizmo
+    //    Gizmos.color = Color.red;
+
+    //    // Draw a wire sphere at the object's position with the specified radius
+    //    Gizmos.DrawRay(transform.position, Vector3.up * 50);
+    //}
+
     [ContextMenu("start check")]
     public void StartCheck()
     {
+        EnemyBody.target = GamePlayCtrler.Instance.Player;
         if (RayCheckObs())
         {
             StartCoroutine(CheckIfItObstacle());
@@ -21,9 +31,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
         {
             SpawnTheEnemy(transform.position);
         }
-        EnemyBody.target = GamePlayCtrler.Instance.Player;
         EnemyBody.EnemyRotate();
-        EnemyBody.SetEnemyDestination();
         EnemiesUpdate.Instance.AddAnEnemy(EnemyBody);
     }
 
@@ -51,15 +59,15 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     {
         pos.y = 0;
         transform.position = pos;
-        EnemyBody.gameObject.SetActive(true);
         agent.enabled = true;
+        EnemyBody.gameObject.SetActive(true);
     }
 
     [ContextMenu("RayCheck")]
     bool RayCheckObs()
     {
-        Ray aRay = new Ray(transform.position, transform.up);
-        if (Physics.Raycast(aRay, 1000f, layerMask))
+        Ray aRay = new Ray(transform.position - Vector3.up * 10, transform.up);
+        if (Physics.Raycast(aRay, 50f, layerMask))
         {
             MoveToChoose();
             return true;

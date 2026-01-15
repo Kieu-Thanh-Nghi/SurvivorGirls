@@ -7,12 +7,14 @@ public class GamePlayCtrler : MonoBehaviour
     internal static GamePlayCtrler Instance;
     [SerializeField] EnemiesUpdate enemiesUpdate;
     [SerializeField] internal Transform Player;
+    [SerializeField] internal WarningPanel warningPanel;
     [SerializeField] DeathCount killedZomCount;
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] internal EXPpools expPools;
     bool _isPause;
     public bool IsPause { set {
+            Time.timeScale = value ? 0 : 1;
             _isPause = value;
             enemiesUpdate.isPause = value;
         } }

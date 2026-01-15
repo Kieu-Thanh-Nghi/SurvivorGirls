@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] internal EnemyData enemyData;
     [SerializeField] Health health;
     IRotate rotateFuntion = new Rotate();
-    internal Transform target;
+    [SerializeField] internal Transform target;
     internal Vector3 faceDirect;
     internal int enemyIndex;
 
@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         health.CurrentHP = enemyData.health;
+        SetEnemyDestination();
         ResetSpeed();
     }
     private void Start()

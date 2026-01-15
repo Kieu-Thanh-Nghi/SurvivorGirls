@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Lean.Pool;
 using UnityEngine.Events;
 
 public class ExplodeSkill : MonoBehaviour
@@ -69,60 +68,4 @@ public class ExplodeSkill : MonoBehaviour
     {
         StopAllCoroutines();
     }
-}
-
-public class ThrowingRockSkill : MonoBehaviour
-{
-    [SerializeField] Animator animator;
-    [SerializeField] Enemy enemy;
-    [SerializeField] Transform throwPos;
-    [SerializeField] float coolDown = 1;
-    WaitForSeconds wait;
-    bool isDoneThrow;
-
-    private void Start()
-    {
-        wait = new WaitForSeconds(coolDown);
-    }
-    private void OnEnable()
-    {
-        enemy.SetStopMoving(false);
-        StartCoroutine(RunThrowSkill());
-    }
-    IEnumerator RunThrowSkill()
-    {
-        while (true)
-        {
-            yield return wait;
-            ActiveThrow();
-            yield return new WaitUntil(() => isDoneThrow);
-        }
-    }
-    void ActiveThrow()
-    {
-        isDoneThrow = false;
-        animator.SetTrigger("throwTrigger");
-    }
-
-    public void ThrowRock()
-    {
-        enemy.SetStopMoving(true);
-    }
-
-    public void DoneThrowing()
-    {
-        enemy.SetStopMoving(false);
-        isDoneThrow = true;
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-}
-
-public class RockPools : MonoBehaviour
-{
-    [SerializeField] LeanGameObjectPool 
-        pool_NormalRock;
 }

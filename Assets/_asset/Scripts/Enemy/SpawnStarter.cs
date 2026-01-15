@@ -17,4 +17,3 @@ public class SpawnStarter : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, AngleRandom, 0);
     }
 }
-
