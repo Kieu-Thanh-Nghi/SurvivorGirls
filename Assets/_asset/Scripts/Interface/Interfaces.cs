@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interfaces : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public interface IExpType
 public interface IDamageable
 {
     public void TakeDamage(int dameAmount, DamageType type);
+}
+
+public interface ISetOnDead
+{
+    public void SetDoWhenDie(UnityAction DieFunc);
 }
 
 public interface ITargetChangable

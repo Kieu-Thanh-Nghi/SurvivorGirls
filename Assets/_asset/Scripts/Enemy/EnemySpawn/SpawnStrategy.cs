@@ -4,9 +4,10 @@ using Lean.Pool;
 public class SpawnStrategy : ASpawnStrategy
 {
     //[SerializeField] float SpawnSampleRadius = 10;
-    [SerializeField] float bonusRudius = 5;
-    [SerializeField] float spawnRadius = 5;
-    [SerializeField] SpawnChecker enemyPrefab;
+    [SerializeField] protected float bonusRudius = 5;
+    [SerializeField] protected float spawnRadius = 5;
+    [SerializeField] protected SpawnChecker enemyPrefab;
+    protected SpawnChecker realEnemy;
 
     internal virtual Vector3 GetPosition(Transform spawner)
     {
@@ -22,7 +23,8 @@ public class SpawnStrategy : ASpawnStrategy
     internal override void SpawnEnemy(Transform spawner)
     {
         Vector3 pos = GetPosition(spawner);
-        Instantiate(enemyPrefab, pos, spawner.rotation).StartCheck();
+        realEnemy = Instantiate(enemyPrefab, pos, spawner.rotation);
+        realEnemy.StartCheck();
     }
 }
 

@@ -14,6 +14,7 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] internal EXPpools expPools;
     [SerializeField] internal EnemySpawner enemySpawner;
+    [SerializeField] internal Transform BossArea;
 
     //
     [SerializeField] float countingTime = 0;

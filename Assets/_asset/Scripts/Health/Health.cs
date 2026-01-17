@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IDamageable
+public class Health : MonoBehaviour, IDamageable, ISetOnDead
 {
     [SerializeField] internal int maxHP = 50;
     [SerializeField] internal UnityEvent OnDead, OnHurt, OnHeal, OnChangeHeal;
@@ -47,5 +47,10 @@ public class Health : MonoBehaviour, IDamageable
         {
             CurrentHP = maxHP;
         }
+    }
+
+    public void SetDoWhenDie(UnityAction DieFunc)
+    {
+        OnDead.AddListener(DieFunc);
     }
 }
