@@ -1,6 +1,7 @@
 using Lean.Pool;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GamePlayCtrler : MonoBehaviour
 {
@@ -12,6 +13,26 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] Transform CameraHolder;
     [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] internal EXPpools expPools;
+    [SerializeField] internal EnemySpawner enemySpawner;
+
+    //
+    [SerializeField] float countingTime = 0;
+    [SerializeField] internal UnityEvent DoWhenCountTime;
+    [SerializeField] internal bool isStopCounting;
+    internal float CountingTime
+    {
+        get => countingTime;
+        set
+        {
+            if (value > countingTime)
+            {
+                countingTime = value;
+                DoWhenCountTime?.Invoke();
+                enemySpawner.UpdateSpawnClock(countingTime);
+            }
+        }
+    }
+
     bool _isPause;
     public bool IsPause { set {
             Time.timeScale = value ? 0 : 1;
@@ -39,6 +60,11 @@ public class GamePlayCtrler : MonoBehaviour
     private void Update()
     {
         if (_isPause) return;
+
+        if (!isStopCounting)
+        {
+            CountingTime += Time.deltaTime;
+        }
         //playChar.DoUpdate();
 
         CameraHolder.position = Player.position;

@@ -1,16 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] SpawnStarter[] spawnStarters;
-    [SerializeField] float countingTime = 0;
     int thefirstIndex = 0, theLastIndex = 0;
+    internal bool isStopCounting, isGameStop;
+    internal float CountingTime = 0;
+
+    //private void Update()
+    //{
+    //    if (isStopCounting || isGameStop) return;
+    //    CountingTime += Time.deltaTime;
+    //    checkSampleActive();
+    //    UpdateActivatedSample();
+    //}
+
+    internal void UpdateSpawnClock(float value)
+    {
+        CountingTime = value;
+        checkSampleActive();
+        UpdateActivatedSample();
+    }
 
     void checkSampleActive()
     {
         if (theLastIndex >= spawnStarters.Length) return;
-        if (spawnStarters[theLastIndex].StartTime <= countingTime)
+        if (spawnStarters[theLastIndex].StartTime <= CountingTime)
         {
             theLastIndex += 1;
             checkSampleActive();
@@ -22,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
         if(thefirstIndex < theLastIndex)
         for(int i = thefirstIndex; i < theLastIndex; i++)
         {
-            if (spawnStarters[i].Spawn(countingTime))
+            if (spawnStarters[i].Spawn(CountingTime))
             {
                 Swap(spawnStarters[thefirstIndex], spawnStarters[i]);
                 thefirstIndex++;
@@ -51,10 +68,4 @@ public class EnemySpawner : MonoBehaviour
     }
     //
 
-    private void Update()
-    {
-        countingTime += Time.deltaTime;
-        checkSampleActive();
-        UpdateActivatedSample();
-    }
 }
