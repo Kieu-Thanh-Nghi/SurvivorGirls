@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerUpdate : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class PlayerUpdate : MonoBehaviour
     IMove playerMove = new PlayerMove();
     [SerializeField] PlayerMoveAnim moveAnim;
     [SerializeField] AnimID animID;
-    [SerializeField] float baseSpeed;
     [SerializeField] Vector3 expScale = Vector3.one;
 
     internal Vector3 ExpScale { 
@@ -21,7 +21,7 @@ public class PlayerUpdate : MonoBehaviour
             levelManager.transform.localScale = value;
         }
     }
-    float speed => baseSpeed * PlayerParaScale.Instance._moveSpeed;
+    float speed => PlayerDataManager.Instance.MoveSpeed;
 
     private void Start()
     {
@@ -34,8 +34,9 @@ public class PlayerUpdate : MonoBehaviour
 
     private void FixedUpdate()
     {
-        player.Move(playerMove, inputStore.moveInput.MoveDirection(), speed);
-        playerAnim.DoMoveAnim(moveAnim, inputStore.moveInput.GetCurrentMoveDirect(), speed, animID);
+        var moveInput = inputStore.moveInput;
+        player.Move(playerMove, moveInput.MoveDirection(), speed);
+        playerAnim.DoMoveAnim(moveAnim, moveInput.GetCurrentMoveDirect(), speed, animID);
     }
 }
 

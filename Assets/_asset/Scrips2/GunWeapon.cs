@@ -21,10 +21,11 @@ public class GunWeapon : BasicWeapon, IHasBulletWeapon ,IGunLockable
 public class BasicWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] internal ProjectileEmiter emiter;
+    internal Vector3 direct;
 
     public virtual void DoOneAttack(Vector3 targetPos)
     {
-        Vector3 direct = targetPos - emiter.transform.position;
+        direct = targetPos - emiter.transform.position;
         emiter.transform.forward = direct;
         emiter.Emit();
     }

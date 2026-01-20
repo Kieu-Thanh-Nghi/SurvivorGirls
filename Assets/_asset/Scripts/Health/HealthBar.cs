@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
 
     public void ChangeHPBar()
     {
-        float percent = (float)health.CurrentHP / health.maxHP;
+        float percent = (float)health.CurrentHP / health.MaxHP;
         progressBar.fillAmount = percent;
     }
 }

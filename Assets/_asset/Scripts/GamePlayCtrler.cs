@@ -10,11 +10,12 @@ public class GamePlayCtrler : MonoBehaviour
     [SerializeField] internal Transform Player;
     [SerializeField] internal WarningPanel warningPanel;
     [SerializeField] DeathCount killedZomCount;
-    [SerializeField] Transform CameraHolder;
+    [SerializeField] internal Transform FolowPlayer;
     [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] internal EXPpools expPools;
     [SerializeField] internal EnemySpawner enemySpawner;
     [SerializeField] internal Transform BossArea;
+    [SerializeField] internal Joystick joystick;
 
     //
     [SerializeField] float countingTime = 0;
@@ -68,7 +69,7 @@ public class GamePlayCtrler : MonoBehaviour
         }
         //playChar.DoUpdate();
 
-        CameraHolder.position = Player.position;
+        FolowPlayer.position = Player.position;
         //    int n = enemies.Count;
         //    if (playChar.characterData.moveDirect == Vector3.zero) return;
         //    if (enemyIndex >= n) enemyIndex = 0;

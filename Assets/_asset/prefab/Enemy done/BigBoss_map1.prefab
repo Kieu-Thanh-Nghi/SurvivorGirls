@@ -63,7 +63,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4360550650510959353}
-  - component: {fileID: 6040666909402878107}
+  - component: {fileID: 457802491360006087}
   m_Layer: 18
   m_Name: bossCol
   m_TagString: Untagged
@@ -86,8 +86,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4117642272711378091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6040666909402878107
-SphereCollider:
+--- !u!136 &457802491360006087
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,9 +104,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 2.1
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &1537213119620700991
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,10 +419,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4117642272711378091}
-  - component: {fileID: 1984240750107647113}
   - component: {fileID: 2076295015731824957}
   - component: {fileID: 4415487055082947616}
   - component: {fileID: 836533846953673397}
+  - component: {fileID: 3430236903018235823}
   m_Layer: 9
   m_Name: collider
   m_TagString: Untagged
@@ -444,27 +446,6 @@ Transform:
   - {fileID: 4360550650510959353}
   m_Father: {fileID: 6192393381436505135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1984240750107647113
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4391793738016959392}
-  m_Material: {fileID: 13400000, guid: edeceddc14377354e9bdb2e3194c531c, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2076295015731824957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +485,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+--- !u!136 &3430236903018235823
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391793738016959392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 2.1
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &8116830356475601335
 GameObject:
   m_ObjectHideFlags: 0

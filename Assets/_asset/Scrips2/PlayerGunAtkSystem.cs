@@ -5,10 +5,9 @@ public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IE
 {
     [SerializeField] internal float AttackCountdown;
     [SerializeField] NearestObjectSphereDetecter eneDetecter;
-    [SerializeField] GunWeapon gun;
+    [SerializeField] internal GunWeapon gun;
     [SerializeField] Transform target;
     internal UnityAction DoWhenAttack, DoWhenDoneAnAtk;
-
     float startTime;
     bool isLock { get => gun.isLocked; }
     float radius { get => eneDetecter.radius; }

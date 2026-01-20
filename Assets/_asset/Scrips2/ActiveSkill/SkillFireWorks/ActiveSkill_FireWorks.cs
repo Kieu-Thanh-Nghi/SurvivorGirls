@@ -21,7 +21,7 @@ public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage, IHasCoolDown
     {
         StartCoroutine(coolDownSystem.RunEffInCoolDown(DoSkill, this));
     }
-    public float GetCoolDown() => baseCooldown * PlayerParaScale.Instance._coolDown;
+    public float GetCoolDown() => baseCooldown * PlayerDataManager.Instance._ASCoolDownScale;
     private void OnDestroy()
     {
         StopAllCoroutines();

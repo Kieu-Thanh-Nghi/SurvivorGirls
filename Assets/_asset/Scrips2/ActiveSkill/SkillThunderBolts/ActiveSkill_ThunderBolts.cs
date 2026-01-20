@@ -18,7 +18,7 @@ public class ActiveSkill_ThunderBolts : MonoBehaviour, IHasCoolDown
         get => electricEff.GetElecEffTime();
     }
 
-    public float GetCoolDown() => baseCoolDown * PlayerParaScale.Instance._coolDown;
+    public float GetCoolDown() => baseCoolDown * PlayerDataManager.Instance._ASCoolDownScale;
 
     private void Start()
     {

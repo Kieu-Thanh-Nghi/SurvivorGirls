@@ -24,7 +24,7 @@ public class FlyingProjectile : MonoBehaviour
     {
         if(other.TryGetComponent<IDamageable>(out var damageable))
         {
-            damageable.TakeDamage(damage, DamageType.Normal);
+            damageable.TakeDamage(damage, DamageType.Range);
             CancelInvoke();
             EndLife();
         }

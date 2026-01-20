@@ -26,12 +26,12 @@
     }
     protected virtual void DoIceEff()
     {
-        PlayerParaScale.Instance._moveSpeed *= slowAmount;
+        PlayerDataManager.Instance._moveSpeedScale *= slowAmount;
     }
     protected virtual void endEff()
     {
         StopAllCoroutines();
-        PlayerParaScale.Instance._moveSpeed = 1;
+        PlayerDataManager.Instance._moveSpeedScale = 1;
         gameObject.SetActive(false);
     }
 }

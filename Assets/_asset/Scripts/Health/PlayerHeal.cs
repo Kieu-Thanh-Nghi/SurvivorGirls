@@ -8,7 +8,7 @@ public class PlayerHeal : MonoBehaviour
 
     private void Start()
     {
-        health.OnHealGainAmount += TurnOnHealEff;
+        health.OnHealthGainAmount += TurnOnHealEff;
     }
     void TurnOnHealEff(int healAmount)
     {

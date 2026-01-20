@@ -12,8 +12,8 @@ public class ActiveSkill_BladeDrone : UpdateSkill
     [SerializeField] BladeColl BladeDronePrefab;
     [SerializeField] float rotateSpeed;
     [SerializeField] float radius;
-    float realRotateSpeed => rotateSpeed * PlayerParaScale.Instance._objectProjectileSpeed;
-    float realRadius => radius * PlayerParaScale.Instance._areaRadius;
+    float realRotateSpeed => rotateSpeed * PlayerDataManager.Instance._objectSpeedScale;
+    float realRadius => radius * PlayerDataManager.Instance._areaRadiusScale;
 
     protected override void Start()
     {

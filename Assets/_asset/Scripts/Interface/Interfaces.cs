@@ -35,15 +35,22 @@ public interface IMoveFreezing
 {
     public void SetIsMoveFreeze(bool isFreeze);
 }
-
-public enum DamageType
-{
-    Normal = 0,
-    Crit = 1
-}
-
 public interface IHasHurtDamage
 {
     public int GetHurtDamage();
 }
 
+public interface IHasMaxHealth
+{
+    public int GetMaxHp();
+    public void SetMaxHp(int maxHP);
+}
+public enum DamageType
+{
+    Normal = 0,
+    Range = 1,
+    Melee = 2,
+    Crit = 3,
+    CritRange = 4,
+    CritMele = 5
+}

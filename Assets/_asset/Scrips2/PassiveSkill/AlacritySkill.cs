@@ -13,26 +13,26 @@ public class AlacritySkill : PassiveSkill
 
     public override void ToLV1()
     {
-        PlayerParaScale.Instance._moveSpeed *= 1.1f;
+        PlayerDataManager.Instance._moveSpeedScale *= 1.1f;
     }
 
     public override void ToLV2()
     {
-        PlayerParaScale.Instance._moveSpeed *= 1.2f;
+        PlayerDataManager.Instance._moveSpeedScale *= 1.2f;
     }
 
     public override void ToLV3()
     {
-        PlayerParaScale.Instance._moveSpeed *= 1.3f;
+        PlayerDataManager.Instance._moveSpeedScale *= 1.3f;
     }
 
     public override void ToLV4()
     {
-        PlayerParaScale.Instance._moveSpeed *= 1.4f;
+        PlayerDataManager.Instance._moveSpeedScale *= 1.4f;
     }
 
     public override void ToLV5()
     {
-        PlayerParaScale.Instance._moveSpeed *= 1.5f;
+        PlayerDataManager.Instance._moveSpeedScale *= 1.5f;
     }
 }

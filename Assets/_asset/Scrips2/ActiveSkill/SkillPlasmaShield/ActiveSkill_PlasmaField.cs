@@ -14,7 +14,7 @@ public class ActiveSkill_PlasmaField : MonoBehaviour, IHasCoolDown
     float worldRadius;
     public float GetCoolDown()
     {
-        return baseCoolDown * PlayerParaScale.Instance._coolDown;
+        return baseCoolDown * PlayerDataManager.Instance._ASCoolDownScale;
     }
     
     private void Start()

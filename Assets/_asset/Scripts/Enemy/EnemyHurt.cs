@@ -13,7 +13,7 @@ public class EnemyHurt : MonoBehaviour
         //var damageText = pool.Spawn(transform.position, pool.transform.rotation, pool.transform);
         //damageText.SetActive(false);
         //if (damageText.TryGetComponent<DameText>(out var theText)) dameText = theText;
-        health.OnHealLostAmount += DameTextAppear;
+        health.OnHealthLostAmount += DameTextAppear;
     }
     public void EnemyBleed()
     {

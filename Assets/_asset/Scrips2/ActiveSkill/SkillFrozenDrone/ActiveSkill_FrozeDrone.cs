@@ -26,7 +26,7 @@ public class ActiveSkill_FrozeDrone : MonoBehaviour, IHasCoolDown
 
     public float GetCoolDown()
     {
-        float realCoolDown = baseCoolDown * PlayerParaScale.Instance._coolDown;
+        float realCoolDown = baseCoolDown * PlayerDataManager.Instance._ASCoolDownScale;
         if (realCoolDown <= minCoolDown) realCoolDown = minCoolDown + 0.2f;
         return realCoolDown;
     }

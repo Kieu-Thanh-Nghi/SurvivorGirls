@@ -41,6 +41,6 @@ public class HealFactorSkill : PassiveSkill
 
     void PlayerHeal(float percent)
     {
-        healingFactor.healAmount = Mathf.CeilToInt(pasi.health.maxHP * percent);
+        healingFactor.healAmount = Mathf.CeilToInt(pasi.health.MaxHP * percent);
     }
 }

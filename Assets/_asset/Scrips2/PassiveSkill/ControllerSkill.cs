@@ -9,26 +9,26 @@
 
     public override void ToLV1()
     {
-        PlayerParaScale.Instance._coolDown *= 0.9f;
+        PlayerDataManager.Instance._ASCoolDownScale *= 0.9f;
     }
 
     public override void ToLV2()
     {
-        PlayerParaScale.Instance._coolDown *= 0.8f;
+        PlayerDataManager.Instance._ASCoolDownScale *= 0.8f;
     }
 
     public override void ToLV3()
     {
-        PlayerParaScale.Instance._coolDown *= 0.7f;
+        PlayerDataManager.Instance._ASCoolDownScale *= 0.7f;
     }
 
     public override void ToLV4()
     {
-        PlayerParaScale.Instance._coolDown *= 0.6f;
+        PlayerDataManager.Instance._ASCoolDownScale *= 0.6f;
     }
 
     public override void ToLV5()
     {
-        PlayerParaScale.Instance._coolDown *= 0.45f;
+        PlayerDataManager.Instance._ASCoolDownScale *= 0.45f;
     }
 }

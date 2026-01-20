@@ -22,6 +22,6 @@ public class PassiveSkill_HealingFactor : MonoBehaviour, IHasCoolDown
 
     public float GetCoolDown()
     {
-        return coolDown * PlayerParaScale.Instance._coolDown;
+        return coolDown * PlayerDataManager.Instance._ASCoolDownScale;
     }
 }

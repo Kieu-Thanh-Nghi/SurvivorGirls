@@ -58,7 +58,7 @@ public class TimedEffectRunner
 [System.Serializable]
 public class CoolDownSystem
 {
-    float counting;
+    internal float counting;
 
     public IEnumerator RunEffInCoolDown(UnityAction effect, IHasCoolDown hasCoolDown, bool isRunimmediately = true)
     {

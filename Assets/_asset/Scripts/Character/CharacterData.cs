@@ -4,7 +4,7 @@
 public class CharacterData : ScriptableObject
 {
     [SerializeField] internal float moveSpeed;
-    [SerializeField] MoveInput moveInput;
+    [SerializeField] PCMoveInput moveInput;
     [SerializeField] internal Vector3 moveDirect { get => moveInput.MoveDirection(); }
     [SerializeField] internal Vector3 moveSpeedDirect { get => moveInput.MoveDirection() * moveSpeed; }
     [SerializeField] internal float runSpeed;

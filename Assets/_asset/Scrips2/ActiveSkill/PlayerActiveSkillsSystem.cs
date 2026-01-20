@@ -20,8 +20,8 @@ public abstract class UpdateSkill : MonoBehaviour
 {
     [SerializeField] protected float countDown, activeDuration;
     [SerializeField] protected bool isActive;
-    protected float realCountDown => countDown * PlayerParaScale.Instance._coolDown;
-    protected float realActiveDuration => activeDuration * PlayerParaScale.Instance._activeDuration;
+    protected float realCountDown => countDown * PlayerDataManager.Instance._ASCoolDownScale;
+    protected float realActiveDuration => activeDuration * PlayerDataManager.Instance._activeDuration;
 
     protected WaitForSeconds waitCountDown, waitActiveDuration;
 

@@ -13,7 +13,7 @@ public class BulletQuantity : MonoBehaviour
     {
         get
         {
-            float theReloadTime = Mathf.CeilToInt((reloadTime + PlayerParaScale.Instance._reloadPadding) * PlayerParaScale.Instance._reloadTime);
+            float theReloadTime = Mathf.CeilToInt((reloadTime + PlayerDataManager.Instance._reloadPadding) * PlayerDataManager.Instance._reloadTime);
             if (theReloadTime <= 0) theReloadTime = 0.1f;
             return theReloadTime;
         }

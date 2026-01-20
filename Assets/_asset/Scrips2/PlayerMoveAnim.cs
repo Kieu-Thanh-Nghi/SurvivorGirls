@@ -4,11 +4,12 @@ using UnityEngine;
 public class PlayerMoveAnim : MonoBehaviour, IMoveAnim
 {
     [SerializeField] float runSpeed = 10;
+    [SerializeField] Transform RotateBody;
     public void DoAnim(Animator animator, AnimID animID, float moveSpeed, Vector3 moveDirect)
     {
         var movingSpeedDirect = moveDirect * moveSpeed;
-        SetAnimSpeedDirect(animator, animID.MoveSpeedX, transform.right, runSpeed, moveSpeed, movingSpeedDirect);
-        SetAnimSpeedDirect(animator, animID.MoveSpeedZ, transform.forward, runSpeed, moveSpeed, movingSpeedDirect);
+        SetAnimSpeedDirect(animator, animID.MoveSpeedX, RotateBody.right, runSpeed, moveSpeed, movingSpeedDirect);
+        SetAnimSpeedDirect(animator, animID.MoveSpeedZ, RotateBody.forward, runSpeed, moveSpeed, movingSpeedDirect);
     }
     void SetAnimSpeedDirect(Animator animator, int speedAnimID, Vector3 charBaseAxis, float runSpeed, float moveSpeed, Vector3 movingSpeedDirect)
     {
