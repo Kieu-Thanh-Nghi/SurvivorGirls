@@ -35,7 +35,7 @@ public class RotateInput : MonoBehaviour, ITurnInput, IHasCoolDown
     }
     private void Start()
     {
-        gunAtkSystem?.SubscribeAtkEvent(WhenGunShoot);
+        //gunAtkSystem?.SubscribeAtkEvent(WhenGunShoot);
     }
     public Vector3 GetFaceDirect()
     {
@@ -47,10 +47,11 @@ public class RotateInput : MonoBehaviour, ITurnInput, IHasCoolDown
         //finalDirect.z = directVector.y;
 
         Vector3 mDirect;
-
-        if (isShooting)
+        var target = gunAtkSystem.GetCurrentTarget();
+        if (gunAtkSystem.isHasTarget)
         {
-            mDirect = gunAtkSystem.gun.direct;
+            mDirect = target.position - transform.position;
+            mDirect.y = 0;
         }
         else
         {

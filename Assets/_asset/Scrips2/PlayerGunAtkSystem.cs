@@ -8,6 +8,7 @@ public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IE
     [SerializeField] internal GunWeapon gun;
     [SerializeField] Transform target;
     internal UnityAction DoWhenAttack, DoWhenDoneAnAtk;
+    internal bool isHasTarget;
     float startTime;
     bool isLock { get => gun.isLocked; }
     float radius { get => eneDetecter.radius; }
@@ -19,6 +20,7 @@ public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IE
 
     private void Update()
     {
+        CheckIfHasTarget(transform.position);
         if (Time.time - startTime >= AttackCountdown)
         {
             AttackLoop(eneDetecter, gun, transform.position);
@@ -27,10 +29,7 @@ public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IE
 
     void AttackLoop(INearestDetecter detecter, IHasBulletWeapon weapon, Vector3 thisPos)
     {
-        float attackRadius = radius;
-        if (target != null 
-            && target.gameObject.activeInHierarchy 
-            && (target.position - thisPos).sqrMagnitude < attackRadius * attackRadius)
+        if (isHasTarget)
         {
             DoAttack(weapon, thisPos);
             return;
@@ -41,7 +40,13 @@ public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IE
             target = result;
         }
     }
-
+    void CheckIfHasTarget(Vector3 thisPos)
+    {
+        float attackRadius = radius;
+        isHasTarget = target != null
+                        && target.gameObject.activeInHierarchy
+                        && (target.position - thisPos).sqrMagnitude < attackRadius * attackRadius;
+    }
     void DoAttack(IHasBulletWeapon weapon, Vector3 thisPos)
     {
         if (isLock) return;

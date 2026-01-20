@@ -20,7 +20,7 @@ public class GamePlayCtrler : MonoBehaviour
     //
     [SerializeField] float countingTime = 0;
     [SerializeField] internal UnityEvent DoWhenCountTime;
-    [SerializeField] internal bool isStopCounting;
+    [SerializeField] public bool isStopCounting;
     internal float CountingTime
     {
         get => countingTime;
