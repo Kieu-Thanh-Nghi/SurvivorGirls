@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class TabSizeChanger : MonoBehaviour
 {
     [SerializeField] RectTransform rectTransform;
     [SerializeField] SelectTabSize tabSize;
+    [SerializeField] UnityEvent WhenResetSize;
 
     [ContextMenu("test")] 
     public void SetTabSize()
@@ -16,5 +18,18 @@ public class TabSizeChanger : MonoBehaviour
 
         rectTransform.offsetMin = offsetMin;
         rectTransform.offsetMax = offsetMax;
+        SetCurrentTab();
+    }
+    void SetCurrentTab()
+    {
+        var tabManager = transform.parent.GetComponent<MenuTabManager>();
+        tabManager?.ResetCurrentTab();
+        tabManager?.SetCurrentTab(this);
+    }
+    public void ResetTabSize()
+    {
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;
+        WhenResetSize?.Invoke();
     }
 }
