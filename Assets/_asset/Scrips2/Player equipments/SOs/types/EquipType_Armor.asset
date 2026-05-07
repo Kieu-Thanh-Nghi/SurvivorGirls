@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbcc927b83fe324b9af14bbfadbed35, type: 3}
+  m_Name: EquipType_Armor
+  m_EditorClassIdentifier: 
+  equipmentBonusPoints:
+  - rid: 8577952615023771650
+  - rid: 8577952615023771651
+  references:
+    version: 2
+    RefIds:
+    - rid: 8577952615023771650
+      type: {class: EquipmentBonusPoint_Float, ns: , asm: Assembly-CSharp}
+      data:
+        eachLvls: 5
+        startStep: 0
+        dataType: 0
+        startValue: 0.5
+        bonusEachLvl: 0.2
+    - rid: 8577952615023771651
+      type: {class: EquipmentBonusPoint_Float, ns: , asm: Assembly-CSharp}
+      data:
+        eachLvls: 1
+        startStep: 0
+        dataType: 2
+        startValue: 0.5
+        bonusEachLvl: 0.5

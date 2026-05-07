@@ -7,7 +7,7 @@ public class EnemyDead : MonoBehaviour
     public void KillEnemy()
     {
         var eneUpd = EnemiesUpdate.Instance;
-        eneUpd.RemoveAnEnemy(thisEnemy);
+        //eneUpd.RemoveAnEnemy(thisEnemy);
         eneUpd.EnemyDeadEff.Spawn(transform.position);
 
         LeanPool.Despawn(gameObject);

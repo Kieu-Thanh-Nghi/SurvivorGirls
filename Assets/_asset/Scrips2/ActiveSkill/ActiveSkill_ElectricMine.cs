@@ -7,7 +7,6 @@ using Lean.Pool;
 public class ActiveSkill_ElectricMine : UpdateSkill
 {
     [SerializeField] Transform minesContainer;
-    [SerializeField] LeanGameObjectPool electricPool;
     [SerializeField] float spawnRadius = 6;
     [SerializeField] int maxMineQuantity = 5;
     [SerializeField] Vector3 mineScale = Vector3.one * 2;
@@ -19,6 +18,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
     [SerializeField] int[] posIndexs = { 0, 1, 2, 3, 4 };
     [SerializeField] AEMine minePrafab;
     [SerializeField] List<AEMine> mines;
+    [SerializeField] AudioSource electricSound;
 
     protected override void Start()
     {
@@ -26,6 +26,10 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         currentMineQuantity = mines.Count;
         minesContainer.SetParent(null);
         StartCoroutine(StartSkill());
+    }
+    private void OnDestroy()
+    {
+        Destroy(minesContainer.gameObject);
     }
     public override void DoUpdate()
     {
@@ -36,9 +40,13 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         while (true)
         {
             yield return BeginActs();
+            //Debug.Log("mines: bigin");
             yield return waitActiveDuration;
+            //Debug.Log("mines: done active");
             yield return EndActs();
+            //Debug.Log("mines: end");
             yield return waitCountDown;
+            //Debug.Log("mines: done cool down");
         }
     }
 
@@ -48,6 +56,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         minesContainer.gameObject.SetActive(true);
         RandomThrowAround(minesContainer, spawnRadius);
         yield return new WaitUntil(() => isActive);
+        electricSound.Play();
     }
 
     IEnumerator EndActs()
@@ -55,6 +64,7 @@ public class ActiveSkill_ElectricMine : UpdateSkill
         minesContainer.localPosition = Vector3.down * 10;
         yield return new WaitForSeconds(Time.fixedDeltaTime);
         isActive = false;
+        electricSound.Stop();
         minesContainer.gameObject.SetActive(false);
     }
     void RandomThrowAround(Transform target, float radius)
@@ -68,7 +78,8 @@ public class ActiveSkill_ElectricMine : UpdateSkill
             float angle = posIndexs[i] * anglePart;
             Vector3 dir = Quaternion.AngleAxis(angle, target.up) * target.forward;
             Transform mineTransform = mines[i].transform;
-            mineTransform.localScale = Vector3.zero; 
+            mineTransform.localScale = Vector3.zero;
+            mineTransform.DOKill();
             Throw(mineTransform, mines[i], target.position, target.position + dir * radius, throwHeight, throwDuration);
             mineTransform.DOScale(mineScale, throwDuration);           
         }
@@ -125,7 +136,6 @@ public class ActiveSkill_ElectricMine : UpdateSkill
     {
         var aMine = Instantiate(minePrafab, minesContainer);
         aMine.SetShockWaveScale(ShockScale);
-        aMine.SetElecPool(electricPool);
         currentMineQuantity++;
         mines.Add(aMine);
     }

@@ -24,5 +24,9 @@ public class IceEff : Effect
         moveFreezing.SetIsMoveFreeze(false);
         LeanPool.Despawn(gameObject);
     }
-}
 
+    protected override void EndEff()
+    {
+        EndIceEff();
+    }
+}

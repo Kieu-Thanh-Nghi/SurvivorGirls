@@ -1,23 +1,16 @@
 ﻿using Lean.Pool;
 using UnityEngine;
 
-public class ThunderStrike : MonoBehaviour
+public class ThunderStrike : ElectStatusGiver
 {
-    [SerializeField] LeanGameObjectPool ElecStatusPool;
+    [SerializeField] AudioSource lightningSound;
+    internal override int Damage
+     => Mathf.CeilToInt(damage * (1 + PlayerDataManager.Instance.ElementBoost));
+    internal override float SpeedDecreaseAmount
+        => speedDecreaseAmount * (1 + PlayerDataManager.Instance.ElementBoost);
     private void OnEnable()
     {
+        lightningSound.Play();
         LeanPool.Despawn(gameObject, 1);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        var electricEff = other.GetComponentInChildren<ThunderBoltsElectricEff>();
-        if (electricEff != null)
-        {
-            electricEff.RefressEff();
-        }
-        else
-        {
-            ElecStatusPool.Spawn(other.transform);
-        }
     }
 }

@@ -1,0 +1,288 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1893285473885775320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2953109479163037347}
+  - component: {fileID: 8672990766380772688}
+  - component: {fileID: 9131612959659094000}
+  - component: {fileID: 7182540585555740499}
+  - component: {fileID: 3780828258112069844}
+  - component: {fileID: 7976331400455624575}
+  - component: {fileID: 244453279239448974}
+  - component: {fileID: 4293581068758936921}
+  - component: {fileID: 8193345497313294512}
+  m_Layer: 10
+  m_Name: Active Skills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2953109479163037347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7368745039554124885}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8672990766380772688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487a8ecaf0744d848b47cd52f2ad8f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  allBladeDronesPrefab: {fileID: 5486802767107886772, guid: 8ae0592e5be9d6845a472cb85ceae18c,
+    type: 3}
+--- !u!114 &9131612959659094000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc94532cea3ed94cbb85cb344b25a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  ScifiDronePrefab: {fileID: 9182044811459000896, guid: 3f3d7e40cc9acf94da5b36614223cdf3,
+    type: 3}
+  startFireRate: 4
+--- !u!114 &7182540585555740499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a057162e6fc144fa17c511c77b7bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  tentaclesRobotPrefab: {fileID: 7154139463670392005, guid: 0b0491ca9d9f1ab47aae212478c9b78a,
+    type: 3}
+--- !u!114 &3780828258112069844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5224f29e043424a813398f31f76e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  electricMinePrefab: {fileID: 209550981347088477, guid: 9ae808d5a401720419737c31acf77ee8,
+    type: 3}
+  shockScaleUpAmount: 1.5
+--- !u!114 &7976331400455624575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178f488af1bd54246b6ddd21195bd70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  fireWorksPrefab: {fileID: 3292314964611941492, guid: c3a1e523ad2a49942bec89e7c4fcc398,
+    type: 3}
+  explotionScale: {x: 0.4, y: 0.4, z: 0.4}
+--- !u!114 &244453279239448974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5483a879e7783ad489dc9e30ec68839b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  thunderBoltsPrefab: {fileID: 3413931964226023486, guid: 7fd2f824bc7385a46bc3c808925586f0,
+    type: 3}
+  strikeQuantity: 1
+  ElectricShocTime: 3
+--- !u!114 &4293581068758936921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cf154711f73f44ca9865378a1e3775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  frozeDronePrefab: {fileID: 2236067651321128913, guid: 995d8bda7537e944786855e4d6697632,
+    type: 3}
+  moveDistance: 5
+--- !u!114 &8193345497313294512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893285473885775320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f223c4e7d0a9fbd46b6a591a1901f65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLV: 0
+  plasmaFieldPrefab: {fileID: 8270688637229559782, guid: 4a1676023da2aa34fa41e00edb0075ba,
+    type: 3}
+  shieldSize: {x: 4.25, y: 4.25, z: 4.25}
+--- !u!1 &3547036403508284875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7368745039554124885}
+  - component: {fileID: 439495682135601187}
+  - component: {fileID: 8136646541065977751}
+  - component: {fileID: 8585315825818609305}
+  m_Layer: 10
+  m_Name: ActiveSkill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7368745039554124885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547036403508284875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 2953109479163037347}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &439495682135601187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547036403508284875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad66ba9294922e4199e0f598f3dfea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8136646541065977751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547036403508284875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5566af3a28a20041ae5b05f9920250b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillQuantity: 4
+  skillList:
+  - {fileID: 8672990766380772688}
+  - {fileID: 9131612959659094000}
+  - {fileID: 7182540585555740499}
+  - {fileID: 3780828258112069844}
+  - {fileID: 7976331400455624575}
+  - {fileID: 244453279239448974}
+  - {fileID: 4293581068758936921}
+  - {fileID: 8193345497313294512}
+  skillIndex: 0000000001000000020000000300000004000000050000000600000007000000
+  SkillData: {fileID: 8585315825818609305}
+  isValidate: 0
+  Player: {fileID: 0}
+  playerActiveSkillsSystem: {fileID: 439495682135601187}
+  weaponInjection: {fileID: 0}
+--- !u!114 &8585315825818609305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547036403508284875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94be490f79b970f42b20f21184b50f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillsDetail:
+  - skillDetails: {fileID: 6816244671157807589, guid: 734b0f56665058a42911f4b307f45093,
+      type: 3}
+    name: Blade
+    skill_icon: {fileID: 21300000, guid: 297d664a8290e2144a7148e8cac0afb0, type: 2}
+  - skillDetails: {fileID: 6760358868171635322, guid: 3293cf47ed6c56740a444eadc31427b7,
+      type: 3}
+    name: Attack Drone
+    skill_icon: {fileID: 21300000, guid: 5902ce3819d3a8e4b8114cf9d24a8b7a, type: 2}
+  - skillDetails: {fileID: 8418209118309985642, guid: 2069f50731f51cb4da27e9a323873596,
+      type: 3}
+    name: Aggro Robot
+    skill_icon: {fileID: 21300000, guid: a1c988cfa705ce644bff320df745925b, type: 2}
+  - skillDetails: {fileID: 8165045493160967302, guid: 9363c40956d2aa24ab3dbaac4d29a9ad,
+      type: 3}
+    name: Electric Mine
+    skill_icon: {fileID: 21300000, guid: 9f85894eb3c2bf74dbb1c26b5bd7766b, type: 2}
+  - skillDetails: {fileID: 5442511050740820694, guid: f6acbfb387a79f349b39ba3b58792004,
+      type: 3}
+    name: Fireworks
+    skill_icon: {fileID: 21300000, guid: 684c654973b3d214c97f18425a2f8e02, type: 2}
+  - skillDetails: {fileID: 8980897436630306986, guid: 888b9a91977a37346827948682db9663,
+      type: 3}
+    name: ThunderBolt
+    skill_icon: {fileID: 21300000, guid: 9d6c95ec75e1f334a8f02e41c3bdb2e0, type: 2}
+  - skillDetails: {fileID: 1922017673590158855, guid: 3fb6fc4f10065a64faa878c5735314fd,
+      type: 3}
+    name: Frozen Drone
+    skill_icon: {fileID: 21300000, guid: c1929b0657282d2438338e4c4725bfaa, type: 2}
+  - skillDetails: {fileID: 3188180853184275588, guid: c38253b6db85ac44ca55f4ead48c36b7,
+      type: 3}
+    name: Plasma field
+    skill_icon: {fileID: 21300000, guid: dddedcec8fd89f0439f01f53eae22ec2, type: 2}

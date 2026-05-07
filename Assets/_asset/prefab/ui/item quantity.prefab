@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &541620093508265183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -194,7 +194,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7300968034024230679}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7163966147473806120
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +218,7 @@ GameObject:
   - component: {fileID: 6286247801826611668}
   - component: {fileID: 7064536646770563356}
   - component: {fileID: 3140815540198913408}
+  - component: {fileID: 7581669111167450682}
   m_Layer: 5
   m_Name: item quantity
   m_TagString: Untagged
@@ -273,6 +286,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.13
+--- !u!114 &7581669111167450682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163966147473806120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb8c45ad48719f439554b2ca7aaa832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quanText: {fileID: 5172193032831123931}
+  currency: 0
 --- !u!1001 &4651841505918103677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,12 +336,12 @@ PrefabInstance:
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.7613496
+      value: 0.93215114
       objectReference: {fileID: 0}
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.90645665
+      value: 0.8596142
       objectReference: {fileID: 0}
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
@@ -329,12 +356,12 @@ PrefabInstance:
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1.966
+      value: 1.3110008
       objectReference: {fileID: 0}
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -4.2053
+      value: -1.2052999
       objectReference: {fileID: 0}
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
@@ -374,12 +401,12 @@ PrefabInstance:
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.9831085
+      value: 0.65538025
       objectReference: {fileID: 0}
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.35039902
+      value: 1.149601
       objectReference: {fileID: 0}
     - target: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
@@ -412,3 +439,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4651841505918103677}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5172193032831123931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4651841505918103677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

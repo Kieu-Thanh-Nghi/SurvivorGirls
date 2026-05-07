@@ -1,41 +1,31 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class RotateInput : MonoBehaviour, ITurnInput, IHasCoolDown
+public class RotateInput : MonoBehaviour, ITurnInput
 {
     [SerializeField] MoveInput moveInput;
     Vector3 faceDirect;
 
     [SerializeField] PlayerGunAtkSystem gunAtkSystem;
-    [SerializeField] float shootStateDelay = 0.1f;
-    CoolDownSystem coolDownSystem = new();
-    bool isShooting;
+    [SerializeField] float shootStateDelay = 2f;
+    float shootStateDelayCount = 10;
 
-    public float GetCoolDown()
+    private void OnEnable()
     {
-        return shootStateDelay;
+        gunAtkSystem = PlayerSetup.instance.weaponInjection.GetComponent<PlayerGunAtkSystem>();
+        gunAtkSystem?.gun.SubscribeAnAtkToGetTarget(AtkDirectToFaceDirect);
     }
-    void WhenGunShoot()
+    public void AtkDirectToFaceDirect(Vector3 targetPos)
     {
-        if (isShooting)
-        {
-            coolDownSystem.counting = 0;
-        }
-        else
-        {
-            StartCoroutine(ChangeShootState());
-        }
-    }
-
-    IEnumerator ChangeShootState()
-    {
-        isShooting = true;
-        yield return coolDownSystem.RunCoolDown(this);
-        isShooting = false;
-    }
-    private void Start()
-    {
-        //gunAtkSystem?.SubscribeAtkEvent(WhenGunShoot);
+        shootStateDelayCount = 0;
+        faceDirect = targetPos - transform.position;
+        faceDirect.y = 0;
+        //if (gunAtkSystem.isHasTarget && target != null && target.gameObject.activeInHierarchy)
+        //{
+        //    shootStateDelayCount = 0;
+        //    faceDirect = targetPos - transform.position;
+        //    faceDirect.y = 0;
+        //}
     }
     public Vector3 GetFaceDirect()
     {
@@ -46,16 +36,30 @@ public class RotateInput : MonoBehaviour, ITurnInput, IHasCoolDown
         //finalDirect.x = directVector.x;
         //finalDirect.z = directVector.y;
 
-        Vector3 mDirect;
-        var target = gunAtkSystem.GetCurrentTarget();
-        if (gunAtkSystem.isHasTarget)
+        Vector3 mDirect = Vector3.zero;
+        shootStateDelayCount += Time.deltaTime;
+        if (gunAtkSystem == null)
         {
-            mDirect = target.position - transform.position;
-            mDirect.y = 0;
+            mDirect = moveInput.GetCurrentMoveDirect();
         }
         else
         {
-            mDirect = moveInput.GetCurrentMoveDirect();
+            var target = gunAtkSystem.GetCurrentTarget();
+            if (gunAtkSystem.isHasTarget && target != null && target.gameObject.activeInHierarchy)
+            {
+                return faceDirect;
+            }
+            else
+            {
+                if(shootStateDelayCount < shootStateDelay)
+                {
+                    return faceDirect;
+                }
+                else
+                {
+                    mDirect = moveInput.GetCurrentMoveDirect();
+                }
+            }
         }
         if (mDirect != Vector3.zero)
         {

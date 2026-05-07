@@ -14,6 +14,14 @@ public class ExplotionEff : MonoBehaviour
 
     public void SpawnExplotion(Vector3 targetPosition)
     {
-        thePool.Spawn(targetPosition);
+        var theExplo = thePool.Spawn(null);
+        theExplo.transform.position = targetPosition;
+    }    
+    
+    public void SpawnExplotion(GameObject target)
+    {
+        var theExplo = thePool.Spawn(target.transform);
+        theExplo.transform.localPosition = Vector3.zero;
+        theExplo.transform.SetParent(null, true);
     }
 }

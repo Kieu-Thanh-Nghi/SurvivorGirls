@@ -7,6 +7,10 @@ public class EXPpools : MonoBehaviour
 
     public void SpawnEXP(int type, Vector3 position)
     {
-        pools[type].Spawn(position);
+        var theEXP = pools[type].Spawn(GamePlayCtrler.Instance.mapManager.GetSquareOfAPosion(position)).transform;
+        var theExpPrefab = pools[type].Prefab.transform;
+        theEXP.localScale = theExpPrefab.localScale;
+        theEXP.rotation = theExpPrefab.rotation;
+        theEXP.position = position;
     }
 }

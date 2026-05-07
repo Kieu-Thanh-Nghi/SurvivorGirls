@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class ThunderBoltsElectricEff : ElectricEff
+public class ThunderBoltsElectricEff : PlayerElectricEff
 {
     internal void SetElecEffTime(float time)
     {

@@ -1,18 +1,13 @@
 using Lean.Pool;
 using UnityEngine;
 
-public class FireCrackerExplotion : MonoBehaviour
+public class FireCrackerExplotion : BurnStatusGiver
 {
-    [SerializeField] internal LeanGameObjectPool BurnEffPool;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        BurnEffPool.Spawn(other.transform);
-    }
-
+    public override int BurnData_Damage 
+        => Mathf.CeilToInt(burnData_Damage * (1 + PlayerDataManager.Instance.ElementBoost));
     private void OnEnable()
     {
-        Invoke(nameof(TurnOffExplode), 0.4f);
+        Invoke(nameof(TurnOffExplode), 0.5f);
     }
 
     void TurnOffExplode()

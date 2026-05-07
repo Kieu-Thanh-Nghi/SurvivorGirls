@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ActiveSkill_TentaclesRobot : UpdateSkill, IHasDamage
 {
+    [SerializeField] AudioSource StartSelfDestructSound, SelfExploSound;
     [SerializeField] internal Transform user;
     [SerializeField] float spawnRadius = 6;
     [SerializeField] ParticleSystem seftDistruct;
@@ -21,6 +22,10 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill, IHasDamage
         RobotAllBody.transform.SetParent(null);
         base.Start();
         StartCoroutine(StartSkill());
+    }
+    public void OnDestroy()
+    {
+        Destroy(RobotAllBody);
     }
     public override void DoUpdate()
     {
@@ -55,6 +60,8 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill, IHasDamage
     {
         ActiveExplotion();
         yield return new WaitForSeconds(2f);
+        SelfExploSound.Play();
+        StartSelfDestructSound.Stop();
         tentacBotAttract.isSeftDistruct = true;
         tentacBotAttract.transform.localPosition = Vector3.down * 10;
         VisualBody.SetActive(false);
@@ -63,8 +70,14 @@ public class ActiveSkill_TentaclesRobot : UpdateSkill, IHasDamage
 
     void ActiveExplotion()
     {
+        StartSelfDestructSound.Play();
         seftDistruct.Play();
     }
 
     public int GetDamage() => exploDamage;
+
+    public DamageType GetDamageType()
+    {
+        return DamageType.Normal;
+    }
 }

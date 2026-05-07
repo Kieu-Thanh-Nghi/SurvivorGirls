@@ -6,9 +6,4 @@ public class BossRockThrowingSkill : BaseRockThrowingSkill
     {
         ActiveThrow();
     }
-
-    protected override GameObject GetARock()
-    {
-        return EnemiesUpdate.Instance.rockPools.pool_BossRock.Spawn(null);
-    }
 }

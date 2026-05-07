@@ -14,6 +14,13 @@ public class LevelData : MonoBehaviour
         length = LvlsAndMaxProcess.Length;
         if (length > 0) currentMaxProgress = (int)LvlsAndMaxProcess[0].y;
     }
+    private void OnDisable()
+    {
+        if (length > 0) currentMaxProgress = (int)LvlsAndMaxProcess[0].y;
+        CurrentLevel = 1;
+        currentIndex = 0;
+        currentProgress = 0;
+    }
     public int GetPercentage(int addPoint, out float percentage)
     {
         currentProgress += addPoint;

@@ -6,7 +6,7 @@ public class ActiveSkill_ThunderBolts : MonoBehaviour, IHasCoolDown
     ObjectsSphereRandomDetecter detecter = new();
     CoolDownSystem coolDownSystem = new();
     [SerializeField] LeanGameObjectPool thunderBoltsPool;
-    [SerializeField] ThunderBoltsElectricEff electricEff;
+    [SerializeField] ThunderStrike thunderStrike;
     [SerializeField] float baseCoolDown = 4;
     [SerializeField] internal int neededEnemies = 1;
     [SerializeField] float detectRadius = 8;
@@ -14,8 +14,8 @@ public class ActiveSkill_ThunderBolts : MonoBehaviour, IHasCoolDown
     Transform[] enemies = new Transform[10];
     internal float EShockTime 
     { 
-        set => electricEff.SetElecEffTime(value);
-        get => electricEff.GetElecEffTime();
+        set => thunderStrike.elecData_TotalTime = value;
+        get => thunderStrike.elecData_TotalTime;
     }
 
     public float GetCoolDown() => baseCoolDown * PlayerDataManager.Instance._ASCoolDownScale;
@@ -27,6 +27,7 @@ public class ActiveSkill_ThunderBolts : MonoBehaviour, IHasCoolDown
     private void OnDestroy()
     {
         StopAllCoroutines();
+        thunderBoltsPool.DespawnAll();
     }
 
     [ContextMenu("testLightning")]

@@ -3,11 +3,11 @@ using UnityEngine;
 using Lean.Pool;
 using UnityEngine.Events;
 
-public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage, IHasCoolDown
+public class ActiveSkill_FireWorks : MonoBehaviour, IHasCoolDown
 {
+    [SerializeField] AudioSource FireWorkShootingSound;
     [SerializeField] float baseCooldown;
     [SerializeField] Transform user;
-    [SerializeField] int burnDamage;
     [SerializeField] internal Vector3 FireCrackerScale = Vector3.one * 0.4f;
     [SerializeField] LeanGameObjectPool FireWorksPool;
     [SerializeField] LeanGameObjectPool FireCrackerPool;
@@ -25,6 +25,8 @@ public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage, IHasCoolDown
     private void OnDestroy()
     {
         StopAllCoroutines();
+        FireWorksPool.DespawnAll();
+        FireCrackerPool.DespawnAll();
     }
     [ContextMenu("test")]
     public void DoSkill()
@@ -35,6 +37,7 @@ public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage, IHasCoolDown
             () => 
             {
                 Vector3 enemyPos = CircleEnemyDetect(Dir, DetectRadius);
+                FireWorkShootingSound.Play();
                 var FCrackerTransform = FireCrackerPool.Spawn(null).transform;
                 FCrackerTransform.localScale = Vector3.zero;
                 ThrowFCracker(FWorksTransform.position, enemyPos, FCrackerTransform);
@@ -67,7 +70,11 @@ public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage, IHasCoolDown
     void ThrowFCracker(Vector3 fromPos, Vector3 toPos, Transform projectileTransform)
     {
         projectileTransform.DOScale(FireCrackerScale, throwDuration);
-        Throw(projectileTransform, fromPos, toPos, throwHeight, throwDuration, () => FireCrackerPool.Despawn(projectileTransform.gameObject));
+        Throw(projectileTransform, fromPos, toPos, throwHeight, throwDuration, 
+            () => 
+            {
+                FireCrackerPool.Despawn(projectileTransform.gameObject);
+            });
     }
 
     public void Throw(Transform aMine, Vector3 start, Vector3 end, float height, float duration, UnityAction DoWhenDone = null)
@@ -81,6 +88,8 @@ public class ActiveSkill_FireWorks : MonoBehaviour, IHasDamage, IHasCoolDown
             .SetEase(Ease.Linear).OnComplete(() => DoWhenDone?.Invoke());
     }
 
-    public int GetDamage() => burnDamage;
-
+    public DamageType GetDamageType()
+    {
+        return DamageType.Normal;
+    }
 }

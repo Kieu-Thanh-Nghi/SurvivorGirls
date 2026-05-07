@@ -87,13 +87,15 @@ GameObject:
   - component: {fileID: 66769309211985886}
   - component: {fileID: 8748198733931573030}
   - component: {fileID: 7004698296750473330}
+  - component: {fileID: 2219691426952244068}
+  - component: {fileID: 4405502037172042193}
   m_Layer: 5
   m_Name: equip frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &66769309211985886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -155,6 +157,78 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2219691426952244068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319227345242891585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03309eb322be9e4e99dbabb434cc799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvlText: {fileID: 2341270633691882971}
+  frameBG: {fileID: 7004698296750473330}
+  icon: {fileID: 3534547699703246465}
+  equippedMark: {fileID: 1000605478270469619}
+--- !u!114 &4405502037172042193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319227345242891585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7004698296750473330}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2219691426952244068}
+        m_TargetAssemblyTypeName: EquipFrame, Assembly-CSharp
+        m_MethodName: ActiveThisFrame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5341225184165622439
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_fontSize
-      value: 32.75
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
@@ -443,6 +517,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc41a2f4cdf576647b40c45fbe99aabf, type: 3}
+--- !u!114 &2341270633691882971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2824924817567700093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7579869754133380321 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,
@@ -465,7 +551,7 @@ PrefabInstance:
     - target: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_fontSize
-      value: 16.85
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}

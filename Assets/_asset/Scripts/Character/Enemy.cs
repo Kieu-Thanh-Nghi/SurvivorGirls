@@ -4,12 +4,37 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
-    [SerializeField] Transform rotateBody;
-    [SerializeField] internal NavMeshAgent moveByNav;
-    [SerializeField] internal EnemyData enemyData;
+    [SerializeField] internal float powerBuff = 1;
+    [SerializeField] internal float speedBuff = 1;
+    [SerializeField] internal float healthBuff = 1;
     [SerializeField] Health health;
+    [SerializeField] HasHurtDamage hasHurtDamage;
+    [SerializeField] internal EnemyData enemyData;
+    internal float DefaultSpeed => speedBuff * enemyData.moveSpeed;
+    internal int DefaultHealth => Mathf.CeilToInt(powerBuff * healthBuff * enemyData.health);
+    internal int DefaultDamage => Mathf.CeilToInt(powerBuff * enemyData.damage);
+
+    [Header("about rotate")]
+    [SerializeField] Transform rotateBody;
     IRotate rotateFuntion = new Rotate();
-    [SerializeField] internal Transform target;
+    bool isStopRotate;
+
+    [Header("about move")]
+    [SerializeField] internal NpcMove moveManagement;
+
+    [Header("about animation")]
+    [SerializeField] internal CharAnimManagement animPlayer;
+
+    internal Transform target;
+    internal Transform Target
+    {
+        get => target;
+        set
+        {
+            target = value;
+            moveManagement.SetTarget(value);
+        }
+    }
     internal Vector3 faceDirect;
     internal int enemyIndex;
 
@@ -19,48 +44,89 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawRay(transform.position, rb.transform.forward);
     }
 
-    private void OnEnable()
-    {
-        health.CurrentHP = enemyData.health;
-        SetEnemyDestination();
-        ResetSpeed();
-    }
     private void Start()
     {
-        moveByNav.updateRotation = false;
+        hasHurtDamage.damage = DefaultDamage;
     }
+    private void OnEnable()
+    {
+        health.CurrentHP = DefaultHealth;
+        health.MaxHP = DefaultHealth;
+        EnemyMove();
+        SetStopMoving(false);
+        ResetSpeed();
+    }
+    //private void Start()
+    //{
+    //    moveByNav.updateRotation = false;
+    //}
 
-    public void SetStopMoving(bool isStop)
+    //public void SetStopMoving(bool isStop)
+    //{
+    //    moveByNav.isStopped = isStop;
+    //}
+    //public void SetSpeed(float theSpeed)
+    //{
+    //    moveByNav.speed = theSpeed;
+    //}
+    //public void ResetSpeed()
+    //{
+    //    moveByNav.speed = enemyData.moveSpeed;
+    //}
+    public void SetStopMoving(bool isStop, bool isStopAnim = true, bool isChangeRotate = true)
     {
-        moveByNav.isStopped = isStop;
+        moveManagement.SetStopMoving(isStop);
+        if(isChangeRotate) isStopRotate = isStop;
+        if(isStopAnim) animPlayer.SetStopCurrentAnim(isStop);
     }
-    public void SetSpeed(float theSpeed)
+    public void SpeedMultiply(float amount)
     {
-        moveByNav.speed = theSpeed;
+        float newSpeed = DefaultSpeed * amount;
+        moveManagement.SetSpeed(newSpeed);
+        animPlayer.Speed *= amount;
     }
     public void ResetSpeed()
     {
-        moveByNav.speed = enemyData.moveSpeed;
+        moveManagement.ResetSpeed(DefaultSpeed);
+        animPlayer.Speed = speedBuff;
     }
+    public void EnemyMove(bool isTargetMoveEnough = false)
+    {
+        if (Target == null) return;
+        if (Target == GamePlayCtrler.Instance.Player && isTargetMoveEnough)
+        {
+            moveManagement.Move(Target, true);
+        }
+        else
+        {
+            moveManagement.Move(Target, false);
+        }
+        animPlayer?.UpdateAnimFrame();
+    }
+
     //private void OnEnable()
     //{
     //    moveByNav.enabled = true;
     //    //SetEnemyDestination();
     //    EnemyRotate();
     //}
-    public void SetEnemyDestination()
-    {
-        moveByNav.SetDestination(target.position);
-    }
+
     public void EnemyRotate()
     {
-        faceDirect = (target.position - transform.position).normalized;
+        if (isStopRotate) return;
+        faceDirect = (Target.position - transform.position).normalized;
+        faceDirect.y = 0;
         faceDirect = Vector3.Lerp(rotateBody.forward, faceDirect, 0.5f);
         rotateFuntion.DoRotate(rotateBody, faceDirect);
     }
 
     private void OnDisable()
     {
-        target = GamePlayCtrler.Instance.Player;
+        Target = GamePlayCtrler.Instance.Player;
     }
+}
+
+public interface IObsTouching
+{
+    public void SetTouchObs(bool isTouch);
 }

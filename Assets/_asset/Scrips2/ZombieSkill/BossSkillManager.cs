@@ -25,7 +25,9 @@ public class BossSkillManager : MonoBehaviour
             {
                 skill.ActiveSkill();
                 yield return skill.waitDone;
+                Debug.Log("done");
                 yield return skill.waitCountDown;
+                Debug.Log("cd");
             }
         }
     }

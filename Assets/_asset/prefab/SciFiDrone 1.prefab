@@ -138,7 +138,7 @@ MonoBehaviour:
   stablePosition: {x: -0.8, y: 3.4, z: 0.55}
   timeToFlyToStablePosition: 1
   fireRate: 4
-  damage: 1
+  damage: 9
   target: {fileID: 0}
 --- !u!114 &1905241127176118404
 MonoBehaviour:
@@ -268,125 +268,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
+    - target: {fileID: 82312348515581780, guid: da1850fdc32f983448d357e1fff3d8f4,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: ringBufferMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: ForceModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: TriggerModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.radiusScale
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.maxKillSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.m_Bounce.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.m_Dampen.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.collisionMessages
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7163691545644824620, guid: 290622335e59d1e4a85054a8f00d74bd,
+        type: 2}
     m_RemovedComponents:
+    - {fileID: 0}
     - {fileID: 114883436327058569, guid: da1850fdc32f983448d357e1fff3d8f4, type: 3}
-    - {fileID: 82312348515581780, guid: da1850fdc32f983448d357e1fff3d8f4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1653427915825223, guid: da1850fdc32f983448d357e1fff3d8f4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9061622983965964393}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da1850fdc32f983448d357e1fff3d8f4, type: 3}
---- !u!198 &6723387334825391978 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198754389242175350, guid: da1850fdc32f983448d357e1fff3d8f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6884978229974984732}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6882259224636882518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4197341671593546, guid: da1850fdc32f983448d357e1fff3d8f4,
     type: 3}
   m_PrefabInstance: {fileID: 6884978229974984732}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6884179673826281563 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1653427915825223, guid: da1850fdc32f983448d357e1fff3d8f4,
+--- !u!114 &9061622983965964393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2471633072747614325, guid: da1850fdc32f983448d357e1fff3d8f4,
     type: 3}
   m_PrefabInstance: {fileID: 6884978229974984732}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9061622983965964393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6884179673826281563}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9ce24e4fa1e5664f8a2c6396d418ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletEmitter: {fileID: 6723387334825391978}

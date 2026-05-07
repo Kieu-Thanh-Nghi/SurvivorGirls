@@ -100,6 +100,36 @@ public class MapManager : MonoBehaviour
             }
         }
     }
+
+    public Transform GetSquareOfAPosion(Vector3 thePosition)
+    {
+        var centerSquarePosition = mapRows[1].squres[1].position;
+        int row = 1;
+        int col = 1;
+        float compareNunber = squreLength / 2;
+
+        float x_diffirent = thePosition.x - centerSquarePosition.x;
+        if (x_diffirent > compareNunber)
+        {
+            row = 2;
+        }
+        else if(x_diffirent < -compareNunber)
+        {
+            row = 0;
+        }
+
+        float z_diffirent = thePosition.z - centerSquarePosition.z;
+        if(z_diffirent > compareNunber)
+        {
+            col = 0;
+        }
+        else if (z_diffirent < -compareNunber)
+        {
+            row = 2;
+        }
+
+        return mapRows[row].squres[col];
+    }
 }
 
 [System.Serializable]

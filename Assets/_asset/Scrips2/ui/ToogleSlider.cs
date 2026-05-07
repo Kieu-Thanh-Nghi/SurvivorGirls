@@ -7,10 +7,18 @@ using UnityEngine.UI;
 public class ToogleSlider : MonoBehaviour
 {
     bool isEnable;
+    [SerializeField] SettingEnum SaveName;
     [SerializeField] Color enableColor, disableColor;
     [SerializeField] Image toogleBar;
     [SerializeField] Scrollbar scrollbar;
     [SerializeField] UnityEvent OnEnable, OnDisable;
+
+    private void Awake()
+    {
+        int startVal = PlayerPrefs.GetInt(SaveName.ToString(), 1);
+        if (startVal == 0) TurnOn();
+        else TurnOff();
+    }
 
     public bool IsEnable
     {
@@ -20,17 +28,29 @@ public class ToogleSlider : MonoBehaviour
             isEnable = value;
             if (isEnable)
             {
-                scrollbar.value = 1;
-                toogleBar.color = enableColor;
-                OnEnable?.Invoke();
+                PlayerPrefs.GetInt(SaveName.ToString(), 1);
+                TurnOn();
             }
             else
             {
-                scrollbar.value = 0;
-                toogleBar.color = disableColor;
-                OnDisable?.Invoke();
+                PlayerPrefs.GetInt(SaveName.ToString(), 1);
+                TurnOff();
             }
         }
+    }
+
+    void TurnOn()
+    {
+        scrollbar.value = 1;
+        toogleBar.color = enableColor;
+        OnEnable?.Invoke();
+    }
+
+    void TurnOff()
+    {
+        scrollbar.value = 0;
+        toogleBar.color = disableColor;
+        OnDisable?.Invoke();
     }
 
     public void ClickButton()

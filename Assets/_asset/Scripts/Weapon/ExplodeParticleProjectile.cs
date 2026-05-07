@@ -4,14 +4,16 @@ using Lean.Pool;
 public class ExplodeParticleProjectile : ParticleProjectile
 {
     [SerializeField] internal ExplotionEff explodeEff;
+    [SerializeField] AudioSource exploSound;
 
-    protected override void OnParticleCollision(GameObject other)
+    protected override void OnBulletCollide(IDamageable damageable, GameObject other)
     {
-        if (other.TryGetComponent<IDamageable>(out var damageable))
+        Debug.Log(damageable == null);
+        if(damageable is Health health)
         {
-            Debug.Log(damageable == null);
-            damageable.TakeDamage(hasDamage.GetDamage(), DamageType.Normal);
-            explodeEff.SpawnExplotion(other.transform.position);
+            explodeEff.SpawnExplotion(health.gameObject);
+            exploSound.Play();
         }
+        base.OnBulletCollide(damageable, other);
     }
 }

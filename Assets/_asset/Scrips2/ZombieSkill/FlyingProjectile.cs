@@ -5,13 +5,15 @@ public class FlyingProjectile : MonoBehaviour
 {
     [SerializeField] float lifeTime = 8;
     [SerializeField] Rigidbody rb;
+    internal RockData rockData;
     float speed = 2;
     internal int damage;
 
-    internal void DoFly(float theSpeed, int theDamage = 1)
+    internal virtual void DoFly(RockData rockData, int theDamage = 1)
     {
+        this.rockData = rockData;
         damage = theDamage;
-        speed = theSpeed;
+        speed = rockData.projectileSpeed;
         rb.velocity = transform.forward * speed;
         Invoke(nameof(EndLife), lifeTime);
     }

@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 7878029898624353557}
   - component: {fileID: 7491031642791803909}
   - component: {fileID: 5465532702433729674}
+  - component: {fileID: 7867768654152831946}
   m_Layer: 5
   m_Name: switch char-pet Button
   m_TagString: Untagged
@@ -339,6 +340,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 5377813617178075823}
   tabSize: {fileID: 11400000, guid: 9f6cdbac680cf384eb4a3cb82d13ba3b, type: 2}
+  WhenResetSize:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7867768654152831946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6073699953640327599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4382ff77be44663428ae4ff4b175a20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabSizeChanger: {fileID: 5465532702433729674}
+  SelectTab: {fileID: 2950118309680468112}
 --- !u!1 &8402091217676081679
 GameObject:
   m_ObjectHideFlags: 0

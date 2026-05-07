@@ -7,7 +7,7 @@ public class TabSizeChanger : MonoBehaviour
     [SerializeField] SelectTabSize tabSize;
     [SerializeField] UnityEvent WhenResetSize;
 
-    [ContextMenu("test")] 
+    [ContextMenu("test1")] 
     public void SetTabSize()
     {
         Vector2 offsetMin = rectTransform.offsetMin;
@@ -26,6 +26,7 @@ public class TabSizeChanger : MonoBehaviour
         tabManager?.ResetCurrentTab();
         tabManager?.SetCurrentTab(this);
     }
+    [ContextMenu("test2")]
     public void ResetTabSize()
     {
         rectTransform.offsetMin = Vector2.zero;

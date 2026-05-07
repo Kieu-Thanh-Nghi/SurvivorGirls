@@ -65,4 +65,3 @@ public interface ISpeedChangable
 
     public void ResetSpeed();
 }
-

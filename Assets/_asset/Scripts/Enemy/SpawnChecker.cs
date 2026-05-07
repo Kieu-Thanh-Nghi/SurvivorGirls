@@ -7,7 +7,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
 {
     [SerializeField] float bonusRange = 3;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Enemy EnemyBody;
+    [SerializeField] internal Enemy EnemyBody;
     [SerializeField] LayerMask layerMask;
 
     //private void OnDrawGizmos()
@@ -22,7 +22,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     [ContextMenu("start check")]
     public void StartCheck()
     {
-        EnemyBody.target = GamePlayCtrler.Instance.Player;
+        EnemyBody.Target = GamePlayCtrler.Instance.Player;
         if (RayCheckObs())
         {
             StartCoroutine(CheckIfItObstacle());
@@ -59,8 +59,8 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     {
         pos.y = 0;
         transform.position = pos;
-        agent.enabled = true;
-        EnemyBody.gameObject.SetActive(true);
+        //agent.enabled = true;
+        EnemyBody.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     [ContextMenu("RayCheck")]

@@ -6,14 +6,20 @@ using UnityEngine.Events;
 public class GamePlayCtrler : MonoBehaviour
 {
     internal static GamePlayCtrler Instance;
+    [SerializeField] GameplaySetup gameplaySetup;
+    [SerializeField] internal MapManager mapManager;
+
+    [SerializeField] internal Transform FolowPlayer;
     [SerializeField] EnemiesUpdate enemiesUpdate;
+    [SerializeField] internal EnemySpawner enemySpawner;
+    [SerializeField] internal PlStageSetup plStageSetup;
+    [SerializeField] internal StatusManager statusManager;
+
+    [SerializeField] internal DeathCount killedZomCount;
     [SerializeField] internal Transform Player;
     [SerializeField] internal WarningPanel warningPanel;
-    [SerializeField] DeathCount killedZomCount;
-    [SerializeField] internal Transform FolowPlayer;
     [SerializeField] internal LeanGameObjectPool dameTextPool;
     [SerializeField] internal EXPpools expPools;
-    [SerializeField] internal EnemySpawner enemySpawner;
     [SerializeField] internal Transform BossArea;
     [SerializeField] internal Joystick joystick;
 
@@ -45,6 +51,19 @@ public class GamePlayCtrler : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        if(EnemiesUpdate.Instance != null)
+        {
+            enemiesUpdate = EnemiesUpdate.Instance;
+            enemySpawner = enemiesUpdate.enemySpawner;
+            Debug.Log(enemySpawner == null);
+            enemySpawner.transform.SetParent(FolowPlayer, false);
+            Debug.Log(FolowPlayer == null);
+            plStageSetup.SetTheStage();
+        }
+        gameplaySetup.SetupPlayer();
+        Player = PlayerSetup.instance.player;
+        Player.position = Vector3.zero;
+        Player.gameObject.SetActive(true);
     }
     //private void FixedUpdate()
     //{
@@ -82,6 +101,10 @@ public class GamePlayCtrler : MonoBehaviour
         //        enemyIndex++;
         //    }
         //}
+    }
+    public void testLvUp1()
+    {
+        PlayerSetup.instance.levelManager.Up1Level();
     }
 }
 

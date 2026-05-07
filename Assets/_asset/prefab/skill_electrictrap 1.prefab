@@ -2306,7 +2306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee3c028aff62964180d8e9ea76a0a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  electricPool: {fileID: 0}
+  statusType: 2
+  elecData_TotalTime: 4
+  damage: 1
+  speedDecreaseAmount: 0.5
 --- !u!136 &5393584619113332873
 CapsuleCollider:
   m_ObjectHideFlags: 0

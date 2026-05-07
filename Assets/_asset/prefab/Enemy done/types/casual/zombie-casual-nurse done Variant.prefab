@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8638231864536620237
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 536584898777121162, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 073ade6ee0e8ff14198ddd782a9401ee,
+        type: 2}
+    - target: {fileID: 1570446702904785614, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_Name
+      value: zombie-casual-nurse done Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712771170155540589, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093705240941590696, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129901073939686975, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4770675519816143255, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 87f5d4a2cc8f4684f90fb7a9295cbfdb, type: 2}
+    - target: {fileID: 5647002709830377158, guid: 7d7d0f48399fb86479a16ed74f3e5f65,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e1a76b75a93679c4ca408d5f827cce1c, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d7d0f48399fb86479a16ed74f3e5f65, type: 3}

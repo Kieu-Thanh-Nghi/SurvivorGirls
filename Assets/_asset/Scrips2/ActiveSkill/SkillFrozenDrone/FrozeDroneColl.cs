@@ -1,19 +1,7 @@
-using Lean.Pool;
 using UnityEngine;
 
-public class FrozeDroneColl : MonoBehaviour
+public class FrozeDroneColl : IceStatusGiver
 {
-    [SerializeField] LeanGameObjectPool iceEffPool;
-    private void OnTriggerEnter(Collider other)
-    {
-        var iceEff = other.GetComponentInChildren<IceEff>();
-        if (iceEff != null)
-        {
-            iceEff.RefressEff();
-        }
-        else
-        {
-            iceEffPool.Spawn(other.transform);
-        }
-    }
+    public override float IceData_TotalTime
+        => iceData_TotalTime * (1 + PlayerDataManager.Instance.ElementBoost);
 }

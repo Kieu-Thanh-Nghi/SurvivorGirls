@@ -9,26 +9,26 @@
 
     public override void ToLV1()
     {
-        PlayerDataManager.Instance._damage *= 1.05f;
+        PlayerDataManager.Instance._damageScale *= 1.05f;
     }
 
     public override void ToLV2()
     {
-        PlayerDataManager.Instance._damage *= 1.07f;
+        PlayerDataManager.Instance._damageScale *= 1.07f;
     }
 
     public override void ToLV3()
     {
-        PlayerDataManager.Instance._damage *= 1.1f;
+        PlayerDataManager.Instance._damageScale *= 1.1f;
     }
 
     public override void ToLV4()
     {
-        PlayerDataManager.Instance._damage *= 1.15f;
+        PlayerDataManager.Instance._damageScale *= 1.15f;
     }
 
     public override void ToLV5()
     {
-        PlayerDataManager.Instance._damage *= 1.2f;
+        PlayerDataManager.Instance._damageScale *= 1.2f;
     }
 }

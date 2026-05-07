@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class PistolSkill_Training : MonoBehaviour, IEachAtkObserver
 {
-    WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
+    WaitForSeconds waitForSeconds = new WaitForSeconds(0.22f);
     [SerializeField] internal int TimesToShoot;
     IWeapon weapon; 
     INearestDetecter detecter;

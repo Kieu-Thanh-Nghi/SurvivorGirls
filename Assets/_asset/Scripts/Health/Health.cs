@@ -3,9 +3,9 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageable, ISetOnDead, IHasMaxHealth
 {
-    [SerializeField] internal int MaxHP = 50;
     [SerializeField] internal UnityEvent OnDead, OnHurt, OnHeal, OnChangeHeal;
-    int currentHP;
+    internal int MaxHP;
+    [SerializeField] int currentHP;
     internal bool isImmute;
     internal int CurrentHP
     {
@@ -18,10 +18,6 @@ public class Health : MonoBehaviour, IDamageable, ISetOnDead, IHasMaxHealth
     }
     internal UnityAction<int> OnHealthLostAmount, OnHealthGainAmount;
 
-    protected void OnEnable()
-    {
-        CurrentHP = MaxHP;
-    }
     public void TakeDamage(int dameAmount, DamageType type)
     {
         if (isImmute) return;

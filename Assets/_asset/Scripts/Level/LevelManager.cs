@@ -6,13 +6,15 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] bool isDoneSkillChoosing;
-    [SerializeField] GameObject SkillChoiceCanvas;
-    [SerializeField] Image lvlProgressBar;
-    [SerializeField] TMP_Text currentLvlText;
+    [SerializeField] internal GameObject SkillChoiceCanvas;
+    [SerializeField] internal Image lvlProgressBar;
+    [SerializeField] internal TMP_Text currentLvlText;
     [SerializeField] LevelData levelData;
     internal int expInOneFrame; 
 
     WaitUntil wait;
+
+    [ContextMenu("Up1Level")]
     public void Up1Level()
     {
         expInOneFrame = levelData.currentMaxProgress;
@@ -47,7 +49,6 @@ public class LevelManager : MonoBehaviour
     {
         if(expInOneFrame > 0)
         {
-            Debug.Log(expInOneFrame);
             int n = levelData.GetPercentage(expInOneFrame, out float percent);
             lvlProgressBar.fillAmount = percent;
             if (n > 0)
@@ -66,7 +67,6 @@ public class LevelManager : MonoBehaviour
         {
             TurnSkillChoiceOn();
             yield return wait;
-            Debug.Log("ss2");
             TurnSkillChoiceOff();
         }
         Time.timeScale = 1;
@@ -82,5 +82,15 @@ public class LevelManager : MonoBehaviour
     {
         GamePlayCtrler.Instance.IsPause = false;
         isDoneSkillChoosing = false;
+    }
+
+    private void OnDisable()
+    {
+        var allRemainExp = transform.GetComponentsInChildren<Transform>();
+        int n = allRemainExp.Length;
+        for(int i = 1; i < n; i++)
+        {
+            Destroy(allRemainExp[i].gameObject);
+        }
     }
 }

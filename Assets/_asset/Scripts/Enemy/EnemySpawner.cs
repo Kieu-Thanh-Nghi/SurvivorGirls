@@ -17,6 +17,32 @@ public class EnemySpawner : MonoBehaviour
     //    UpdateActivatedSample();
     //}
 
+    public int GetBigBossQuantity()
+    {
+        int count = 0;
+        foreach(var ss in spawnStarters)
+        {
+            if(ss is BossSpawnStarter)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public float GetEndTime()
+    {
+        int ssCount = spawnStarters.Length;
+        if(ssCount > 0)
+        {
+            return spawnStarters[ssCount - 1].StartTime;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
     internal void UpdateSpawnClock(float value)
     {
         CountingTime = value;

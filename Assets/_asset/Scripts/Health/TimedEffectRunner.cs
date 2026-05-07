@@ -17,7 +17,6 @@ public class TimedEffectRunner
         onBegin?.Invoke();
         while (elapsed < totalTime || isInfinite)
         {
-            Debug.Log("e" + elapsed);
             if (isStop)
             {
                 onComplete?.Invoke();

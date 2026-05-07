@@ -8,11 +8,13 @@ public class Interfaces : MonoBehaviour
 public interface IHasDamage
 {
     public int GetDamage();
+    public DamageType GetDamageType();
 }
 
-public interface IExpType
+public interface IExp
 {
     public int GetType();
+    public Transform PickThisExp(LevelManager whoPicked);
 }
 public interface IDamageable
 {

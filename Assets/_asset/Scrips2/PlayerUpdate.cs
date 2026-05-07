@@ -10,7 +10,7 @@ public class PlayerUpdate : MonoBehaviour
     IRotate playerRotate = new Rotate();
     IMove playerMove = new PlayerMove();
     [SerializeField] PlayerMoveAnim moveAnim;
-    [SerializeField] AnimID animID;
+    [SerializeField] internal AnimID animID;
     [SerializeField] Vector3 expScale = Vector3.one;
 
     internal Vector3 ExpScale { 
@@ -23,9 +23,12 @@ public class PlayerUpdate : MonoBehaviour
     }
     float speed => PlayerDataManager.Instance.MoveSpeed;
 
-    private void Start()
+    private void OnEnable()
     {
         levelManager.transform.localScale = ExpScale;
+        var health = GetComponent<Health>();
+        health.MaxHP = PlayerDataManager.Instance.PlayerMaxHp;
+        health.CurrentHP = health.MaxHP;
     }
     private void Update()
     {

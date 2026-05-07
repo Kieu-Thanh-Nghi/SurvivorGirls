@@ -1,0 +1,264 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3431201941245285501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.094177246
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823529460302002893, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114980312823027528, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114980312823027528, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114980312823027528, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114980312823027528, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633212411246907234, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_text
+      value: 'Sixth Sense Enhancement Level 1.
+
+        Explosion radius +10%'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633212411246907234, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 26.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166140985426923633, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166140985426923633, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166140985426923633, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166140985426923633, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325748517981688646, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_text
+      value: 'Sixth Sense Enhancement Level 3.
+
+        Explosion radius +10%'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879520265705546990, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_Name
+      value: details list Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479829585075758064, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479829585075758064, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479829585075758064, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479829585075758064, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453166570945254708, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453166570945254708, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453166570945254708, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453166570945254708, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235734576240890358, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_text
+      value: Explosives are attached to bullets activated by the Sixth Sense. If
+        it hits a zombie, it explodes.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8235734576240890358, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255320913082416526, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_text
+      value: 'Sixth Sense Enhancement Level 4.
+
+        Explosion radius +10%'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818892453566191071, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_text
+      value: 'Sixth Sense Enhancement Level 2.
+
+        Explosion radius +10%'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859350042391028612, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859350042391028612, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859350042391028612, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859350042391028612, guid: 8d6da815e539859468a2ea16e68c889e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d6da815e539859468a2ea16e68c889e, type: 3}

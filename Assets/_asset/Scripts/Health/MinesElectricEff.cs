@@ -1,4 +1,4 @@
-﻿public class MinesElectricEff : ElectricEff
+﻿public class MinesElectricEff : PlayerElectricEff
 {
 
 }

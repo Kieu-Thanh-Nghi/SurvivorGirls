@@ -6,7 +6,11 @@ public class PlayerActivities : MonoBehaviour
 {
     [SerializeField] CharacterController characterController;
     [SerializeField] Transform rotateBody;
-    
+
+    private void OnEnable()
+    {
+        rotateBody = PlayerSetup.instance.RotateBody;
+    }
     public void Move(IMove playerMove, Vector3 moveDirection, float speed)
     {
         playerMove.DoMove(characterController, moveDirection, speed, Time.fixedDeltaTime);

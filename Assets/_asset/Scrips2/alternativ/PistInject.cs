@@ -57,27 +57,27 @@ public abstract class Skill : MonoBehaviour
 
     public virtual bool UpgradeSkill()
     {
-        if (currentLV >= maxLvl) return true;
+        currentLV++;
         switch (currentLV)
         {
-            case 0:
+            case 1:
                 InjectSkill();
                 ToLV1();
                 break;
-            case 1:
+            case 2:
                 ToLV2();
                 break;
-            case 2:
+            case 3:
                 ToLV3();
                 break;
-            case 3:
+            case 4:
                 ToLV4();
                 break;
-            case 4:
+            case 5:
                 ToLV5();
                 break;
         }
-        currentLV++;
+        if (currentLV >= maxLvl) return true;
         return false;
     }
 

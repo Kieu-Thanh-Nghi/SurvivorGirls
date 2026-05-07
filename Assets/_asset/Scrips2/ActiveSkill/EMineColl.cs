@@ -1,27 +1,25 @@
 ﻿using UnityEngine;
 using Lean.Pool;
 
-public class EMineColl : MonoBehaviour
+public class EMineColl : ElectStatusGiver
 {
-    [SerializeField] internal LeanGameObjectPool electricPool;
-    private void OnTriggerEnter(Collider other)
+    internal override int Damage
+         => Mathf.CeilToInt(damage * (1 + PlayerDataManager.Instance.ElementBoost));
+    internal override float SpeedDecreaseAmount
+        => speedDecreaseAmount * (1 + PlayerDataManager.Instance.ElementBoost);
+    protected override void EffSetting(ElectricEff elecEff)
     {
-        var electricEff = other.GetComponentInChildren<MinesElectricEff>();
-        if (electricEff == null)
-        {
-            if (electricPool.Spawn(other.transform).TryGetComponent(out electricEff))
-            {
-                electricEff.transform.forward = Vector3.up;
-                electricEff.SetInfinite(true);
-            }
-        }
+        base.EffSetting(elecEff);
+        elecEff.transform.forward = Vector3.up;
+        elecEff.SetInfinite(true);
     }
     private void OnTriggerExit(Collider other)
     {
-        var electricEff = other.GetComponentInChildren<ElectricEff>();
-        if(electricEff != null)
+        var effFilter = other.GetComponent<IEffFilter>();
+        var ElecEff = effFilter.GetCurrentEffect(StatusType.Electric);
+        if (ElecEff != null)
         {
-            electricEff.StopEff(true);
+            ElecEff.SetInfinite(false);
         }
     }
 }

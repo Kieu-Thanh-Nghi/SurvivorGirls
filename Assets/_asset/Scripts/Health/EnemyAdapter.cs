@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
 public class EnemyAdapter : MonoBehaviour, ITargetChangable, ISpeedChangable, IMoveFreezing
 {
-    [SerializeField] Enemy enemy;
+    [SerializeField] internal Transform allBody;
+    [SerializeField] internal Enemy enemy;
 
     public void ResetSpeed() => enemy.ResetSpeed();
 
+    public void ResetMoveMechanic()
+    {
+        enemy.moveManagement.ResetMoveMechanic();
+    }
+
     public void ResetTarget()
     {
-        enemy.target = GamePlayCtrler.Instance.Player;
-        enemy.SetEnemyDestination();
+        enemy.Target = GamePlayCtrler.Instance.Player;
+        enemy.EnemyMove();
     }
 
     public void SetIsMoveFreeze(bool isFreeze)
@@ -18,38 +24,12 @@ public class EnemyAdapter : MonoBehaviour, ITargetChangable, ISpeedChangable, IM
 
     public void SetTarget(Transform newTarget)
     {
-        enemy.target = newTarget;
-        enemy.SetEnemyDestination();
+        enemy.Target = newTarget;
+        enemy.EnemyMove();
     }
 
     public void SpeedMultiplyWith(float amount)
     {
-        float newSpeed = enemy.enemyData.moveSpeed * amount;
-        enemy.SetSpeed(newSpeed);
+        enemy.SpeedMultiply(amount);
     }
 }
-
-public class EffectHandler : MonoBehaviour
-{
-
-}
-
-public class Effect : MonoBehaviour
-{
-    protected TimedEffectRunner effectRunner = new();
-    [SerializeField] protected float totalTime = 5;
-    public void RefressEff()
-    {
-        effectRunner.elapsed = 0;
-    }
-    public void SetInfinite(bool isInfinte)
-    {
-        effectRunner.isInfinite = isInfinte;
-    }    
-    public void StopEff(bool isStop)
-    {
-        effectRunner.isStop = isStop;
-    }
-}
-
-

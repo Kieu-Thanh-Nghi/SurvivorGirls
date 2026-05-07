@@ -2,6 +2,6 @@
 
 public class HasHurtDamage : MonoBehaviour, IHasHurtDamage
 {
-    [SerializeField] int damage = 5;
+    [SerializeField] internal int damage = 5;
     public int GetHurtDamage() => damage;
 }

@@ -3,25 +3,30 @@ using Lean.Pool;
 
 public class BurnEff : Effect
 {
-    protected int damage;
+    internal int damage;
     internal IDamageable damageable;
     internal IHasDamage hasDamage { set => damage = value.GetDamage(); }
+    internal virtual int Damage => Mathf.CeilToInt(damage * MultiplyAmount);
     protected virtual void OnEnable()
     {
         Transform thisParent = transform.parent;
         damageable = thisParent?.GetComponent<IDamageable>();
         effectRunner.totalTime = totalTime;
-        StartCoroutine(effectRunner.RunEff(damageTarget, endEff));
+        StartCoroutine(effectRunner.RunEff(DamageTarget, EndEff));
     }
-    protected void damageTarget()
+    public void SetEffData(float totalTime, int damage)
     {
-        damageable.TakeDamage(damage, DamageType.Normal);
+        SetEffData(totalTime);
+        this.damage = damage;
+    }
+    protected void DamageTarget()
+    {
+        damageable.TakeDamage(Damage, DamageType.Normal);
     }
 
-    protected virtual void endEff()
+    protected override void EndEff()
     {
         StopAllCoroutines();
         LeanPool.Despawn(gameObject);
     }
 }
-

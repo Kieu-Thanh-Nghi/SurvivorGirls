@@ -7,9 +7,24 @@ public class ClockUI : MonoBehaviour
 
     public void UpdateClock()
     {
-        timeText.text = SecondsToTotalMinuteSS(
-            GamePlayCtrler.Instance.CountingTime);
+        //timeText.text = SecondsToTotalMinuteSS(
+        //    GamePlayCtrler.Instance.CountingTime);
+        timeText.text = TimeFormatChanger.SecondsToTotalMinuteSS(GamePlayCtrler.Instance.CountingTime);
     }
+    //public static string SecondsToTotalMinuteSS(float totalSeconds)
+    //{
+    //    if (totalSeconds < 0f) totalSeconds = 0f;
+
+    //    int total = Mathf.FloorToInt(totalSeconds);
+    //    int minutes = total / 60;
+    //    int seconds = total % 60;
+
+    //    return $"{minutes:00}:{seconds:00}";
+    //}
+}
+
+public class TimeFormatChanger
+{
     public static string SecondsToTotalMinuteSS(float totalSeconds)
     {
         if (totalSeconds < 0f) totalSeconds = 0f;

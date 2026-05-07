@@ -25,6 +25,7 @@ public class PistolThirdSkill : PistolSkill
     public bool CheckIfOK(PistolSkillInjection thePsi)
     {
         var skill2 = thePsi.skillList[(int)PistolSkillEnum.SixthSense] as PistolSecondSkill;
+        Debug.Log("thirt skill: " + (skill2 != null) + " - " + skill2.currentLV + " - " + currentLV);
         if(skill2 != null && skill2.currentLV > currentLV)
         {
             return true;

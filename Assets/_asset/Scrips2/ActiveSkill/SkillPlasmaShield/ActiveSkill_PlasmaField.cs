@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ActiveSkill_PlasmaField : MonoBehaviour, IHasCoolDown
 {
+    [SerializeField] AudioSource FieldActiceSound;
     [SerializeField] SphereCollider coll;
     [SerializeField] float totalTime = 6f;
     [SerializeField] float interval = 1;
@@ -59,6 +60,7 @@ public class ActiveSkill_PlasmaField : MonoBehaviour, IHasCoolDown
     void SkillBigin()
     {
         coll.gameObject.SetActive(true);
+        FieldActiceSound.Play();
     }
 
     void DoSkill()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2992882197531467684}
   - component: {fileID: 8240135751642575855}
   - component: {fileID: 2516452153322491697}
+  - component: {fileID: 679301111104183443}
   m_Layer: 5
   m_Name: Info
   m_TagString: Untagged
@@ -78,6 +79,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.14
+--- !u!114 &679301111104183443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830222474485173263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af333f8e878e97b40873bc4f2274662b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataText: {fileID: 4161929047982851465}
+  textDataType: {fileID: 0}
 --- !u!1 &5826588029663676921
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
       propertyPath: m_fontSize
-      value: 36.65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
         type: 3}
@@ -450,6 +465,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc41a2f4cdf576647b40c45fbe99aabf, type: 3}
+--- !u!114 &4161929047982851465 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 525226925217345958, guid: bc41a2f4cdf576647b40c45fbe99aabf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4506941524334425135}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8110668701100874931 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5621967081346312348, guid: bc41a2f4cdf576647b40c45fbe99aabf,

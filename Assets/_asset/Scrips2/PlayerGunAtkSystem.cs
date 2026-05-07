@@ -66,8 +66,8 @@ public class PlayerGunAtkSystem : MonoBehaviour, IHasTarget, IAttackObserver, IE
     public void SubscribeOnlyOneShotEvent(UnityAction WhenOneAttack)
     {
         DoWhenDoneAnAtk += WhenOneAttack;
-    }
-
+    }    
+    
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;

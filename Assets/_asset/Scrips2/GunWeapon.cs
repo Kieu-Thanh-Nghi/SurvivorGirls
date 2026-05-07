@@ -22,11 +22,16 @@ public class BasicWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] internal ProjectileEmiter emiter;
     internal Vector3 direct;
+    internal UnityAction<Vector3> GetTargetWhenAtk;
 
     public virtual void DoOneAttack(Vector3 targetPos)
     {
-        direct = targetPos - emiter.transform.position;
-        emiter.transform.forward = direct;
-        emiter.Emit();
+        emiter.Emit(targetPos);
+        GetTargetWhenAtk?.Invoke(targetPos);
+    }
+
+    public void SubscribeAnAtkToGetTarget(UnityAction<Vector3> WhenAttack)
+    {
+        GetTargetWhenAtk += WhenAttack;
     }
 }

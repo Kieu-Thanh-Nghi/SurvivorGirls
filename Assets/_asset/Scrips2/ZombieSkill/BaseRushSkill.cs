@@ -8,9 +8,11 @@ public class BaseRushSkill : EnemySkill
     [SerializeField] protected SphereCollider coll;
     [SerializeField] protected float markerScaleTime = 1.5f;
     [SerializeField] protected float rushTime = 1.5f;
+    [SerializeField] protected Enemy EnemyBody;
 
     protected virtual void OnTriggerStay(Collider other)
     {
+        EnemyBody.SetStopMoving(true, false);
         coll.enabled = false;
         Vector3 targetPos = other.transform.position;
         DashMaker.gameObject.SetActive(true);
@@ -40,7 +42,7 @@ public class BaseRushSkill : EnemySkill
 
     protected virtual Tween Rush(Vector3 targetPos)
     {
-        return self.DOMove(targetPos, rushTime);
+        return self.DOMove(targetPos, rushTime).OnComplete(() => EnemyBody.SetStopMoving(false, false));
     }  
 
     protected virtual float CalculateDistanceToTarget(Vector3 targetPos)

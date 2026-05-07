@@ -12,14 +12,13 @@ GameObject:
   - component: {fileID: 5338779888003509949}
   - component: {fileID: 5295286814263957734}
   - component: {fileID: 4550612970988699708}
-  - component: {fileID: 2475762053525603517}
   m_Layer: 0
   m_Name: Burn_Status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7431229683917584540
 Transform:
   m_ObjectHideFlags: 0
@@ -2426,17 +2425,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2475762053525603517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6245867686664386092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39743df8fcfc834888de78c6d0d9193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalTime: 5
-  damage: 1

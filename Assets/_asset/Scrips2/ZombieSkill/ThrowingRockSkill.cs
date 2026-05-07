@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class ThrowingRockSkill : BaseRockThrowingSkill
 {
-    WaitForSeconds wait;
-    bool isDoneThrow;
+    protected WaitForSeconds wait;
+    protected bool isDoneThrow;
 
     private void Awake()
     {
         wait = new WaitForSeconds(coolDown);
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         enemy.SetStopMoving(false);
         StartCoroutine(RunThrowSkill());
     }
-    IEnumerator RunThrowSkill()
+    protected virtual IEnumerator RunThrowSkill()
     {
         while (true)
         {
@@ -34,6 +34,7 @@ public class ThrowingRockSkill : BaseRockThrowingSkill
 
     public override void DoneThrowing()
     {
+        Debug.Log("ss2");
         base.DoneThrowing();
         isDoneThrow = true;
     }

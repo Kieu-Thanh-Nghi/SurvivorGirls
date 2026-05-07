@@ -24,6 +24,7 @@ public class SpawnStrategy : ASpawnStrategy
     {
         Vector3 pos = GetPosition(spawner);
         realEnemy = Instantiate(enemyPrefab, pos, spawner.rotation);
+        realEnemy.gameObject.SetActive(true);
         realEnemy.StartCheck();
     }
 }

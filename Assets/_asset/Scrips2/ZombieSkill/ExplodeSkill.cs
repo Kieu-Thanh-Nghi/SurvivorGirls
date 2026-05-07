@@ -67,5 +67,7 @@ public class ExplodeSkill : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+        BoomCount.SetActive(false);
+        Boom.SetActive(false);
     }
 }

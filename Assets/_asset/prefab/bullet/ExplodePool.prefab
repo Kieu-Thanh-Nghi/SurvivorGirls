@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3769542941209348427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1067498, y: -0.66895735, z: 2.328333}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -75,7 +75,6 @@ MonoBehaviour:
   explodeSphere: {fileID: 6164316518228626389}
   Damage: 5
   Radius: 0.4
-  Scale: {x: 0.44, y: 0.44, z: 0.44}
 --- !u!1001 &6671642925160660480
 PrefabInstance:
   m_ObjectHideFlags: 0

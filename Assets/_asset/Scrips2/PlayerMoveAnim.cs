@@ -5,6 +5,11 @@ public class PlayerMoveAnim : MonoBehaviour, IMoveAnim
 {
     [SerializeField] float runSpeed = 10;
     [SerializeField] Transform RotateBody;
+
+    private void OnEnable()
+    {
+        RotateBody = PlayerSetup.instance.RotateBody;
+    }
     public void DoAnim(Animator animator, AnimID animID, float moveSpeed, Vector3 moveDirect)
     {
         var movingSpeedDirect = moveDirect * moveSpeed;
