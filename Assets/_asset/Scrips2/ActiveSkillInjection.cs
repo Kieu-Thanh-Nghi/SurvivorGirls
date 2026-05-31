@@ -4,7 +4,7 @@ public class ActiveSkillInjection : SkillInjection
 {
     [SerializeField] internal Transform Player;
     [SerializeField] internal PlayerActiveSkillsSystem playerActiveSkillsSystem;
-    [SerializeField] internal WeaponInjection weaponInjection;
+    [SerializeField] internal WeaponSkillInjection weaponInjection;
     internal int weaponDamage => weaponInjection.weaponData.GetDamage();
 
     [ContextMenu("testBD")]

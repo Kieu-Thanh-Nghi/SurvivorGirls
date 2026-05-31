@@ -1,19 +1,35 @@
 ﻿using Lean.Pool;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IProjectile
 {
-    [SerializeField] LeanGameObjectPool BulletPool;
-    [SerializeField] float flyVelocity;
+    [SerializeField] internal LeanGameObjectPool BulletPool;
+    [SerializeField] internal Rigidbody rb;
+    [SerializeField] internal float lifeTime = 8;
+    [SerializeField] internal float flyVelocity;
+    internal int damage;
 
-    private void Awake()
+    private void OnEnable()
     {
-        GetComponent<Rigidbody>().velocity = flyVelocity * transform.forward;
+        DoFly();
+    }
+    public void DoFly()
+    {
+        rb.velocity = flyVelocity * transform.forward;
+        CancelInvoke();
+        Invoke(nameof(EndLife), lifeTime);
     }
 
+    void EndLife()
+    {
+        LeanPool.Despawn(gameObject);
+    }
     private void OnTriggerEnter(Collider other)
     {
-        //other.transform.CompareTag(GameID.enemyTag);
-        BulletPool.Despawn(gameObject);
+        if (other.TryGetComponent<IDamageable>(out var damageable))
+        {
+            damageable.TakeDamage(damage, DamageType.Range);
+        }
     }
+
 }

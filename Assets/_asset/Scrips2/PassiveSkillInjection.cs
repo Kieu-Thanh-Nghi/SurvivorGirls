@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public class PassiveSkillInjection : SkillInjection 
 {
-    [SerializeField] internal PlayerUpdate playerUpdate;
+    [SerializeField] internal PlayerManager playerUpdate;
     [SerializeField] internal BasicWeapon weapon;
     [SerializeField] internal Health health;
 

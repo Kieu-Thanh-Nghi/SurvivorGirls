@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AllWeaponMuzzle : MonoBehaviour
 {
-    [SerializeField] Transform LowerArmR;
+    [SerializeField] internal Transform LowerArmR;
+    [SerializeField] internal Transform HandR;
     [SerializeField] internal Transform RailgunMuzzle;
     [SerializeField] internal Transform SpearMuzzle;
     [SerializeField] internal Transform RifleMuzzle;
@@ -24,6 +25,8 @@ public class AllWeaponMuzzle : MonoBehaviour
     {
         if (!isValidate) return;
         LowerArmR = FindChildRecursive(transform, "LoweArmR");
+        HandR = FindChildRecursive(transform, "HandR");
+
         RailgunMuzzle = FindChildByPartialName("railgun");
         SpearMuzzle = FindChildByPartialName("spear");
         RifleMuzzle = FindChildByPartialName("rifle");

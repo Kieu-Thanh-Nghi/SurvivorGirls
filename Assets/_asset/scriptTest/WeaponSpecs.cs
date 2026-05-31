@@ -41,11 +41,16 @@ public class WeaponSpecs : MonoBehaviour, IPayable
 
         Range.text = weaponConcreteInfo.Range.ToString() + "m";
         FireRate.text = weaponConcreteInfo.FireRate.ToString();
-        MaxAmmo.text = weaponConcreteInfo.MaxAmmo.ToString();
-        Reload.text = weaponConcreteInfo.Reload.ToString() + "S";
+
+        int maxAmmo = weaponConcreteInfo.MaxAmmo;
+        if (maxAmmo > 0) MaxAmmo.text = maxAmmo.ToString();
+        else MaxAmmo.text = "-";
+
+        float reload = weaponConcreteInfo.Reload;
+        if (reload > 0) Reload.text = reload.ToString() + "S";
+        else Reload.text = "-";
 
         currentSkillInfos = Instantiate(weaponConcreteInfo.skillInfosPrefab, SkillsContainer, false);
-        currentSkillInfos.ConfigSkillsLockOrOpen(weaponInfo);
 
         weaponEquipper = weaponChoosingUI;
 
@@ -57,6 +62,7 @@ public class WeaponSpecs : MonoBehaviour, IPayable
         else
         {
             ButtonsHolder.gameObject.SetActive(true);
+            currentSkillInfos.ConfigSkillsLockOrOpen(weaponInfo);
         }
         this.weaponLvlUp = weaponLvlUp;
         targetLvlupButton = weaponLvlUp.lvlUpButton;

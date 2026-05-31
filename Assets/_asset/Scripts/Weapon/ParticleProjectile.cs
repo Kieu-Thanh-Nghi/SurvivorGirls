@@ -11,14 +11,9 @@ public class ParticleProjectile : ProjectileEmiter
         shootSound?.Play();
     }
 
-    public override void Emit(Vector3 targetPos)
+    public override void Emit(Vector3 direct)
     {
-        Vector3 emiterPos = transform.position;
-        emiterPos.y = targetPos.y;
-        transform.position = emiterPos;
-        //
-        Vector3 direct = targetPos - transform.position;
-        transform.forward = direct;
+        TurnToDirection(transform, direct);
         //
         Emit();
     }
@@ -39,9 +34,26 @@ public class ParticleProjectile : ProjectileEmiter
 
 public abstract class ProjectileEmiter : MonoBehaviour
 {
+    [SerializeField] protected int projectileFaceDir = 0;
     protected IHasDamage hasDamage;
     public void SetHasDamageData(IHasDamage damageData) => hasDamage = damageData;
 
     public abstract void Emit();
-    public abstract void Emit(Vector3 targetPos);
+    public abstract void Emit(Vector3 direction);
+
+    protected void TurnToDirection(Transform turnedObj, Vector3 direction)
+    {
+        switch (projectileFaceDir)
+        {
+            case -1:
+                turnedObj.transform.up = direction;
+                break;
+            case 0:
+                turnedObj.transform.forward = direction;
+                break;
+            case 1:
+                turnedObj.transform.right = direction;
+                break;
+        }
+    }
 }

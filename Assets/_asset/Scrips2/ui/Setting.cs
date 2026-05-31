@@ -1,21 +1,36 @@
 using System.Collections;
+using System.Collections.Generic;
 using TigerForge;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 public class Setting : MonoBehaviour
 {
     [SerializeField] AudioMixer audioMixer;
+    public static Setting Instance;
+    public List<UnityAction<bool>> OnOffASetting = new();
 
-    private void OnEnable()
+    private void Awake()
     {
-        var GPCtrler = GamePlayCtrler.Instance;
-        if (GPCtrler != null) GPCtrler.IsPause = true;
+        Instance = this;
     }
-    private void OnDisable()
+
+    private void Start()
     {
-        var GPCtrler = GamePlayCtrler.Instance;
-        if (GPCtrler != null) GPCtrler.IsPause = false;
+        if (!PlayerPrefs.HasKey(SettingEnum.MusicVolumSetting.ToString()))
+        {
+            PlayerPrefs.SetInt(SettingEnum.MusicVolumSetting.ToString(), 1);
+            OnOffMusic(true);
+        }
+        if (!PlayerPrefs.HasKey(SettingEnum.SfxVolumSetting.ToString()))
+        {
+            PlayerPrefs.SetInt(SettingEnum.SfxVolumSetting.ToString(), 1);
+            OnOffSfx(true);
+        }
+        OnOffASetting.Clear();
+        OnOffASetting.Add(OnOffMusic);
+        OnOffASetting.Add(OnOffSfx);
     }
     public void OnOffMusic(bool isOn)
     {
@@ -29,15 +44,10 @@ public class Setting : MonoBehaviour
         if (isOn) audioMixer.SetFloat("sfx", 0);
         else audioMixer.SetFloat("sfx", -80);
     }
-
-    public void BackToMenu()
-    {
-        EventManager.EmitEvent(GameEvents.EndGameImmediate.ToString());
-    }
 }
 
 public enum SettingEnum
 {
-    MusicVolumSetting,
-    SfxVolumSetting
+    MusicVolumSetting = 0,
+    SfxVolumSetting = 1
 }

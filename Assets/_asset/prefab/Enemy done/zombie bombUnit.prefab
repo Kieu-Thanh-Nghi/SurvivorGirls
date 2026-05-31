@@ -62,6 +62,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+  hurtCollider: {fileID: 4434582326983793188}
 --- !u!54 &1431856466885609147
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ Transform:
   m_GameObject: {fileID: 3501589915910182988}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.254, z: 0}
+  m_LocalPosition: {x: 0, y: 1.95, z: 0}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children: []

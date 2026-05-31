@@ -1,10 +1,11 @@
 using Lean.Pool;
 using UnityEngine;
 
-public class FlyingProjectile : MonoBehaviour
+public class FlyingProjectile : MonoBehaviour, IProjectile
 {
     [SerializeField] float lifeTime = 8;
     [SerializeField] Rigidbody rb;
+    [SerializeField] bool isDestroyOnCollide = true;
     internal RockData rockData;
     float speed = 2;
     internal int damage;
@@ -14,11 +15,16 @@ public class FlyingProjectile : MonoBehaviour
         this.rockData = rockData;
         damage = theDamage;
         speed = rockData.projectileSpeed;
+        DoFly();
+    }
+    public void DoFly()
+    {
+        CancelInvoke();
         rb.velocity = transform.forward * speed;
         Invoke(nameof(EndLife), lifeTime);
     }
 
-    void EndLife()
+    internal void EndLife()
     {
         LeanPool.Despawn(gameObject);
     }
@@ -27,8 +33,17 @@ public class FlyingProjectile : MonoBehaviour
         if(other.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.TakeDamage(damage, DamageType.Range);
-            CancelInvoke();
-            EndLife();
+            if (isDestroyOnCollide)
+            {
+                CancelInvoke();
+                EndLife();
+            }
         }
     }
+
+}
+
+public interface IProjectile
+{
+    public void DoFly();
 }

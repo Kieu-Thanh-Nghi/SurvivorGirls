@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class PistInject : MonoBehaviour
 {
-    PistolFirstSkill firstSkill;
-    PistolSecondSkill secondSkill;
-    PistolThirdSkill thirdSkill;
+
 }
 
 public abstract class PistolSkill : Skill
 {
-    protected PistolSkillInjection psi;
+    [SerializeField] protected PistolSkillsInjection psi;
     public override void SetSkillInjection(ISkillInjection skillInjection)
     {
-        if (skillInjection is PistolSkillInjection thePsi)
+        if (skillInjection is PistolSkillsInjection thePsi)
         {
             psi = thePsi;
         }
@@ -87,3 +85,40 @@ public abstract class Skill : MonoBehaviour
     public abstract void ToLV4();
     public abstract void ToLV5();
 }
+
+public enum PassiveSkillEnum
+{
+    NoneSkill = -1,
+    //
+    Alacrity = 0,
+    BigHands = 1,
+    Controller = 2,
+    Determination = 3,
+    Veteran = 4,
+    GunMaster = 5,
+    HealingFactor = 6
+}
+
+public enum ActiveSkillEnum
+{
+    NoneSkill = -1,
+    BladeDrone = 0,
+    ScifiDrone = 1,
+    TentaclesRobot = 2,
+    ElectricMines = 3,
+    FireWorksSkill = 4,
+    ThunderBolts = 5,
+    FrozeDrone = 6,
+    PlasmaShield = 7
+}
+
+public enum PistolSkillEnum
+{
+    NoneSkill = -1,
+    //
+    Training = 0,
+    SixthSense = 1,
+    Magnum = 2,
+}
+
+public interface ISkillInjection { }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Lean.Pool;
 
-public class ExplodeParticleProjectile : ParticleProjectile
+public class ExplodeParticleProjectile : ProjectileEmitter_Particle
 {
     [SerializeField] internal ExplotionEff explodeEff;
     [SerializeField] AudioSource exploSound;

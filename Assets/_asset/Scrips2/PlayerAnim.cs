@@ -2,7 +2,7 @@
 
 public class PlayerAnim : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    [SerializeField] internal Animator animator;
 
     private void OnEnable()
     {

@@ -14056,7 +14056,7 @@ GameObject:
   - component: {fileID: 1994209851629232568}
   m_Layer: 17
   m_Name: boss_zombie_projectile_normal
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16552,3 +16552,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 8
   rb: {fileID: 2207992993502353980}
+  isDestroyOnCollide: 0

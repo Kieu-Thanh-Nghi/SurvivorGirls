@@ -6,18 +6,15 @@ public class RotateInput : MonoBehaviour, ITurnInput
     [SerializeField] MoveInput moveInput;
     Vector3 faceDirect;
 
-    [SerializeField] PlayerGunAtkSystem gunAtkSystem;
+    [SerializeField] PlayerGunAttack gunAtkSystem;
     [SerializeField] float shootStateDelay = 2f;
-    float shootStateDelayCount = 10;
 
     private void OnEnable()
     {
-        gunAtkSystem = PlayerSetup.instance.weaponInjection.GetComponent<PlayerGunAtkSystem>();
-        gunAtkSystem?.gun.SubscribeAnAtkToGetTarget(AtkDirectToFaceDirect);
+        gunAtkSystem = PlayerSetup.instance.weaponInjection.GetComponent<PlayerGunAttack>();
     }
     public void AtkDirectToFaceDirect(Vector3 targetPos)
     {
-        shootStateDelayCount = 0;
         faceDirect = targetPos - transform.position;
         faceDirect.y = 0;
         //if (gunAtkSystem.isHasTarget && target != null && target.gameObject.activeInHierarchy)
@@ -37,28 +34,25 @@ public class RotateInput : MonoBehaviour, ITurnInput
         //finalDirect.z = directVector.y;
 
         Vector3 mDirect = Vector3.zero;
-        shootStateDelayCount += Time.deltaTime;
         if (gunAtkSystem == null)
         {
+            Debug.Log("RotateInput - gunAtkSystem == null");
             mDirect = moveInput.GetCurrentMoveDirect();
         }
         else
         {
-            var target = gunAtkSystem.GetCurrentTarget();
-            if (gunAtkSystem.isHasTarget && target != null && target.gameObject.activeInHierarchy)
+            Debug.Log("RotateInput - gunAtkSystem != null");
+            var target = gunAtkSystem.GetTarget();
+            if (gunAtkSystem.CheckIfHasTarget())
             {
+                Debug.Log("RotateInput - has target");
+                AtkDirectToFaceDirect(target.position);
                 return faceDirect;
             }
             else
             {
-                if(shootStateDelayCount < shootStateDelay)
-                {
-                    return faceDirect;
-                }
-                else
-                {
-                    mDirect = moveInput.GetCurrentMoveDirect();
-                }
+                Debug.Log("RotateInput - MoveDirect");
+                mDirect = moveInput.GetCurrentMoveDirect();
             }
         }
         if (mDirect != Vector3.zero)
@@ -69,4 +63,10 @@ public class RotateInput : MonoBehaviour, ITurnInput
     }
 
     public Vector3 GetCurrentFaceDirect() => faceDirect;
+
+    public bool IsRotateAble()
+    {
+        if (gunAtkSystem == null) return true;
+        return gunAtkSystem.IsDone;
+    }
 }

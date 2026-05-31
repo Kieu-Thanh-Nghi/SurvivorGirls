@@ -23,7 +23,7 @@ public class MiniBossSpawnStrategy : SpawnStrategy
         theEnemy.powerBuff = buffPower;
         theEnemy.speedBuff = buffSpeed;
         theEnemy.healthBuff = buffHealth;
-        realEnemy.transform.localScale *= buffSize;
+        realEnemy.ChangeSize(buffSize);
     }
 
     void AddHealthBar(Health bossHP)

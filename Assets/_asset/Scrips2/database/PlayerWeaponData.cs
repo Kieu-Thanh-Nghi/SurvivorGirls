@@ -17,7 +17,7 @@ public class PlayerWeaponData : PlayerItemsData
     public override Transform SetItemIn(PlayerSetup playerSetup, Transform playerTransform)
     {
         currentItem = Instantiate(itemList[equippingItemIndex], playerTransform);
-        var weaponInject = currentItem.GetComponent<WeaponInjection>();
+        var weaponInject = currentItem.GetComponent<WeaponSkillInjection>();
         playerSetup.weaponInjection = weaponInject;
         weaponInject.weaponRank = GetEpuippingWeaponInfo().rank;
         return currentItem.transform;

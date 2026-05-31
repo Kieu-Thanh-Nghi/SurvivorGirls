@@ -24,6 +24,7 @@ public interface IMoveInput
 
 public interface ITurnInput
 {
+    public bool IsRotateAble();
     public Vector3 GetFaceDirect();
 
     public Vector3 GetCurrentFaceDirect();

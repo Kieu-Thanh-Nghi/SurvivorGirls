@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2639646017648452565
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1777980612463087829, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_text
+      value: Katana found in the basement of the house, attack with a slash
+      objectReference: {fileID: 0}
+    - target: {fileID: 2440911233403160340, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_Name
+      value: weapon skills - katana Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224695515830350195, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_text
+      value: Reflects a long-range attack by zombies touching the slash.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497939003504471246, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_text
+      value: cut down zombies' long-range attacks.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.19116211
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.2476654
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.19372559
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.09979248
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639503281652324582, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a7f4a22dcbc1aa4ba4d2013bf892199, type: 3}

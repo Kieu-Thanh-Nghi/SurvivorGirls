@@ -40,7 +40,7 @@ public class WeaponChoosingUI : MonoBehaviour
         //WeaponUIInfoManager
         weaponInfoManager.UpdateLvl(weaponInfo, theMaxLvl);
         weaponInfoManager.UpdateTotalAtk(weaponConcreteInfo.GetTotalDamage(weaponInfo.level));
-        weaponInfoManager.UpdateWeaponSkillUI(weaponInfo);
+        weaponInfoManager.UpdateWeaponSkillUI(weaponInfo, weaponData.CheckIfItemHasBought(weaponDataIndex));
 
         //weaponFrameColorChanger
         weaponFrameColorChanger.changeFrameAndBGByRank(CurrentRankInt);

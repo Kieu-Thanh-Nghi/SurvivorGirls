@@ -11,13 +11,12 @@ public class ToogleSlider : MonoBehaviour
     [SerializeField] Color enableColor, disableColor;
     [SerializeField] Image toogleBar;
     [SerializeField] Scrollbar scrollbar;
-    [SerializeField] UnityEvent OnEnable, OnDisable;
 
-    private void Awake()
+    private void Start()
     {
         int startVal = PlayerPrefs.GetInt(SaveName.ToString(), 1);
-        if (startVal == 0) TurnOn();
-        else TurnOff();
+        if (startVal == 1) OnUI();
+        else OffUI();
     }
 
     public bool IsEnable
@@ -28,29 +27,39 @@ public class ToogleSlider : MonoBehaviour
             isEnable = value;
             if (isEnable)
             {
-                PlayerPrefs.GetInt(SaveName.ToString(), 1);
+                PlayerPrefs.SetInt(SaveName.ToString(), 1);
                 TurnOn();
             }
             else
             {
-                PlayerPrefs.GetInt(SaveName.ToString(), 1);
+                PlayerPrefs.SetInt(SaveName.ToString(), 0);
                 TurnOff();
             }
         }
     }
 
-    void TurnOn()
+    void OnUI()
     {
         scrollbar.value = 1;
         toogleBar.color = enableColor;
-        OnEnable?.Invoke();
+    }
+
+    void OffUI()
+    {
+        scrollbar.value = 0;
+        toogleBar.color = disableColor;
+    }
+
+    void TurnOn()
+    {
+        OnUI();
+        Setting.Instance.OnOffASetting[(int)SaveName]?.Invoke(true);
     }
 
     void TurnOff()
     {
-        scrollbar.value = 0;
-        toogleBar.color = disableColor;
-        OnDisable?.Invoke();
+        OffUI();
+        Setting.Instance.OnOffASetting[(int)SaveName]?.Invoke(false);
     }
 
     public void ClickButton()

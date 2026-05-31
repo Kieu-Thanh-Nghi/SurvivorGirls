@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerSetup : MonoBehaviour
 {
-    [SerializeField] PlayerUpdate playerUpdate;
+    [SerializeField] PlayerManager playerUpdate;
     [SerializeField] Health playerHealth;
     [SerializeField] PlayerHealEff playerHeal;
     [SerializeField] internal LevelManager levelManager;
     [SerializeField] internal Canvas PlayerHPBarCanvas;
     [SerializeField] internal Transform player;
     [SerializeField] internal Transform playerSkin;
-    [SerializeField] internal WeaponInjection weaponInjection;
+    [SerializeField] internal WeaponSkillInjection weaponInjection;
     [SerializeField] internal ActiveSkillInjection activeSkillInjection;
     [SerializeField] internal PassiveSkillInjection passiveSkillInjection;
     [SerializeField] PlayerSkinInfos playerSkinInfos;

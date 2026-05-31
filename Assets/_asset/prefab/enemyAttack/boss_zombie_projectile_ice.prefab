@@ -2389,7 +2389,7 @@ GameObject:
   - component: {fileID: 5338600591568514089}
   m_Layer: 17
   m_Name: boss_zombie_projectile_ice
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4884,6 +4884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 8
   rb: {fileID: 1677947267505886941}
+  isDestroyOnCollide: 0
   iceStatusGiver: {fileID: 5338600591568514089}
 --- !u!114 &5338600591568514089
 MonoBehaviour:

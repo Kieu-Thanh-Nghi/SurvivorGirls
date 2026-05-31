@@ -16,8 +16,9 @@ public class WeaponUIInfoManager : MonoBehaviour
         atk.text = totalAtk.ToString();
     }
 
-    public void UpdateWeaponSkillUI(WeaponInfo weaponInfo)
+    public void UpdateWeaponSkillUI(WeaponInfo weaponInfo, bool hasBought = true)
     {
+        if (!hasBought) return;
         int n = weaponSkillUI.Length;
         int theRank = weaponInfo.rank;
         for (int i = 0; i < n; i++)

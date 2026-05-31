@@ -22,6 +22,10 @@ public class AdsManager : MonoBehaviour
 
     void Awake()
     {
+        LevelPlay.OnInitSuccess += OnInitSuccess;
+        LevelPlay.OnInitFailed += OnInitFailed;
+        Debug.Log("LevelPlay awake");
+
         if (!PlayerPrefs.HasKey(FreeADs_SaveKey))
         {
             PlayerPrefs.SetInt(FreeADs_SaveKey, -1);
@@ -35,9 +39,18 @@ public class AdsManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("LevelPlay start");
         // Init SDK
         LevelPlay.Init(appKey);
+    }
 
+    void OnInitFailed(LevelPlayInitError config)
+    {
+        Debug.Log("LevelPlay InitFailed");
+    }
+    void OnInitSuccess(LevelPlayConfiguration config)
+    {
+        Debug.Log("LevelPlay InitSuccess");
         InitRewarded();
 
         if (PlayerPrefs.HasKey(FreeADs_SaveKey) && PlayerPrefs.GetInt(FreeADs_SaveKey) > -1) return;
@@ -82,9 +95,12 @@ public class AdsManager : MonoBehaviour
     public void ShowRewarded(string placement)
     {
         if (rewardedAd.IsAdReady())
-            rewardedAd.ShowAd(placement);
+        { 
+            Debug.Log("PurchaseButton_PayByAds: AdReady");
+            rewardedAd.ShowAd(placement); 
+        }
         else
-            Debug.Log("Rewarded not ready");
+            Debug.Log("PurchaseButton_PayByAds: Rewarded not ready");
     }
     #endregion
 

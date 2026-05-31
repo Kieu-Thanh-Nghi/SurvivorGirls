@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class GunWeapon : BasicWeapon, IHasBulletWeapon ,IGunLockable
 {
@@ -15,23 +14,5 @@ public class GunWeapon : BasicWeapon, IHasBulletWeapon ,IGunLockable
     {
         DoOneAttack(targetPos);
         DecreaseBullet();
-    }
-}
-
-public class BasicWeapon : MonoBehaviour, IWeapon
-{
-    [SerializeField] internal ProjectileEmiter emiter;
-    internal Vector3 direct;
-    internal UnityAction<Vector3> GetTargetWhenAtk;
-
-    public virtual void DoOneAttack(Vector3 targetPos)
-    {
-        emiter.Emit(targetPos);
-        GetTargetWhenAtk?.Invoke(targetPos);
-    }
-
-    public void SubscribeAnAtkToGetTarget(UnityAction<Vector3> WhenAttack)
-    {
-        GetTargetWhenAtk += WhenAttack;
     }
 }

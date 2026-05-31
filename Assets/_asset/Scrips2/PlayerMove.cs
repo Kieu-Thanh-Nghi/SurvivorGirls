@@ -14,6 +14,7 @@ public class Rotate : IRotate
 {
     public void DoRotate(Transform character, Vector3 faceDirect)
     {
+        faceDirect = Vector3.Lerp(character.forward, faceDirect.normalized, 0.5f);
         character.forward = faceDirect;
     }
 }

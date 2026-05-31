@@ -11,6 +11,7 @@ public class PurchaseButton_PayByAds : PurchaseButton
     private void Start()
     {
         AdsManager.Instance.rewardedAd.OnAdRewarded += SetOnAdsReward;
+        Debug.Log("PurchaseButton_PayByAds add SetOnAdsReward");
     }
 #endif
     public override void PayThePrice()
@@ -19,6 +20,7 @@ public class PurchaseButton_PayByAds : PurchaseButton
         AdsManager.Instance.rewardedAd.OnAdRewarded += SetOnAdsReward;
 #endif
         AdsManager.Instance.ShowRewarded(PlacementName);
+        Debug.Log("PurchaseButton_PayByAds ShowRewarded");
     }
 
     void SetOnAdsReward(LevelPlayAdInfo info, LevelPlayReward reward)
@@ -30,6 +32,7 @@ public class PurchaseButton_PayByAds : PurchaseButton
         if(info.PlacementName.CompareTo(PlacementName) == 0)
         {
             DoAfterAds?.Invoke();
+            Debug.Log("PurchaseButton_PayByAds DoAfterAds");
         }
         else
         {

@@ -9,6 +9,7 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     [SerializeField] NavMeshAgent agent;
     [SerializeField] internal Enemy EnemyBody;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] Collider hurtCollider;
 
     //private void OnDrawGizmos()
     //{
@@ -18,6 +19,27 @@ public class SpawnChecker : MonoBehaviour, IPoolable
     //    // Draw a wire sphere at the object's position with the specified radius
     //    Gizmos.DrawRay(transform.position, Vector3.up * 50);
     //}
+
+    //private void Start()
+    //{
+    //    if (hurtCollider != null)
+    //    {
+    //        var colPos = hurtCollider.transform.position;
+    //        colPos.y = 1.95f;
+    //        hurtCollider.transform.position = colPos;
+    //    }
+    //}
+
+    public void ChangeSize(float buffSize)
+    {
+        transform.localScale *= buffSize;
+        if (hurtCollider != null)
+        {
+            var colPos = hurtCollider.transform.position;
+            colPos.y = 1.95f;
+            hurtCollider.transform.position = colPos;
+        }
+    }
 
     [ContextMenu("start check")]
     public void StartCheck()

@@ -29,6 +29,11 @@ public class RealtimeCooldown
 
         long now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         long endTime = long.Parse(PlayerPrefs.GetString(key));
+        if (endTime > now + 315360000) // > 10 năm
+        {
+            PlayerPrefs.DeleteKey(key);
+            return true;
+        }
 
         return now >= endTime;
     }
@@ -40,9 +45,12 @@ public class RealtimeCooldown
             return 0;
 
         long now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        Debug.Log("RealtimeCooldown" + now);
         long endTime = long.Parse(PlayerPrefs.GetString(key));
+        Debug.Log("RealtimeCooldown" + endTime);
 
         long remaining = endTime - now;
+        Debug.Log("RealtimeCooldown" + remaining);
         return remaining > 0 ? remaining : 0;
     }
 
@@ -50,7 +58,7 @@ public class RealtimeCooldown
     public string GetTimeText()
     {
         long seconds = GetRemainingSeconds();
-
+        Debug.Log("RealtimeCooldown" + seconds);
         TimeSpan t = TimeSpan.FromSeconds(seconds);
 
         return $"{t.Hours:D2}:{t.Minutes:D2}:{t.Seconds:D2}";
@@ -98,6 +106,6 @@ public class RealtimeCooldown
     // 🔹 Xóa cooldown (reset)
     public void Reset()
     {
-        StartCooldown(5);
+        StartCooldown(60*60*24);
     }
 }
