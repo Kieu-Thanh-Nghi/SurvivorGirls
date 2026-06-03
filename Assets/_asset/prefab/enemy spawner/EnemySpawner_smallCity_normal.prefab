@@ -2223,10 +2223,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5528212908536810182, guid: 33a9d967679753543a3981140331bf6a,
+        type: 3}
+      propertyPath: firstTimeDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528212908536810182, guid: 33a9d967679753543a3981140331bf6a,
+        type: 3}
+      propertyPath: bossSkills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5976140206565230255, guid: 33a9d967679753543a3981140331bf6a,
         type: 3}
       propertyPath: healthBuff
-      value: 8
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997655888054319043, guid: 33a9d967679753543a3981140331bf6a,
+        type: 3}
+      propertyPath: coolDown
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8337069364687439287, guid: 33a9d967679753543a3981140331bf6a,
         type: 3}

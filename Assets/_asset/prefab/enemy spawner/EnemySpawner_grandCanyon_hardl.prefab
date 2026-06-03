@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c5887bfa880ec47b404c4b341d3100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTime: 240
+  StartTime: 420
   spawnStrategy: {fileID: 8424198091439168657}
 --- !u!1 &6545433700708549314
 GameObject:
@@ -1946,7 +1946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c5887bfa880ec47b404c4b341d3100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTime: 240
+  StartTime: 540
   spawnStrategy: {fileID: 8424198091439168657}
 --- !u!1 &8335901216706626241
 GameObject:
@@ -2663,7 +2663,7 @@ PrefabInstance:
     - target: {fileID: 264158553070855234, guid: fbd0bb7e4a70086499e38ae174b6ef99,
         type: 3}
       propertyPath: healthBuff
-      value: 2
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2519413786081224538, guid: fbd0bb7e4a70086499e38ae174b6ef99,
         type: 3}
@@ -2724,6 +2724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522770374117086052, guid: fbd0bb7e4a70086499e38ae174b6ef99,
+        type: 3}
+      propertyPath: rockType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2886,11 +2891,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2627924375580720070, guid: f931ad215f0c1e54f977f22e9c7c0110,
+        type: 3}
+      propertyPath: rockType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5743222341365370080, guid: f931ad215f0c1e54f977f22e9c7c0110,
         type: 3}
       propertyPath: healthBuff
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5900751017724297353, guid: f931ad215f0c1e54f977f22e9c7c0110,
+        type: 3}
+      propertyPath: bossSkills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900751017724297353, guid: f931ad215f0c1e54f977f22e9c7c0110,
+        type: 3}
+      propertyPath: bossSkills.Array.data[0].enemySkill
+      value: 
+      objectReference: {fileID: 5051193537696499401}
     - target: {fileID: 7991846424009969656, guid: f931ad215f0c1e54f977f22e9c7c0110,
         type: 3}
       propertyPath: m_Name
@@ -2922,6 +2942,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3eb3897ba266e4a4c9823c72b9533af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5051193537696499401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7631528073383297653, guid: f931ad215f0c1e54f977f22e9c7c0110,
+    type: 3}
+  m_PrefabInstance: {fileID: 3454775056025568444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959d52a384016b14798ebb052f75bac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4268564731818411499

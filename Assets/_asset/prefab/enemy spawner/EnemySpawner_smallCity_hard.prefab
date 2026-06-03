@@ -2713,6 +2713,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5528212908536810182, guid: 33a9d967679753543a3981140331bf6a,
+        type: 3}
+      propertyPath: bossSkills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5976140206565230255, guid: 33a9d967679753543a3981140331bf6a,
         type: 3}
       propertyPath: speedBuff
@@ -2721,7 +2726,7 @@ PrefabInstance:
     - target: {fileID: 5976140206565230255, guid: 33a9d967679753543a3981140331bf6a,
         type: 3}
       propertyPath: healthBuff
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8337069364687439287, guid: 33a9d967679753543a3981140331bf6a,
         type: 3}

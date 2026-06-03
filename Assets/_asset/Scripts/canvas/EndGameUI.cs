@@ -40,18 +40,23 @@ public class EndGameUI : MonoBehaviour
         {
             if (isWin)
             {
-                var aRewardUI = Instantiate(rewardUIPrefab, endgameRewardsContainer);
-                aRewardUI.SetThisUp(endGameRewards[i].isClearGameRaward, endGameRewards[i].Icon, endGameRewards[i].Quantity);
+                TurnOnAReward(endGameRewards[i]);
             }
             else
             {
                 if (endGameRewards[i].conditionTime <= thisGameSurvTime && endGameRewards[i].isClearGameRaward == false)
                 {
-                    var aRewardUI = Instantiate(rewardUIPrefab, endgameRewardsContainer);
-                    aRewardUI.SetThisUp(endGameRewards[i].isClearGameRaward, endGameRewards[i].Icon, endGameRewards[i].Quantity);
+                    TurnOnAReward(endGameRewards[i]);
                 }
             }
         }
+    }
+
+    void TurnOnAReward(EndGameReward anEndGameReward)
+    {
+        var aRewardUI = Instantiate(rewardUIPrefab, endgameRewardsContainer);
+        aRewardUI.SetThisUp(anEndGameReward.isClearGameRaward, anEndGameReward.Icon, anEndGameReward.Quantity);
+        anEndGameReward.TakeTheReward();
     }
 
     public void ToMenuScene()

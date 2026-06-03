@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ChoosingButton : MonoBehaviour
 {
     [SerializeField] internal int theSkinIndex;
     [SerializeField] GameObject SelectedBG, EquipSigh;
     [SerializeField] internal BuyInfo skinBuyInfo;
+    [SerializeField] Button SelectButton;
 
     public void EquipThisSkin()
     {
-        SelectedBG.SetActive(true);
+        SelectThisSkin(true);
         UIManager.instance.CharacterPageChanger.currentCharPage.choosing.SelectNewCharSkin(this);
     }
 
@@ -20,16 +22,17 @@ public class ChoosingButton : MonoBehaviour
     public void SelectThisSkin(bool isSelect)
     {
         SelectedBG.SetActive(isSelect);
+        SelectButton.enabled = !isSelect;
     }
 
     public void ActiveEquippedMark()
     {
-        SelectedBG.SetActive(true);
+        SelectThisSkin(true);
         EquipSigh.SetActive(true);
     }
     public void DeactiveEquippedMark()
     {
-        SelectedBG.SetActive(false);
+        SelectThisSkin(false);
         EquipSigh.SetActive(false);
     }
 }

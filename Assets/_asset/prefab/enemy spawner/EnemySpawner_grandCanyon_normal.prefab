@@ -1441,7 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c5887bfa880ec47b404c4b341d3100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTime: 240
+  StartTime: 540
   spawnStrategy: {fileID: 6072751876438134126}
 --- !u!1 &6618634681724626312
 GameObject:
@@ -1963,7 +1963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c5887bfa880ec47b404c4b341d3100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartTime: 240
+  StartTime: 420
   spawnStrategy: {fileID: 6072751876438134126}
 --- !u!1 &9218201556410315981
 GameObject:
@@ -2519,10 +2519,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2627924375580720070, guid: f931ad215f0c1e54f977f22e9c7c0110,
+        type: 3}
+      propertyPath: rockType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5743222341365370080, guid: f931ad215f0c1e54f977f22e9c7c0110,
         type: 3}
       propertyPath: healthBuff
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7991846424009969656, guid: f931ad215f0c1e54f977f22e9c7c0110,
         type: 3}
@@ -2634,7 +2639,7 @@ PrefabInstance:
     - target: {fileID: 264158553070855234, guid: fbd0bb7e4a70086499e38ae174b6ef99,
         type: 3}
       propertyPath: healthBuff
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2519413786081224538, guid: fbd0bb7e4a70086499e38ae174b6ef99,
         type: 3}
@@ -2695,6 +2700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522770374117086052, guid: fbd0bb7e4a70086499e38ae174b6ef99,
+        type: 3}
+      propertyPath: rockType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

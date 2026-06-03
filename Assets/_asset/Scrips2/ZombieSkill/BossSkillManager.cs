@@ -5,6 +5,7 @@ public class BossSkillManager : MonoBehaviour
 {
     [SerializeField] BossSkill[] bossSkills;
     [SerializeField] Enemy enemySelf;
+    [SerializeField] float FirstTimeDelay = 4;
 
     private void Start()
     {
@@ -14,6 +15,10 @@ public class BossSkillManager : MonoBehaviour
         }
     }
     private void OnEnable()
+    {
+        Invoke(nameof(StartFirstTime), FirstTimeDelay);
+    }
+    void StartFirstTime()
     {
         StartCoroutine(DoSkills());
     }

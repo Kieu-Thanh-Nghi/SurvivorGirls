@@ -39003,24 +39003,24 @@ MonoBehaviour:
   - StageName: SNOW TOWN
     StagesByHardLv:
     - SceneName: snow
-      EnemySpawner: {fileID: 8897203036062849514, guid: b5d2bd2c51e773047b20f78a6d3dd13b,
+      EnemySpawner: {fileID: 501349713568197310, guid: 4d3f6cc6f8b0f8f458501e53ed1e1edd,
         type: 3}
       RewardPrefab: {fileID: 3553379329150828299, guid: bbfc4dcd16c179d45b63fc6127d37150,
         type: 3}
     - SceneName: snow
-      EnemySpawner: {fileID: 8897203036062849514, guid: b5d2bd2c51e773047b20f78a6d3dd13b,
+      EnemySpawner: {fileID: 3862637321885765365, guid: 7cb8efd88d806f142a2a7ed7012db066,
         type: 3}
       RewardPrefab: {fileID: 3553379329150828299, guid: 66639ef0a7d6a2248976484f970706e6,
         type: 3}
   - StageName: GOLD DESSERT
     StagesByHardLv:
     - SceneName: dessert
-      EnemySpawner: {fileID: 8897203036062849514, guid: b5d2bd2c51e773047b20f78a6d3dd13b,
+      EnemySpawner: {fileID: 6200584287290845581, guid: fb5aa0e353095e541b9edad34abffaf7,
         type: 3}
       RewardPrefab: {fileID: 3553379329150828299, guid: 4b0fc56a36278294d85c2bd30df22e66,
         type: 3}
     - SceneName: dessert
-      EnemySpawner: {fileID: 8897203036062849514, guid: b5d2bd2c51e773047b20f78a6d3dd13b,
+      EnemySpawner: {fileID: 3950367296940090353, guid: b8a070726a44e514eaf9913dbf618bb8,
         type: 3}
       RewardPrefab: {fileID: 3553379329150828299, guid: 8d27b977323ada34cb35a7c7f0d3415f,
         type: 3}
@@ -101098,6 +101098,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2a5d478ec970e6c4f9f03cd6e3d38eeb,
         type: 2}
+    - target: {fileID: 4225842300187690099, guid: 49c219e35b93e6448a1cd1c3f3bb584b,
+        type: 3}
+      propertyPath: SelectButton
+      value: 
+      objectReference: {fileID: 6601399667797307246}
     - target: {fileID: 8077350495426793939, guid: 49c219e35b93e6448a1cd1c3f3bb584b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -101208,6 +101213,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49c219e35b93e6448a1cd1c3f3bb584b, type: 3}
+--- !u!114 &6601399667797307246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5699552549589726466, guid: 49c219e35b93e6448a1cd1c3f3bb584b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6601399667797307245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6670185287804399136
 MonoBehaviour:
   m_ObjectHideFlags: 0

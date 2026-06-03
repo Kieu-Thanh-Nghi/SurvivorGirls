@@ -11,7 +11,9 @@ dependencies {
     implementation 'com.unity3d.ads-mediation:unityads-adapter:5.6.0' // Assets/LevelPlay/Editor/ISUnityAdsAdapterDependencies.xml:5
 // Android Resolver Dependencies End
 **DEPS**}
-
+configurations.all {
+    exclude group: 'com.google.games', module: 'gpgs-plugin-support'
+}
 // Android Resolver Exclusions Start
 android {
   packagingOptions {
