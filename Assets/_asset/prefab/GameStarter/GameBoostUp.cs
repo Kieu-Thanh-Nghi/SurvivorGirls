@@ -5,6 +5,7 @@ public class GameBoostUp : MonoBehaviour
 {
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         DontDestroyOnLoad(gameObject);
     }
     [ContextMenu("ss")]
