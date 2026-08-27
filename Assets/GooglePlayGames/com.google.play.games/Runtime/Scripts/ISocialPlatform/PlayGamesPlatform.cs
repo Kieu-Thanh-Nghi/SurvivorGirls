@@ -42,11 +42,6 @@ namespace GooglePlayGames
         /// <summary>Singleton instance</summary>
         private static volatile PlayGamesPlatform sInstance = null;
 
-        public void IncrementAchievement(object achievementID, int step, Action<bool> p)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>status of nearby connection initialization.</summary>
         private static volatile bool sNearbyInitializePending;
 
